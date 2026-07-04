@@ -154,6 +154,77 @@
     secondsEl.textContent = pad(seconds);
   }
 
+  const spotifyUrl = String(config.SPOTIFY_PLAYLIST_URL || "").trim();
+  if (spotifyUrl) {
+    document.querySelectorAll("[data-spotify]").forEach(function (link) {
+      link.href = spotifyUrl;
+    });
+    document.querySelectorAll("[data-spotify-wrap]").forEach(function (wrap) {
+      wrap.classList.remove("is-hidden");
+    });
+  }
+
+  function renderLiveMoments() {
+    const container = document.getElementById("live-moments");
+    const grid = document.getElementById("live-moments-grid");
+    if (!container || !grid || (!isPostParty() && !isPartyLive())) {
+      return;
+    }
+
+    fetch("/api/photos")
+      .then(function (response) {
+        if (!response.ok) {
+          throw new Error("gallery unavailable");
+        }
+        return response.json();
+      })
+      .then(function (data) {
+        const photos = (data.photos || [])
+          .filter(function (photo) {
+            return photo && photo.url && !(photo.type || "").startsWith("video");
+          })
+          .slice(0, 6);
+
+        if (photos.length === 0) {
+          return;
+        }
+
+        photos.forEach(function (photo) {
+          const link = document.createElement("a");
+          link.href = "gallery.html";
+          link.className = "live-moments__item";
+          const img = document.createElement("img");
+          img.src = photo.url;
+          img.alt = photo.caption || "Party photo";
+          img.loading = "lazy";
+          img.decoding = "async";
+          link.appendChild(img);
+          grid.appendChild(link);
+        });
+        container.classList.remove("is-hidden");
+      })
+      .catch(function () {
+        /* gallery strip is a progressive enhancement */
+      });
+  }
+
+  renderLiveMoments();
+
+  const partifulUrl = String(config.PARTIFUL_URL || "").trim();
+  if (partifulUrl) {
+    document.querySelectorAll("[data-partiful]").forEach(function (link) {
+      link.href = partifulUrl;
+      link.classList.remove("is-hidden");
+    });
+
+    const rsvpDirections = document.getElementById("rsvp-directions");
+    if (rsvpDirections) {
+      rsvpDirections.textContent = "Directions";
+      rsvpDirections.classList.remove("btn--rsvp");
+      rsvpDirections.classList.add("btn--ghost");
+    }
+  }
+
   updateCountdown();
   setInterval(updateCountdown, 1000);
   applyPostPartyMode();

@@ -118,7 +118,7 @@ def normalize_plan(plan: dict) -> dict:
         "Design Team Game": ("Complete", "Game design finished"),
         "Pick Date": ("Complete", "Saturday, August 15, 2026"),
         "Pick Out Menu": ("Complete", "Menu PDF + drink list on site"),
-        "Design Signs": ("Complete", "Woodlawn + Saloon signs in /signs.html"),
+        "Design Signs": ("Complete", "Entrance + Saloon signs in /signs.html"),
         "Print Signs": ("Complete", "/print-pack.html"),
         "Centralized Photo Share": ("Complete", "Gallery at /gallery.html"),
         "Design Partiful Invite": ("Complete", "Digital invite at /invite.html"),
@@ -130,7 +130,7 @@ def normalize_plan(plan: dict) -> dict:
             task["status"], task["notes"] = auto_complete[name]
     for sign in plan.get("signs", []):
         if sign.get("name") == "Kyle's Apartment":
-            sign["name"] = "Cowboy Disco Saloon (Apt 327)"
+            sign["name"] = "Cowboy Disco Saloon"
     return plan
 
 

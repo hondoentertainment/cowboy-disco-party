@@ -7,21 +7,50 @@
   <meta name="theme-color" content="#0D0D0D">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Cowboy Disco Party | Aug 15, 2026">
-  <meta property="og:description" content="Official premiere invitation — country, disco, and rhinestone under the mirror ball. Aug 15, 2026 at the Cowboy Disco Saloon.">
+  <meta property="og:description" content="You're invited — country, disco, and rhinestone under the mirror ball. Aug 15, 2026 at the Cowboy Disco Saloon, Seattle.">
   <meta property="og:url" content="https://cowboy-disco-party.vercel.app/">
-  <meta property="og:image" content="https://cowboy-disco-party.vercel.app/assets/poster-og.jpg">
+  <meta property="og:image" content="https://cowboy-disco-party.vercel.app/assets/og-card.jpg">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Cowboy Disco Party | Aug 15, 2026">
   <meta name="twitter:description" content="Boots, bling, and two-step under the mirror ball. Games, photo gallery, and party info.">
-  <meta name="twitter:image" content="https://cowboy-disco-party.vercel.app/assets/poster-og.jpg">
+  <meta name="twitter:image" content="https://cowboy-disco-party.vercel.app/assets/og-card.jpg">
   <title>Cowboy Disco Party | Aug 15, 2026</title>
+  <link rel="canonical" href="https://cowboy-disco-party.vercel.app/">
   <link rel="manifest" href="manifest.json">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/fonts.css">
+  <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/cormorant-garamond-500.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/dm-sans-400.woff2" crossorigin>
+  <link rel="preload" as="image" href="/assets/poster.webp" type="image/webp" fetchpriority="high">
   <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/premium.css">
   <link rel="icon" href="/assets/brand-mark.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/assets/app-icon.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SocialEvent",
+    "name": "Cowboy Disco Party",
+    "description": "Where Studio 54 meets the Wild West — country, disco, and rhinestone under the mirror ball.",
+    "startDate": "2026-08-15T18:30:00-07:00",
+    "endDate": "2026-08-15T22:00:00-07:00",
+    "eventStatus": "https://schema.org/EventScheduled",
+    "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+    "image": ["https://cowboy-disco-party.vercel.app/assets/og-card.jpg"],
+    "location": {
+      "@type": "Place",
+      "name": "Cowboy Disco Saloon",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "420 NE 72nd St",
+        "addressLocality": "Seattle",
+        "addressRegion": "WA",
+        "postalCode": "98115",
+        "addressCountry": "US"
+      }
+    },
+    "url": "https://cowboy-disco-party.vercel.app/"
+  }
+  </script>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-title" content="Cowboy Disco">
 </head>
@@ -44,10 +73,10 @@
         <span></span>
       </button>
       <ul class="nav__menu" id="nav-menu">
-        <li><a href="#welcome">About</a></li>
-        <li><a href="#moments">Features</a></li>
-        <li><a href="#schedule">Line-up</a></li>
-        <li><a href="#location">Contact</a></li>
+        <li><a href="#welcome">The Party</a></li>
+        <li><a href="#moments">Moments</a></li>
+        <li><a href="#schedule">Schedule</a></li>
+        <li><a href="#location">Location</a></li>
         <li class="nav__group">
           <details class="nav__drop">
             <summary>Info</summary>
@@ -139,7 +168,8 @@
           </div>
 
           <div class="hero__actions">
-            <a class="btn btn--rsvp" href="#location">RSVP &amp; Directions</a>
+            <a class="btn btn--rsvp is-hidden" data-partiful href="#" target="_blank" rel="noopener noreferrer">RSVP on Partiful</a>
+            <a class="btn btn--rsvp" id="rsvp-directions" href="#location">RSVP &amp; Directions</a>
             <a class="btn btn--ghost" href="/assets/cowboy-disco-party.ics" download="cowboy-disco-party.ics">Add to Calendar</a>
             <a class="btn btn--ghost" href="#welcome">Learn More</a>
           </div>
@@ -247,7 +277,7 @@
         <header class="section__header">
           <p class="section__eyebrow">Run of Show</p>
           <h2>Evening Schedule</h2>
-          <p>How the premiere unfolds from doors to final bow.</p>
+          <p>How the evening unfolds — from doors to last dance.</p>
         </header>
         <div class="schedule-wrap">
           <table class="schedule-table">
@@ -308,6 +338,13 @@
             </tbody>
           </table>
         </div>
+        <div class="playlist-cta is-hidden" data-spotify-wrap>
+          <p class="playlist-cta__lead">Hear the night before the night.</p>
+          <a class="btn btn--secondary" data-spotify href="#" target="_blank" rel="noopener noreferrer">
+            <svg class="playlist-cta__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18.5V6.2l10-2v10.05a3.25 3.25 0 1 0 2 3V2L7 4.4v11.35A3.25 3.25 0 1 0 9 18.5z"/></svg>
+            Hear the Party Playlist
+          </a>
+        </div>
       </div>
     </section>
 
@@ -319,25 +356,38 @@
         </header>
         <div class="party-night-grid">
           <a class="party-night-card" href="gallery.html">
-            <span class="party-night-card__icon" aria-hidden="true">📷</span>
+            <span class="party-night-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M7.5 5.5 8.7 3.7a1.5 1.5 0 0 1 1.25-.7h4.1a1.5 1.5 0 0 1 1.25.7l1.2 1.8H20a1.5 1.5 0 0 1 1.5 1.5v12A1.5 1.5 0 0 1 20 20.5H4A1.5 1.5 0 0 1 2.5 19V7A1.5 1.5 0 0 1 4 5.5h3.5z"/><circle cx="12" cy="12.5" r="3.75"/></svg>
+            </span>
             <h3>Photo Gallery</h3>
             <p>Party photos go live here — upload yours or browse everyone's cowboy-disco looks.</p>
           </a>
           <a class="party-night-card" href="ice-breaker.html">
-            <span class="party-night-card__icon" aria-hidden="true">💬</span>
+            <span class="party-night-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M21 11.5a8.5 8.5 0 0 1-12.4 7.55L3 20.5l1.45-5.6A8.5 8.5 0 1 1 21 11.5z"/><path d="M8.5 10.25h7M8.5 13.25h4.5"/></svg>
+            </span>
             <h3>Ice Breakers</h3>
             <p>Conversation starters for a boots-and-bling crowd. Shuffle the deck anytime.</p>
           </a>
           <a class="party-night-card" href="vote.html">
-            <span class="party-night-card__icon" aria-hidden="true">👑</span>
+            <span class="party-night-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M3.5 7.5 7.75 11 12 5l4.25 6 4.25-3.5-1.5 10.5a1.5 1.5 0 0 1-1.49 1.3H6.49A1.5 1.5 0 0 1 5 18z"/></svg>
+            </span>
             <h3>Best Outfit Vote</h3>
             <p>Vote by contestant number for the best cowboy-disco look of the night.</p>
           </a>
           <a class="party-night-card" href="slideshow.html">
-            <span class="party-night-card__icon" aria-hidden="true">📺</span>
+            <span class="party-night-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><rect x="2.5" y="5" width="19" height="12.5" rx="1.5"/><path d="M8.5 21h7M10 9.25l4 2-4 2v-4z"/></svg>
+            </span>
             <h3>Photo Slideshow</h3>
             <p>Full-screen gallery rotation for the TV — updates as photos come in.</p>
           </a>
+        </div>
+        <div class="live-moments is-hidden" id="live-moments" aria-label="Latest party photos">
+          <h3 class="live-moments__title">Fresh from the Dance Floor</h3>
+          <div class="live-moments__grid" id="live-moments-grid"></div>
+          <p class="live-moments__more"><a class="btn btn--ghost" href="gallery.html">See the Full Gallery</a></p>
         </div>
       </div>
     </section>
@@ -384,7 +434,7 @@
             </div>
           </a>
           <a class="moment-card" href="gallery.html">
-            <img class="moment-card__img editorial-img" src="/assets/poster-party.png" alt="Photo booth experiences" width="800" height="600" loading="lazy">
+            <img class="moment-card__img editorial-img" src="/assets/editorial-photobooth.jpg" alt="Instant photos from the party photo booth" width="1000" height="750" loading="lazy">
             <div class="moment-card__shade"></div>
             <div class="moment-card__content">
               <span class="moment-card__tag">Photos</span>
@@ -405,7 +455,7 @@
             </div>
           </a>
           <a class="moment-card" href="#party-night">
-            <img class="moment-card__img editorial-img" src="/assets/sign-kyles-apartment.jpg" alt="Party highlights" width="1200" height="900" loading="lazy">
+            <img class="moment-card__img editorial-img" src="/assets/editorial-highlights.jpg" alt="Art-deco star and sunburst — the night's highlights" width="1200" height="900" loading="lazy">
             <div class="moment-card__shade"></div>
             <div class="moment-card__content">
               <span class="moment-card__tag">Experience</span>
@@ -459,8 +509,9 @@
     <section class="section section--menu reveal" id="menu">
       <div class="container">
         <header class="section__header">
+          <p class="section__eyebrow">The Saloon Bar</p>
           <h2>Menu &amp; Drinks</h2>
-          <p>Saloon fuel and disco cocktails for the dance floor ahead.</p>
+          <p>Six house cocktails poured from doors to last call — plus the full saloon spread in the party menu.</p>
         </header>
         <div class="menu-grid">
           <figure class="menu-card editorial-frame">
@@ -486,22 +537,65 @@
             </div>
           </div>
         </div>
-        <div class="cocktail-showcase" aria-label="Signature cocktails">
-          <article class="cocktail-card cocktail-card--signature">
-            <span class="cocktail-card__badge">Signature</span>
-            <h4>Rusty Spur Fizz</h4>
-            <p>Bourbon, ginger beer, lime, and cherry — western warmth with a sparkling finish.</p>
-          </article>
-          <article class="cocktail-card cocktail-card--signature">
-            <span class="cocktail-card__badge">Signature</span>
-            <h4>Mirror Ball Mule</h4>
-            <p>Vodka, ginger beer, mint, and lime — Studio 54 energy in a copper mug.</p>
-          </article>
-          <article class="cocktail-card">
-            <span class="cocktail-card__badge">House</span>
-            <h4>Full Saloon Menu</h4>
-            <p>Appetizers, mains, dessert, and themed cocktails — see the official party menu PDF.</p>
-          </article>
+        <div class="bar-menu" aria-label="House cocktails">
+          <header class="bar-menu__header">
+            <span class="bar-menu__rule" aria-hidden="true"></span>
+            <h3>House Cocktails</h3>
+            <span class="bar-menu__rule bar-menu__rule--end" aria-hidden="true"></span>
+          </header>
+          <ul class="bar-menu__list">
+            <li class="bar-menu__item">
+              <div class="bar-menu__row">
+                <h4 class="bar-menu__name">Rusty Spur Fizz</h4>
+                <span class="bar-menu__leader" aria-hidden="true"></span>
+                <span class="bar-menu__badge">Signature</span>
+              </div>
+              <p class="bar-menu__spec">Bourbon · Ginger Beer · Lime · Cherry</p>
+              <p class="bar-menu__note">Western warmth with a sparkling finish.</p>
+            </li>
+            <li class="bar-menu__item">
+              <div class="bar-menu__row">
+                <h4 class="bar-menu__name">Mirror Ball Mule</h4>
+                <span class="bar-menu__leader" aria-hidden="true"></span>
+                <span class="bar-menu__badge">Signature</span>
+              </div>
+              <p class="bar-menu__spec">Vodka · Ginger Beer · Mint · Lime</p>
+              <p class="bar-menu__note">Studio 54 energy in a copper mug.</p>
+            </li>
+            <li class="bar-menu__item">
+              <div class="bar-menu__row">
+                <h4 class="bar-menu__name">Disco Cowboy</h4>
+                <span class="bar-menu__leader" aria-hidden="true"></span>
+              </div>
+              <p class="bar-menu__spec">Tequila · Pineapple · Coconut Cream</p>
+              <p class="bar-menu__note">Tropical shine with frontier swagger.</p>
+            </li>
+            <li class="bar-menu__item">
+              <div class="bar-menu__row">
+                <h4 class="bar-menu__name">Saddle Up Spritz</h4>
+                <span class="bar-menu__leader" aria-hidden="true"></span>
+              </div>
+              <p class="bar-menu__spec">Prosecco · Aperol · Orange</p>
+              <p class="bar-menu__note">Golden-hour bubbles for the first dance.</p>
+            </li>
+            <li class="bar-menu__item">
+              <div class="bar-menu__row">
+                <h4 class="bar-menu__name">Two-Step Tonic</h4>
+                <span class="bar-menu__leader" aria-hidden="true"></span>
+              </div>
+              <p class="bar-menu__spec">Gin · Elderflower · Tonic · Lemon</p>
+              <p class="bar-menu__note">Crisp, floral, and light on its boots.</p>
+            </li>
+            <li class="bar-menu__item">
+              <div class="bar-menu__row">
+                <h4 class="bar-menu__name">Line Dance Lemonade</h4>
+                <span class="bar-menu__leader" aria-hidden="true"></span>
+              </div>
+              <p class="bar-menu__spec">Vodka · Lemonade · Blackberry</p>
+              <p class="bar-menu__note">Sweet-tart courage for the group number.</p>
+            </li>
+          </ul>
+          <p class="bar-menu__foot">Full drink list at the bar · ask any cook about ingredients</p>
         </div>
       </div>
     </section>
@@ -510,41 +604,32 @@
       <div class="container">
         <header class="section__header">
           <h2>Location</h2>
-          <p>Enter on the Woodlawn side — apartment 327 on the 5th floor.</p>
+          <p>Cowboy Disco Saloon · 420 NE 72nd St, Seattle</p>
         </header>
         <div class="location-banner">
-          <picture>
-            <source srcset="/assets/poster.webp" type="image/webp">
-            <img
-              class="location-banner__poster"
-              src="/assets/poster-hero.jpg"
-              alt="Cowboy Disco Party poster with enter on Woodlawn arrow"
-              width="1200"
-              height="800"
-              loading="lazy"
-            >
-          </picture>
+          <img
+            class="location-banner__poster"
+            src="/assets/poster-party.png"
+            alt="Cowboy Disco Party poster — 420 NE 72nd St, Seattle"
+            width="1600"
+            height="1000"
+            loading="lazy"
+          >
         </div>
         <div class="location-grid">
           <div class="location-info">
             <h3>Getting There</h3>
             <p>
-              <strong>6900 East Greenlake Way N</strong><br>
-              Seattle, WA 98115 · Apt <strong>327</strong>
+              <strong>420 NE 72nd St</strong><br>
+              Seattle, WA 98115
             </p>
             <p>
-              Use the <strong>Woodlawn entrance</strong> — find <strong>K. Henderson</strong> in the directory,
-              call to get buzzed in, then take the stairs or elevator to the <strong>5th floor</strong>.
+              Look for the <strong>Cowboy Disco</strong> signs and follow the music to the dance floor.
             </p>
-            <ul class="location-tips">
-              <li>Enter through the gate — door on the left</li>
-              <li>Buzz <strong>Kyle</strong> (apartment <strong>327</strong>) at the Woodlawn entrance</li>
-              <li>Look for the <strong>Cowboy Disco Saloon</strong> sign on the 5th floor</li>
-              <li>Rideshare drop-off on Woodlawn recommended</li>
-            </ul>
+            <a class="btn btn--primary location-directions is-hidden" data-partiful href="#" target="_blank" rel="noopener noreferrer">RSVP on Partiful</a>
             <a
               class="btn btn--secondary location-directions"
-              href="https://www.google.com/maps/dir/?api=1&destination=6900+East+Greenlake+Way+N,+Seattle,+WA+98115"
+              href="https://www.google.com/maps/dir/?api=1&destination=420+NE+72nd+St,+Seattle,+WA+98115"
               target="_blank"
               rel="noopener noreferrer"
             >Open in Google Maps</a>
@@ -552,8 +637,8 @@
           </div>
           <div class="location-map">
             <iframe
-              title="Map to 6900 East Greenlake Way N, Seattle"
-              src="https://maps.google.com/maps?q=6900+East+Greenlake+Way+N,+Seattle,+WA+98115&output=embed"
+              title="Map to 420 NE 72nd St, Seattle"
+              src="https://maps.google.com/maps?q=420+NE+72nd+St,+Seattle,+WA+98115&output=embed"
               loading="lazy"
               referrerpolicy="no-referrer-when-downgrade"
               allowfullscreen
@@ -564,17 +649,17 @@
         <div class="signage-grid" aria-label="Venue signage">
           <figure class="signage-card">
             <picture>
-              <source srcset="/assets/sign-woodlawn-entrance.webp" type="image/webp">
+              <source srcset="/assets/sign-entrance.webp" type="image/webp">
               <img
                 class="signage-card__img"
-                src="/assets/sign-woodlawn-entrance.jpg"
-                alt="Woodlawn entrance sign — find K. Henderson in the directory and call to be buzzed in"
+                src="/assets/sign-entrance.jpg"
+                alt="Cowboy Disco Party entrance sign — 420 NE 72nd St, Seattle"
                 width="1200"
                 height="900"
                 loading="lazy"
               >
             </picture>
-            <figcaption>Woodlawn entrance — buzz in at the directory</figcaption>
+            <figcaption>Entrance — look for this sign at the door</figcaption>
           </figure>
           <figure class="signage-card">
             <picture>
@@ -582,13 +667,13 @@
               <img
                 class="signage-card__img"
                 src="/assets/sign-kyles-apartment.jpg"
-                alt="Cowboy Disco Saloon sign for apartment 327 on the 5th floor"
+                alt="Cowboy Disco Saloon door sign"
                 width="1200"
                 height="900"
                 loading="lazy"
               >
             </picture>
-            <figcaption>5th floor — Cowboy Disco Saloon, Apt 327</figcaption>
+            <figcaption>Cowboy Disco Saloon — this way to the dance floor</figcaption>
           </figure>
         </div>
 
@@ -630,19 +715,18 @@
         </header>
         <div class="faq-list">
           <details class="faq-item">
-            <summary class="faq-item__question">How do I invite someone up?</summary>
+            <summary class="faq-item__question">Where do I go?</summary>
             <div class="faq-item__answer">
               <p>
-                At the <strong>Woodlawn entrance</strong>, find <strong>K. Henderson</strong> in the directory and call —
-                Kyle will buzz them in. Enter through the gate (door on the left), then take the stairs or elevator to the
-                <strong>5th floor</strong> and look for apartment <strong>327</strong> / <strong>Cowboy Disco Saloon</strong>.
+                Head to <strong>420 NE 72nd St, Seattle</strong> — look for the <strong>Cowboy Disco</strong> signs
+                and follow the music to the dance floor.
               </p>
             </div>
           </details>
           <details class="faq-item">
             <summary class="faq-item__question">Where are the bathrooms?</summary>
             <div class="faq-item__answer">
-              <p>Bathrooms are located in the <strong>lobby</strong> and in <strong>apartment 327</strong>.</p>
+              <p>Just ask a host — they'll point you to the nearest one.</p>
             </div>
           </details>
           <details class="faq-item">

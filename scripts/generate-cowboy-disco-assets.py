@@ -16,20 +16,24 @@ BROWN = (74, 44, 26)
 GOLD = (232, 185, 35)
 LIGHT_GOLD = (245, 215, 110)
 TAN = (196, 168, 130)
-BLUE = (0, 191, 255)
+BLUE = (185, 197, 211)
 CREAM = (245, 240, 232)
 WHITE = (255, 255, 255)
 
 
 def load_font(size: int, bold: bool = False) -> ImageFont.FreeTypeFont | ImageFont.ImageFont:
     candidates = [
+        Path("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf" if bold else "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"),
         Path(r"C:\Windows\Fonts\arialbd.ttf" if bold else r"C:\Windows\Fonts\arial.ttf"),
         Path(r"C:\Windows\Fonts\segoeuib.ttf" if bold else r"C:\Windows\Fonts\segoeui.ttf"),
     ]
     for path in candidates:
         if path.exists():
             return ImageFont.truetype(str(path), size)
-    return ImageFont.load_default()
+    try:
+        return ImageFont.load_default(size)
+    except TypeError:
+        return ImageFont.load_default()
 
 
 def draw_disco_ball(draw: ImageDraw.ImageDraw, cx: int, cy: int, radius: int) -> None:
@@ -95,48 +99,45 @@ def generate_poster() -> None:
     sub_font = load_font(52, bold=True)
     body_font = load_font(36)
 
-    y = 220
-    y = centered_text(draw, "COWBOY", y, w, title_font, LIGHT_GOLD) + 10
-    y = centered_text(draw, "DISCO", y, w, title_font, GOLD) + 10
-    y = centered_text(draw, "PARTY!", y, w, sub_font, BLUE) + 40
+    y = 180
+    y = centered_text(draw, "COWBOY", y, w, title_font, LIGHT_GOLD) + 34
+    y = centered_text(draw, "DISCO", y, w, title_font, GOLD) + 36
+    y = centered_text(draw, "PARTY!", y, w, sub_font, BLUE) + 52
     y = centered_text(draw, "Sat Aug 15, 2026  ·  6:30 PM", y, w, body_font, CREAM) + 20
     centered_text(draw, "Cowboy Disco Saloon", y, w, load_font(32), TAN)
     y += 44
     centered_text(draw, "Boots, bling, and two-step under the mirror ball.", y, w, body_font, TAN)
 
     arrow_y = h - 180
-    draw.polygon([(w // 2 + 220, arrow_y), (w // 2 + 320, arrow_y + 50), (w // 2 + 220, arrow_y + 100)], fill=GOLD)
-    draw.rectangle((80, arrow_y + 30, w // 2 + 220, arrow_y + 70), fill=GOLD)
-    centered_text(draw, "ENTER ON WOODLAWN", arrow_y + 38, w // 2 + 140, load_font(40, bold=True), BROWN)
+    band_font = load_font(40, bold=True)
+    draw.rectangle((80, arrow_y + 30, w - 80, arrow_y + 90), fill=GOLD)
+    centered_text(draw, "420 NE 72nd St · Seattle", arrow_y + 38, w, band_font, BROWN)
 
     draw.rectangle((40, 40, w - 40, h - 40), outline=GOLD, width=8)
     img.save(ASSETS / "poster-party.png", optimize=True)
 
 
-def generate_woodlawn_sign() -> None:
+def generate_entrance_sign() -> None:
     w, h = 1200, 900
     img = Image.new("RGB", (w, h), CREAM)
     draw = ImageDraw.Draw(img)
     draw.rectangle((30, 30, w - 30, h - 30), outline=BROWN, width=6)
 
-    y = 70
-    y = centered_text(draw, "WOODLAWN ENTRANCE", y, w, load_font(64, bold=True), BROWN) + 30
-    y = centered_text(draw, "Cowboy Disco Party · Apt 327", y, w, load_font(40, bold=True), GOLD) + 50
+    y = 90
+    y = centered_text(draw, "COWBOY DISCO PARTY", y, w, load_font(64, bold=True), BROWN) + 30
+    y = centered_text(draw, "420 NE 72nd St · Seattle", y, w, load_font(40, bold=True), GOLD) + 70
 
     lines = [
-        "1. Find K. Henderson in the directory",
-        "2. Call — Kyle will buzz you in",
-        "3. Enter through the gate (door on left)",
-        "4. Stairs or elevator to the 5th floor",
-        "5. Look for Cowboy Disco Saloon, Apt 327",
+        "Welcome, partners — you made it.",
+        "Follow the music to the dance floor.",
+        "Scan the QR sign for photos & votes.",
     ]
     body = load_font(34)
     for line in lines:
-        draw.text((100, y), line, font=body, fill=NAVY)
-        y += 58
+        y = centered_text(draw, line, y, w, body, NAVY) + 28
 
     draw_disco_ball(draw, w - 160, h - 160, 70)
-    img.save(ASSETS / "sign-woodlawn-entrance.png", optimize=True)
+    img.save(ASSETS / "sign-entrance.png", optimize=True)
 
 
 def generate_apartment_sign() -> None:
@@ -147,7 +148,7 @@ def generate_apartment_sign() -> None:
 
     y = 120
     y = centered_text(draw, "COWBOY DISCO SALOON", y, w, load_font(72, bold=True), GOLD) + 20
-    y = centered_text(draw, "5th Floor · Apartment 327", y, w, load_font(44, bold=True), LIGHT_GOLD) + 30
+    y = centered_text(draw, "420 NE 72nd St · Seattle", y, w, load_font(44, bold=True), LIGHT_GOLD) + 30
     centered_text(draw, "This way to the dance floor →", y, w, load_font(36), CREAM)
 
     for i in range(5):
@@ -277,7 +278,7 @@ def generate_menu_pdf() -> None:
 def main() -> None:
     ASSETS.mkdir(parents=True, exist_ok=True)
     generate_poster()
-    generate_woodlawn_sign()
+    generate_entrance_sign()
     generate_apartment_sign()
     generate_drink_list()
     generate_food_labels()

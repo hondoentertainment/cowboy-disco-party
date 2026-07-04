@@ -245,7 +245,7 @@
       "task": "Design Signs",
       "status": "Complete",
       "assigned": "Kyle",
-      "notes": "Woodlawn + Saloon signs in /signs.html"
+      "notes": "Entrance + Saloon signs in /signs.html"
     },
     {
       "id": 31,
@@ -414,7 +414,7 @@
       "quantity": 1
     },
     {
-      "name": "Woodlawn Entrance",
+      "name": "Entrance",
       "quantity": 1
     },
     {
@@ -426,7 +426,7 @@
       "quantity": 1
     },
     {
-      "name": "Cowboy Disco Saloon (Apt 327)",
+      "name": "Cowboy Disco Saloon",
       "quantity": 1
     },
     {

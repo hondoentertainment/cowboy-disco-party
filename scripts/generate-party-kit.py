@@ -22,13 +22,17 @@ SITE = "cowboy-disco-party.vercel.app"
 
 def load_font(size: int, bold: bool = False) -> ImageFont.FreeTypeFont | ImageFont.ImageFont:
     candidates = [
+        Path("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf" if bold else "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"),
         Path(r"C:\Windows\Fonts\arialbd.ttf" if bold else r"C:\Windows\Fonts\arial.ttf"),
         Path(r"C:\Windows\Fonts\segoeuib.ttf" if bold else r"C:\Windows\Fonts\segoeui.ttf"),
     ]
     for path in candidates:
         if path.exists():
             return ImageFont.truetype(str(path), size)
-    return ImageFont.load_default()
+    try:
+        return ImageFont.load_default(size)
+    except TypeError:
+        return ImageFont.load_default()
 
 
 def wrap_text(draw: ImageDraw.ImageDraw, text: str, font: ImageFont.ImageFont, max_width: int) -> list[str]:
@@ -111,19 +115,17 @@ def generate_invite_back() -> Image.Image:
 
     draw.text((x, y), "WHERE", font=heading, fill=BROWN)
     y += 58
-    draw.text((x, y), "6900 East Greenlake Way N", font=body, fill=INK)
+    draw.text((x, y), "420 NE 72nd St", font=body, fill=INK)
     y += 42
-    draw.text((x, y), "Apartment 327 · Seattle, WA", font=body, fill=INK)
+    draw.text((x, y), "Seattle, WA 98115", font=body, fill=INK)
     y += 80
 
-    draw.text((x, y), "ENTER ON WOODLAWN", font=heading, fill=BROWN)
+    draw.text((x, y), "GETTING IN", font=heading, fill=BROWN)
     y += 58
     steps = [
-        "1. Find K. Henderson in the building directory",
-        "2. Call — Kyle will buzz you in",
-        "3. Enter through the gate (door on the left)",
-        "4. Take stairs or elevator to the 5th floor",
-        "5. Look for Cowboy Disco Saloon, Apt 327",
+        "Look for the Cowboy Disco signs",
+        "Follow the music to the dance floor",
+        "RSVP on Partiful or at the site below",
     ]
     for step in steps:
         draw.text((x, y), step, font=body, fill=INK)
@@ -169,7 +171,7 @@ def generate_schedule_card() -> None:
 
     draw.text(
         (w // 2, h - 110),
-        "6900 E Greenlake Way N, Apt 327 · Woodlawn entrance",
+        "420 NE 72nd St, Seattle · Cowboy Disco Saloon",
         font=foot,
         fill=MUTED,
         anchor="mm",
@@ -213,17 +215,15 @@ def generate_party_kit_pdf() -> None:
     pdf.set_font("Helvetica", "B", 18)
     pdf.cell(0, 10, "Where", ln=True)
     pdf.set_font("Helvetica", "", 12)
-    pdf.multi_cell(0, 7, "6900 East Greenlake Way N\nApartment 327 - Seattle, WA")
+    pdf.multi_cell(0, 7, "420 NE 72nd St\nSeattle, WA 98115")
     pdf.ln(4)
     pdf.set_font("Helvetica", "B", 18)
-    pdf.cell(0, 10, "Enter on Woodlawn", ln=True)
+    pdf.cell(0, 10, "Getting In", ln=True)
     pdf.set_font("Helvetica", "", 12)
     for step in [
-        "Find K. Henderson in the building directory",
-        "Call - Kyle will buzz you in",
-        "Enter through the gate (door on the left)",
-        "Take stairs or elevator to the 5th floor",
-        "Look for Cowboy Disco Saloon, Apt 327",
+        "Look for the Cowboy Disco signs",
+        "Follow the music to the dance floor",
+        "RSVP on Partiful or at the site below",
     ]:
         pdf.cell(0, 8, f"  - {step}", ln=True)
     pdf.ln(6)
@@ -262,9 +262,9 @@ def generate_party_kit_pdf() -> None:
     pdf.set_font("Helvetica", "", 12)
     checklist = [
         "Guest invitations (5x7) - optional if sending digitally",
-        "Woodlawn entrance sign",
-        "QR code sign at the gate",
-        "5th-floor apartment sign - Cowboy Disco Saloon, Apt 327",
+        "Entrance sign",
+        "QR code sign at the door",
+        "Cowboy Disco Saloon door sign",
         "Food labels on the buffet",
         "Drink menu at the bar",
         "Evening schedule card at the door",

@@ -18,8 +18,8 @@
   var defaultItems = [
     "Set GALLERY_ADMIN_CODE in Vercel for host tools (poll results)",
     "Print party kit: invitations, QR, signs, labels, number tags (/party-kit.html)",
-    "Post QR sign at Woodlawn entrance",
-    "Hang Cowboy Disco Saloon sign on 5th floor (Apt 327)",
+    "Post QR sign at the entrance",
+    "Hang the Cowboy Disco Saloon sign on the door",
     "Copy and send guest invite text (below)",
     "Test gallery upload on phone over cellular",
     "Test Best Outfit vote by contestant number on phone",

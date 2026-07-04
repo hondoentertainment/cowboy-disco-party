@@ -32,7 +32,7 @@ PAGES = [
     "/assets/poster.webp",
     "/assets/poster-hero.jpg",
     "/assets/drink-list.webp",
-    "/assets/sign-woodlawn-entrance.webp",
+    "/assets/sign-entrance.webp",
     "/assets/menu.pdf",
     "/assets/party-kit.pdf",
     "/assets/invite-card.png",

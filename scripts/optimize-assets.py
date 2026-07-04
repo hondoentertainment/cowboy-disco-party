@@ -14,7 +14,7 @@ ICON = ASSETS / "app-icon.png"
 TARGET_OG_KB = 500
 
 DISPLAY_ASSETS: list[tuple[str, int]] = [
-    ("sign-woodlawn-entrance.png", 1200),
+    ("sign-entrance.png", 1200),
     ("sign-kyles-apartment.png", 1200),
     ("drink-list.png", 1000),
     ("food-labels-sheet.png", 1200),
@@ -71,6 +71,15 @@ def optimize_display_assets() -> None:
 
 
 def main() -> None:
+    stock_credits = ASSETS / "stock-credits.json"
+    if stock_credits.exists():
+        # poster-hero/og/webp and the app icon are stock-photo managed
+        # (scripts/fetch-stock-editorial.py) — do not overwrite them with
+        # poster-artwork derivatives.
+        print("stock-credits.json present — skipping poster/hero/OG/icon derivation")
+        optimize_display_assets()
+        return
+
     if not POSTER_SOURCE.exists():
         raise FileNotFoundError(f"Poster source not found: {POSTER_SOURCE}")
 

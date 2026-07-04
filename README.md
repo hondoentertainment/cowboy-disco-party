@@ -1,6 +1,6 @@
 # Cowboy Disco Party
 
-Event website for the **Cowboy Disco Party** — **Saturday, August 15, 2026** · **6:30 PM** · **6900 East Greenlake Way N, Seattle** (Woodlawn entrance).
+Event website for the **Cowboy Disco Party** — **Saturday, August 15, 2026** · **6:30 PM** · **420 NE 72nd St, Seattle, WA 98115**.
 
 **Live site:** [cowboy-disco-party.vercel.app](https://cowboy-disco-party.vercel.app)
 
@@ -121,7 +121,7 @@ Run `python scripts/pre-party-check.py` for an automated smoke test plus this li
 
 1. Set `GALLERY_ADMIN_CODE` in Vercel and redeploy
 2. Set party date in `js/config.js` when confirmed (see below) and redeploy
-3. Print QR sign from [qr.html](https://cowboy-disco-party.vercel.app/qr.html) → post at Woodlawn entrance
+3. Print QR sign from [qr.html](https://cowboy-disco-party.vercel.app/qr.html) → post at the entrance
 4. Print venue signs from [signs.html](https://cowboy-disco-party.vercel.app/signs.html)
 5. Print number tags from [numbers.html](https://cowboy-disco-party.vercel.app/numbers.html) → hand out at the door
 6. Test gallery upload + vote by number on a phone over **cellular**
@@ -143,6 +143,9 @@ Run `python scripts/pre-party-check.py` for an automated smoke test plus this li
 - Default tag count: `js/config.js` → `VOTE_TAG_COUNT`
 - Site URL / QR / Open Graph: `js/config.js` → `SITE_URL`
 - Guest invite text: `js/config.js` → `SHARE_MESSAGE`
+- Partiful RSVP: `js/config.js` → `PARTIFUL_URL` — set the Partiful event URL to reveal "RSVP on Partiful" buttons sitewide (hidden while empty)
+- Party playlist: `js/config.js` → `SPOTIFY_PLAYLIST_URL` — set to reveal the "Hear the Party Playlist" button in the schedule section
+- Webfonts are self-hosted in `assets/fonts/` — refresh with `python scripts/fetch-fonts.py`
 
 When the date is set:
 

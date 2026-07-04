@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+Disallow: /admin.html
+Disallow: /host.html
+Disallow: /plan.html
+Disallow: /poll-results.html
+Disallow: /mobile-test.html
+Disallow: /api/
+
+Sitemap: https://cowboy-disco-party.vercel.app/sitemap.xml
