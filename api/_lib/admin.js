@@ -1,5 +1,5 @@
 export function isModerationEnabled() {
-  return false;
+  return Boolean(String(process.env.GALLERY_ADMIN_CODE || "").trim());
 }
 
 export function verifyAdminCode(request) {
@@ -15,7 +15,7 @@ export function verifyAdminCode(request) {
 
 export function getVoteCloseTime() {
   const configured = String(process.env.VOTE_CLOSE_TIME || "").trim();
-  return configured || "2099-01-01T21:00:00-08:00";
+  return configured || "2026-08-15T21:00:00-07:00";
 }
 
 export function isVoteClosed() {

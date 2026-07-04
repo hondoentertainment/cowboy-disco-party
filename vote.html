@@ -4,6 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Vote for best outfit at the Cowboy Disco Party — best cowboy-disco look wins.">
+  <meta property="og:title" content="Best Outfit Vote | Cowboy Disco Party">
+  <meta property="og:description" content="Cast your vote by contestant number — live leaderboard until 9 PM.">
+  <meta property="og:image" content="https://cowboy-disco-party.vercel.app/assets/poster-og.jpg">
   <meta name="theme-color" content="#0D0D0D">
   <title>Best Outfit Vote | Cowboy Disco Party</title>
   <link rel="canonical" href="https://cowboy-disco-party.vercel.app/vote.html">
@@ -18,6 +21,9 @@
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/premium.css">
   <link rel="icon" href="/assets/brand-mark.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/app-icon.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Cowboy Disco">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -137,14 +143,16 @@
       </div>
       <nav class="footer-premium__nav" aria-label="Footer">
         <a href="index.html">Home</a>
-        <a href="index.html#schedule">Schedule</a>
-        <a href="index.html#location">RSVP</a>
         <a href="gallery.html">Gallery</a>
+        <a href="vote.html">Vote</a>
+        <a href="ice-breaker.html">Ice Breakers</a>
+        <a href="index.html#schedule">Schedule</a>
         <a href="poll.html">Next Party</a>
       </nav>
       <div class="footer-premium__credits">
-        <span>Aug 15, 2026 · Cowboy Disco Saloon</span>
+        <span>Aug 15, 2026 · 6:30 PM · Cowboy Disco Saloon</span>
         <span>© Cowboy Disco Party</span>
+        <span class="footer-premium__photo-credit">Editorial photography via <a href="https://unsplash.com" rel="noopener noreferrer">Unsplash</a></span>
       </div>
     </div>
   </footer>
@@ -153,5 +161,6 @@
   <script src="js/config.js"></script>
   <script src="js/vote.js"></script>
   <script src="js/premium.js"></script>
+  <script src="js/pwa.js"></script>
 </body>
 </html>

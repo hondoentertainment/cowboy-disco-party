@@ -21,6 +21,7 @@ const QUESTIONS = [
 
   var grid = document.getElementById("ice-breaker-grid");
   var shuffleBtn = document.getElementById("ice-breaker-shuffle");
+  var shuffleStatus = document.getElementById("ice-breaker-status");
 
   function renderQuestions(questions) {
     if (!grid) {
@@ -50,6 +51,9 @@ const QUESTIONS = [
       shuffled[j] = temp;
     }
     renderQuestions(shuffled);
+    if (shuffleStatus) {
+      shuffleStatus.textContent = "Deck shuffled — " + shuffled.length + " fresh prompts ready.";
+    }
   }
 
   renderQuestions(QUESTIONS);

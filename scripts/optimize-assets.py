@@ -71,6 +71,15 @@ def optimize_display_assets() -> None:
 
 
 def main() -> None:
+    stock_credits = ASSETS / "stock-credits.json"
+    if stock_credits.exists():
+        # poster-hero/og/webp and the app icon are stock-photo managed
+        # (scripts/fetch-stock-editorial.py) — do not overwrite them with
+        # poster-artwork derivatives.
+        print("stock-credits.json present — skipping poster/hero/OG/icon derivation")
+        optimize_display_assets()
+        return
+
     if not POSTER_SOURCE.exists():
         raise FileNotFoundError(f"Poster source not found: {POSTER_SOURCE}")
 

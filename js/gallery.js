@@ -372,26 +372,41 @@
     return loadPhotos().then(renderGallery);
   }
 
+  var lightboxTrigger = null;
+
   function openLightbox(photo) {
     if (!lightbox || !lightboxMedia || !lightboxCaption) {
       return;
     }
 
+    lightboxTrigger = document.activeElement;
     lightboxMedia.innerHTML = "";
     lightboxMedia.appendChild(createMediaElement(photo, false));
     lightboxCaption.textContent = photo.caption
       ? photo.name + " — " + photo.caption
       : photo.name;
     lightbox.showModal();
+    if (lightboxClose) {
+      lightboxClose.focus();
+    }
+  }
+
+  function closeLightbox() {
+    if (!lightbox) {
+      return;
+    }
+    lightbox.close();
+    if (lightboxTrigger && typeof lightboxTrigger.focus === "function") {
+      lightboxTrigger.focus();
+    }
+    lightboxTrigger = null;
   }
 
   if (lightboxClose && lightbox) {
-    lightboxClose.addEventListener("click", function () {
-      lightbox.close();
-    });
+    lightboxClose.addEventListener("click", closeLightbox);
     lightbox.addEventListener("click", function (event) {
       if (event.target === lightbox) {
-        lightbox.close();
+        closeLightbox();
       }
     });
     lightbox.addEventListener("cancel", function () {

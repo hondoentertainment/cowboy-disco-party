@@ -2,26 +2,15 @@
 
 @import url("brand.css");
 
+/* Core palette: premium.css — supplemental tokens for shared components */
 :root {
-  --denim-dark: #1a1a1a;
-  --denim: #c7a76a;
-  --denim-light: #e0c992;
-  --denim-fade: #9a7350;
-  --stitch: #b5a075;
-  --stitch-light: #d8cba8;
-  --wood: #f7f3ed;
-  --wood-dark: #efe9df;
-  --wood-grain: #ffffff;
-  --cream: #f7f3ed;
-  --text: #1a1a1a;
-  --text-muted: #5c5246;
-  --white: #ffffff;
-  --shadow: rgba(199, 167, 106, 0.14);
-  --glow-gold: rgba(199, 167, 106, 0.18);
-  --glow-blue: rgba(192, 192, 208, 0.2);
-  --glass: rgba(255, 255, 255, 0.9);
-  --glass-border: rgba(199, 167, 106, 0.28);
-  --mirror-light: #e4eaef;
+  --stitch: rgba(199, 167, 106, 0.35);
+  --stitch-light: rgba(247, 243, 237, 0.2);
+  --wood-grain: #0d0d0d;
+  --shadow: rgba(0, 0, 0, 0.35);
+  --glow-gold: var(--warm-glow, rgba(199, 167, 106, 0.18));
+  --glow-blue: rgba(192, 200, 212, 0.15);
+  --mirror-light: #e8ecf2;
   --mirror-mid: #9aa3ac;
   --mirror-dark: #5c656e;
   --mirror-sphere:
@@ -35,16 +24,10 @@
       #e8edf2 21deg 28deg,
       #8a939c 28deg 35deg
     );
-  --rope: #1a1a1a;
-  --pink-soft: #e0c992;
-  --pink-baby: #f7f3ed;
-  --champagne: #c7a76a;
-  --radius: 12px;
-  --radius-lg: 20px;
-  --font-display: "Bebas Neue", sans-serif;
-  --font-script: "Rye", serif;
-  --font-body: "Source Sans 3", system-ui, sans-serif;
-  --max-width: 1100px;
+  --rope: var(--leather, #7a5a3a);
+  --pink-soft: rgba(199, 167, 106, 0.25);
+  --pink-baby: rgba(199, 167, 106, 0.12);
+  --font-script: var(--font-serif, "Cormorant Garamond", Georgia, serif);
   --header-height: 72px;
 }
 
@@ -60,32 +43,11 @@ html {
 
 body {
   margin: 0;
-  font-family: var(--font-body);
   font-size: 1.05rem;
   line-height: 1.6;
-  color: var(--text);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: var(--wood);
-  background-image:
-    radial-gradient(ellipse 65% 40% at 50% -5%, rgba(199, 167, 106, 0.09), transparent 58%),
-    radial-gradient(ellipse 40% 30% at 100% 35%, rgba(224, 201, 146, 0.35), transparent 55%),
-    radial-gradient(ellipse 35% 25% at 0% 75%, rgba(216, 216, 228, 0.25), transparent 50%),
-    linear-gradient(180deg, var(--wood) 0%, var(--wood-dark) 100%);
   min-height: 100vh;
-}
-
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  background:
-    radial-gradient(ellipse 24% 16% at 15% 20%, rgba(224, 201, 146, 0.06), transparent),
-    radial-gradient(ellipse 20% 12% at 85% 25%, rgba(192, 192, 208, 0.08), transparent),
-    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.4), transparent 70%);
-  opacity: 0.85;
 }
 
 .site-header,
@@ -141,7 +103,7 @@ a:hover {
   background: rgba(255, 255, 255, 0.94);
   backdrop-filter: blur(14px) saturate(1.2);
   border-bottom: 1px solid var(--glass-border);
-  box-shadow: 0 4px 20px rgba(199, 167, 106, 0.08);
+  box-shadow: 0 4px 20px rgba(233, 30, 140, 0.08);
   padding-bottom: 3px;
 }
 
@@ -245,7 +207,7 @@ a:hover {
 }
 
 .nav__drop-menu a:hover {
-  background: rgba(199, 167, 106, 0.08);
+  background: rgba(233, 30, 140, 0.08);
   color: var(--denim);
 }
 
@@ -300,7 +262,7 @@ a:hover {
   width: min(720px, 100%);
   height: 360px;
   transform: translate(-50%, -50%);
-  background: radial-gradient(ellipse, rgba(199, 167, 106, 0.07) 0%, transparent 72%);
+  background: radial-gradient(ellipse, rgba(233, 30, 140, 0.07) 0%, transparent 72%);
   pointer-events: none;
   z-index: 0;
 }
@@ -318,7 +280,7 @@ a:hover {
 
 .hero__poster-wrap {
   position: relative;
-  border: 1px solid rgba(199, 167, 106, 0.28);
+  border: 1px solid rgba(233, 30, 140, 0.28);
   border-radius: var(--radius-lg);
   overflow: hidden;
   background: var(--wood-grain);
@@ -400,7 +362,7 @@ a:hover {
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  filter: drop-shadow(0 2px 10px rgba(199, 167, 106, 0.2));
+  filter: drop-shadow(0 2px 10px rgba(233, 30, 140, 0.2));
   position: relative;
 }
 
@@ -657,7 +619,7 @@ a:hover {
   color: #fff;
   border-color: rgba(255, 255, 255, 0.35);
   box-shadow:
-    0 4px 14px rgba(199, 167, 106, 0.28),
+    0 4px 14px rgba(233, 30, 140, 0.28),
     inset 0 1px 0 rgba(255, 255, 255, 0.35);
 }
 
@@ -665,7 +627,7 @@ a:hover {
   background: linear-gradient(180deg, #ff80c0, var(--denim-light) 50%, var(--denim));
   color: #fff;
   box-shadow:
-    0 8px 22px rgba(199, 167, 106, 0.35),
+    0 8px 22px rgba(233, 30, 140, 0.35),
     inset 0 1px 0 rgba(255, 255, 255, 0.4);
 }
 
@@ -674,7 +636,7 @@ a:hover {
   color: var(--denim);
   border-color: var(--glass-border);
   backdrop-filter: blur(8px);
-  box-shadow: 0 2px 8px rgba(199, 167, 106, 0.08);
+  box-shadow: 0 2px 8px rgba(233, 30, 140, 0.08);
 }
 
 .btn--secondary:hover {
@@ -695,7 +657,7 @@ a:hover {
 
 .section--details {
   background:
-    linear-gradient(180deg, rgba(199, 167, 106, 0.06) 0%, transparent 40%),
+    linear-gradient(180deg, rgba(233, 30, 140, 0.06) 0%, transparent 40%),
     var(--cream);
   border-block: 1px solid var(--glass-border);
   box-shadow:
@@ -742,7 +704,7 @@ a:hover {
 .schedule-table td {
   padding: 0.85rem 1rem;
   text-align: left;
-  border-bottom: 1px solid rgba(199, 167, 106, 0.12);
+  border-bottom: 1px solid rgba(233, 30, 140, 0.12);
 }
 
 .schedule-table th {
@@ -788,12 +750,12 @@ a:hover {
 }
 
 .schedule-table__end td {
-  background: rgba(199, 167, 106, 0.06);
+  background: rgba(233, 30, 140, 0.06);
 }
 
 .section--dress {
   background:
-    linear-gradient(135deg, rgba(192, 192, 208, 0.05) 0%, rgba(199, 167, 106, 0.04) 50%, transparent 100%),
+    linear-gradient(135deg, rgba(192, 192, 208, 0.05) 0%, rgba(233, 30, 140, 0.04) 50%, transparent 100%),
     var(--wood);
 }
 
@@ -803,7 +765,7 @@ a:hover {
 
 .section--faq {
   background:
-    linear-gradient(135deg, rgba(199, 167, 106, 0.05) 0%, transparent 50%),
+    linear-gradient(135deg, rgba(233, 30, 140, 0.05) 0%, transparent 50%),
     var(--wood);
 }
 
@@ -889,7 +851,7 @@ a:hover {
   background:
     radial-gradient(ellipse 45% 70% at 92% 18%, rgba(255, 255, 255, 0.07), transparent),
     radial-gradient(ellipse 35% 55% at 8% 75%, rgba(122, 158, 184, 0.05), transparent),
-    linear-gradient(180deg, rgba(199, 167, 106, 0.07) 0%, transparent 65%),
+    linear-gradient(180deg, rgba(233, 30, 140, 0.07) 0%, transparent 65%),
     var(--cream);
   border-bottom: none;
 }
@@ -922,7 +884,7 @@ a:hover {
 
 .section--poll {
   background:
-    linear-gradient(135deg, rgba(192, 192, 208, 0.05) 0%, rgba(199, 167, 106, 0.04) 50%, transparent 100%),
+    linear-gradient(135deg, rgba(192, 192, 208, 0.05) 0%, rgba(233, 30, 140, 0.04) 50%, transparent 100%),
     var(--wood);
 }
 
@@ -1002,7 +964,7 @@ a:hover {
   gap: 0.15rem;
   padding: 0.85rem 0.5rem;
   background: var(--cream);
-  border: 2px solid rgba(199, 167, 106, 0.25);
+  border: 2px solid rgba(233, 30, 140, 0.25);
   border-radius: var(--radius);
   text-align: center;
   transition: border-color 0.15s, background 0.15s, transform 0.15s;
@@ -1077,7 +1039,7 @@ a:hover {
 
 .section--gallery {
   background:
-    linear-gradient(135deg, rgba(199, 167, 106, 0.06) 0%, transparent 50%),
+    linear-gradient(135deg, rgba(233, 30, 140, 0.06) 0%, transparent 50%),
     var(--wood);
 }
 
@@ -1098,7 +1060,7 @@ a:hover {
 
 .gallery-drop {
   position: relative;
-  border: 2px dashed rgba(199, 167, 106, 0.35);
+  border: 2px dashed rgba(233, 30, 140, 0.35);
   border-radius: var(--radius-lg);
   background: var(--cream);
   transition: border-color 0.2s, background 0.2s;
@@ -1171,7 +1133,7 @@ a:hover {
   font-weight: 600;
   color: var(--denim);
   background: transparent;
-  border: 2px solid rgba(199, 167, 106, 0.35);
+  border: 2px solid rgba(233, 30, 140, 0.35);
   border-radius: var(--radius);
   cursor: pointer;
 }
@@ -1367,7 +1329,7 @@ a:hover {
 
 .section--party-night {
   background:
-    linear-gradient(180deg, rgba(192, 192, 208, 0.07) 0%, rgba(199, 167, 106, 0.04) 50%, transparent 100%),
+    linear-gradient(180deg, rgba(192, 192, 208, 0.07) 0%, rgba(233, 30, 140, 0.04) 50%, transparent 100%),
     var(--cream);
 }
 
@@ -1396,7 +1358,7 @@ a:hover {
 
 .party-night-card:hover {
   transform: translateY(-3px);
-  border-color: rgba(199, 167, 106, 0.45);
+  border-color: rgba(233, 30, 140, 0.45);
   box-shadow: 0 14px 30px rgba(0, 0, 0, 0.34);
   color: inherit;
 }
@@ -1451,7 +1413,7 @@ a:hover {
 
 .section--vote {
   background:
-    linear-gradient(135deg, rgba(199, 167, 106, 0.06) 0%, transparent 50%),
+    linear-gradient(135deg, rgba(233, 30, 140, 0.06) 0%, transparent 50%),
     var(--wood);
 }
 
@@ -1495,7 +1457,7 @@ a:hover {
   gap: 0.75rem;
   align-items: center;
   padding: 0.75rem 0;
-  border-bottom: 1px solid rgba(199, 167, 106, 0.12);
+  border-bottom: 1px solid rgba(233, 30, 140, 0.12);
 }
 
 .vote-result:last-child {
@@ -1668,7 +1630,7 @@ a:hover {
   gap: 0.75rem;
   align-items: center;
   padding: 0.75rem 0;
-  border-bottom: 1px solid rgba(199, 167, 106, 0.12);
+  border-bottom: 1px solid rgba(233, 30, 140, 0.12);
 }
 
 .poll-results-date__rank {
@@ -1696,7 +1658,7 @@ a:hover {
   padding: 1rem;
   background: var(--cream);
   border-radius: var(--radius);
-  border: 1px solid rgba(199, 167, 106, 0.15);
+  border: 1px solid rgba(233, 30, 140, 0.15);
 }
 
 .poll-results-entry h3 {
@@ -2241,7 +2203,7 @@ a:hover {
   border-radius: 999px;
   box-shadow:
     0 12px 32px var(--shadow),
-    0 0 40px rgba(199, 167, 106, 0.35),
+    0 0 40px rgba(233, 30, 140, 0.35),
     inset 0 0 40px rgba(0, 0, 0, 0.2);
 }
 
@@ -2284,7 +2246,7 @@ a:hover {
   overflow: hidden;
   border: 3px solid var(--denim);
   box-shadow:
-    0 12px 32px rgba(199, 167, 106, 0.18),
+    0 12px 32px rgba(233, 30, 140, 0.18),
     0 0 0 1px rgba(255, 255, 255, 0.8);
 }
 
@@ -2480,7 +2442,7 @@ a:hover {
 /* Menu & party assets */
 
 .section--menu {
-  background: linear-gradient(180deg, var(--white) 0%, rgba(199, 167, 106, 0.08) 100%);
+  background: linear-gradient(180deg, var(--white) 0%, rgba(233, 30, 140, 0.08) 100%);
 }
 
 .menu-grid {
@@ -2715,7 +2677,7 @@ a:hover {
   color: #fff;
   text-align: center;
   border-top: 3px solid var(--denim);
-  box-shadow: inset 0 1px 0 rgba(224, 201, 146, 0.2);
+  box-shadow: inset 0 1px 0 rgba(255, 77, 166, 0.2);
 }
 
 .site-footer .brand-lockup__name {
@@ -2889,7 +2851,7 @@ a:hover {
   }
 
   .nav__menu > li {
-    border-bottom: 1px solid rgba(199, 167, 106, 0.12);
+    border-bottom: 1px solid rgba(233, 30, 140, 0.12);
   }
 
   .nav__menu > li > a,
@@ -3148,7 +3110,7 @@ a:hover {
   display: inline-block;
   padding: 0.15rem 0.55rem;
   border-radius: 999px;
-  background: rgba(199, 167, 106, 0.14);
+  background: rgba(233, 30, 140, 0.14);
   color: var(--denim-light);
   font-size: 0.85rem;
   font-weight: 700;
@@ -3183,7 +3145,7 @@ a:hover {
   justify-content: space-between;
   gap: 1rem;
   padding: 0.75rem 0;
-  border-bottom: 1px solid rgba(199, 167, 106, 0.15);
+  border-bottom: 1px solid rgba(233, 30, 140, 0.15);
 }
 
 .plan-sign-list li:last-child,

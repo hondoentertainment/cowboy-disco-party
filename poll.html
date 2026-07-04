@@ -18,6 +18,9 @@
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/premium.css">
   <link rel="icon" href="/assets/brand-mark.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/app-icon.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Cowboy Disco">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -78,7 +81,7 @@
           </p>
           <h1 class="poll-hero__title">Next Party Poll</h1>
           <p class="poll-hero__lead">
-            Pick the August and September dates that work for you, and tell us how the May party went.
+            Pick the August and September dates that work for you, and tell us how the August party went.
           </p>
         </header>
       </div>
@@ -193,7 +196,7 @@
           </fieldset>
 
           <div class="form-row">
-            <label for="poll-feedback">How did the May party go?</label>
+            <label for="poll-feedback">How did the August party go?</label>
             <textarea id="poll-feedback" name="feedback" rows="4" placeholder="What worked, what didn't, song requests for next time…"></textarea>
           </div>
 
@@ -213,14 +216,16 @@
       </div>
       <nav class="footer-premium__nav" aria-label="Footer">
         <a href="index.html">Home</a>
-        <a href="index.html#schedule">Schedule</a>
-        <a href="index.html#location">RSVP</a>
         <a href="gallery.html">Gallery</a>
+        <a href="vote.html">Vote</a>
+        <a href="ice-breaker.html">Ice Breakers</a>
+        <a href="index.html#schedule">Schedule</a>
         <a href="poll.html">Next Party</a>
       </nav>
       <div class="footer-premium__credits">
-        <span>Aug 15, 2026 · Cowboy Disco Saloon</span>
+        <span>Aug 15, 2026 · 6:30 PM · Cowboy Disco Saloon</span>
         <span>© Cowboy Disco Party</span>
+        <span class="footer-premium__photo-credit">Editorial photography via <a href="https://unsplash.com" rel="noopener noreferrer">Unsplash</a></span>
       </div>
     </div>
   </footer>
@@ -228,5 +233,6 @@
   <script src="js/nav.js"></script>
   <script src="js/poll.js"></script>
   <script src="js/premium.js"></script>
+  <script src="js/pwa.js"></script>
 </body>
 </html>

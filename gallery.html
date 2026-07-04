@@ -9,7 +9,7 @@
   <link rel="canonical" href="https://cowboy-disco-party.vercel.app/gallery.html">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Photo Gallery | Cowboy Disco Party">
-  <meta property="og:description" content="Share and browse party photos from the Cowboy Disco Party — cowboy-disco flair memories.">
+  <meta property="og:description" content="Upload and relive every rhinestone look from the dance floor.">
   <meta property="og:url" content="https://cowboy-disco-party.vercel.app/gallery.html">
   <meta property="og:image" content="https://cowboy-disco-party.vercel.app/assets/og-card.jpg">
   <meta name="twitter:card" content="summary_large_image">
@@ -21,6 +21,9 @@
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/premium.css">
   <link rel="icon" href="/assets/brand-mark.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/app-icon.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Cowboy Disco">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -140,7 +143,7 @@
           </header>
           <div class="gallery-grid gallery-grid--masonry" id="gallery-grid" aria-live="polite"></div>
           <div class="gallery-empty is-hidden" id="gallery-empty">
-            <img class="gallery-empty__visual editorial-img" src="/assets/editorial-atmosphere.jpg" alt="" width="280" height="360" loading="lazy">
+            <img class="gallery-empty__visual editorial-img" src="/assets/editorial-atmosphere.jpg" alt="Mirror ball reflections in a dimly lit dance hall" width="280" height="360" loading="lazy">
             <p>No photos yet — be the first to share a dance-floor moment from the party.</p>
           </div>
         </div>
@@ -165,14 +168,16 @@
       </div>
       <nav class="footer-premium__nav" aria-label="Footer">
         <a href="index.html">Home</a>
-        <a href="index.html#schedule">Schedule</a>
-        <a href="index.html#location">RSVP</a>
+        <a href="gallery.html">Gallery</a>
         <a href="vote.html">Vote</a>
+        <a href="ice-breaker.html">Ice Breakers</a>
+        <a href="index.html#schedule">Schedule</a>
         <a href="poll.html">Next Party</a>
       </nav>
       <div class="footer-premium__credits">
-        <span>Aug 15, 2026 · Cowboy Disco Saloon</span>
+        <span>Aug 15, 2026 · 6:30 PM · Cowboy Disco Saloon</span>
         <span>© Cowboy Disco Party</span>
+        <span class="footer-premium__photo-credit">Editorial photography via <a href="https://unsplash.com" rel="noopener noreferrer">Unsplash</a></span>
       </div>
     </div>
   </footer>
@@ -181,5 +186,6 @@
   <script src="js/upload-config.js"></script>
   <script src="js/gallery.js"></script>
   <script src="js/premium.js"></script>
+  <script src="js/pwa.js"></script>
 </body>
 </html>

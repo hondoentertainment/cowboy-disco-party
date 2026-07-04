@@ -56,6 +56,31 @@ function compareTargets(a, b) {
   return String(a.nominee || a.number).localeCompare(String(b.nominee || b.number));
 }
 
+function normalizeVoterKey(value) {
+  return String(value || "")
+    .trim()
+    .toLowerCase()
+    .replace(/\s+/g, " ");
+}
+
+async function loadVotes() {
+  const { blobs } = await list({ prefix: "votes/", limit: 1000 });
+  const votes = await Promise.all(
+    blobs
+      .filter(function (blob) {
+        return blob.pathname.endsWith(".json");
+      })
+      .map(async function (blob) {
+        const response = await fetch(blob.url);
+        if (!response.ok) {
+          return null;
+        }
+        return response.json();
+      })
+  );
+  return votes.filter(Boolean);
+}
+
 function buildResults(valid) {
   const tally = {};
 
@@ -85,22 +110,7 @@ function buildResults(valid) {
 
 export async function GET() {
   try {
-    const { blobs } = await list({ prefix: "votes/", limit: 1000 });
-    const votes = await Promise.all(
-      blobs
-        .filter(function (blob) {
-          return blob.pathname.endsWith(".json");
-        })
-        .map(async function (blob) {
-          const response = await fetch(blob.url);
-          if (!response.ok) {
-            return null;
-          }
-          return response.json();
-        })
-    );
-
-    const valid = votes.filter(Boolean);
+    const valid = await loadVotes();
     const { results, winner } = buildResults(valid);
     const closed = isVoteClosed();
 
@@ -132,6 +142,7 @@ export async function POST(request) {
     const body = await request.json();
     const voter = normalizeName(body.voter);
     const number = parseContestantNumber(body.number);
+    const deviceId = String(body.deviceId || "").trim().slice(0, 64);
     const maxNumber = getMaxNumber();
 
     if (!voter) {
@@ -145,11 +156,28 @@ export async function POST(request) {
       );
     }
 
+    const existing = await loadVotes();
+    const voterKey = normalizeVoterKey(voter);
+    const duplicate = existing.find(function (vote) {
+      if (deviceId && vote.deviceId === deviceId) {
+        return true;
+      }
+      return normalizeVoterKey(vote.voter) === voterKey;
+    });
+
+    if (duplicate) {
+      return Response.json(
+        { error: "That name already voted tonight — one vote per guest." },
+        { status: 409 }
+      );
+    }
+
     const id = `${Date.now()}-${Math.random().toString(36).slice(2, 9)}`;
     const vote = {
       id,
       voter,
       number,
+      deviceId: deviceId || null,
       votedAt: new Date().toISOString(),
     };
 

@@ -4,6 +4,16 @@
   var config = window.CDP || {};
   var dateTbd = Boolean(config.PARTY_DATE_TBD || !config.VOTE_CLOSE_TIME);
   var VOTE_KEY = "cdp-best-outfit-vote";
+  var DEVICE_KEY = "cdp-device-id";
+
+  function getDeviceId() {
+    var id = localStorage.getItem(DEVICE_KEY);
+    if (!id) {
+      id = "d-" + Date.now() + "-" + Math.random().toString(36).slice(2, 11);
+      localStorage.setItem(DEVICE_KEY, id);
+    }
+    return id;
+  }
   var closeTime = config.VOTE_CLOSE_TIME;
   var maxNumber = config.VOTE_MAX_NUMBER ? config.VOTE_MAX_NUMBER : 99;
 
@@ -180,7 +190,7 @@
       fetch("/api/vote", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ voter: voter, number: number }),
+        body: JSON.stringify({ voter: voter, number: number, deviceId: getDeviceId() }),
       })
         .then(function (response) {
           return response.json().then(function (data) {
