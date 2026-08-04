@@ -15,7 +15,7 @@ NEW = """      <a class="nav__brand brand-lockup" href="{href}">
         <img class="brand-lockup__mark" src="/assets/brand-mark.svg" width="40" height="40" alt="">
         <span class="brand-lockup__text">
           <span class="brand-lockup__name">Cowboy Disco Party</span>
-          <span class="brand-lockup__sub">Aug 15, 2026</span>
+          <span class="brand-lockup__sub">Sep 19, 2026</span>
         </span>
       </a>"""
 

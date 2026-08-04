@@ -2,7 +2,7 @@
   "use strict";
 
   global.CDP_PLAN = {
-  "title": "Cowboy Disco Party — August 15, 2026",
+  "title": "Cowboy Disco Party — September 19, 2026",
   "subtitle": "Project plan for the 41st birthday party — Cowboy Disco theme",
   "sourceFile": "Project Plan for the 41st Birthday Party.xlsx",
   "exportedAt": "2026-06-07T18:59:45",
@@ -21,7 +21,7 @@
       "task": "Pick Date",
       "status": "Complete",
       "assigned": "Kyle",
-      "notes": "Saturday, August 15, 2026"
+      "notes": "Saturday, September 19, 2026"
     },
     {
       "id": 3,

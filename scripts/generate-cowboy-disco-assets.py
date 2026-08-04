@@ -103,7 +103,7 @@ def generate_poster() -> None:
     y = centered_text(draw, "COWBOY", y, w, title_font, LIGHT_GOLD) + 34
     y = centered_text(draw, "DISCO", y, w, title_font, GOLD) + 36
     y = centered_text(draw, "PARTY!", y, w, sub_font, BLUE) + 52
-    y = centered_text(draw, "Sat Aug 15, 2026  ·  6:30 PM", y, w, body_font, CREAM) + 20
+    y = centered_text(draw, "Sat Sep 19, 2026  ·  6:30 PM", y, w, body_font, CREAM) + 20
     centered_text(draw, "Cowboy Disco Saloon", y, w, load_font(32), TAN)
     y += 44
     centered_text(draw, "Boots, bling, and two-step under the mirror ball.", y, w, body_font, TAN)
@@ -239,7 +239,7 @@ def generate_menu_pdf() -> None:
     pdf.set_font("Helvetica", "B", 24)
     pdf.cell(0, 14, "Cowboy Disco Party Menu", ln=True, align="C")
     pdf.set_font("Helvetica", "", 12)
-    pdf.cell(0, 10, "Sat Aug 15, 2026  |  6:30 PM", ln=True, align="C")
+    pdf.cell(0, 10, "Sat Sep 19, 2026  |  6:30 PM", ln=True, align="C")
     pdf.ln(8)
 
     sections = {

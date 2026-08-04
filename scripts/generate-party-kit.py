@@ -86,7 +86,7 @@ def generate_invite_card() -> None:
     draw.text((w // 2, 700), "PARTY", font=title, fill=BROWN, anchor="mm")
 
     draw.line((500, 820, w - 500, 820), fill=GOLD, width=3)
-    draw.text((w // 2, 920), "Saturday, August 15, 2026", font=body, fill=INK, anchor="mm")
+    draw.text((w // 2, 920), "Saturday, September 19, 2026", font=body, fill=INK, anchor="mm")
     draw.text((w // 2, 990), "6:30 PM", font=body, fill=INK, anchor="mm")
 
     tagline = "Boots, bling, and two-step under the mirror ball."
@@ -150,7 +150,7 @@ def generate_schedule_card() -> None:
     foot = load_font(28)
 
     draw.text((w // 2, 130), "COWBOY DISCO PARTY", font=title, fill=BROWN, anchor="mm")
-    draw.text((w // 2, 200), "Saturday, August 15, 2026", font=sub, fill=MUTED, anchor="mm")
+    draw.text((w // 2, 200), "Saturday, September 19, 2026", font=sub, fill=MUTED, anchor="mm")
 
     rows = [
         ("6:30 PM", "Doors open - music on"),
@@ -200,7 +200,7 @@ def generate_party_kit_pdf() -> None:
     pdf.set_font("Helvetica", "B", 36)
     pdf.cell(0, 16, "Cowboy Disco Party", ln=True, align="C")
     pdf.set_font("Helvetica", "", 16)
-    pdf.cell(0, 10, "Saturday, August 15, 2026 | 6:30 PM", ln=True, align="C")
+    pdf.cell(0, 10, "Saturday, September 19, 2026 | 6:30 PM", ln=True, align="C")
     pdf.ln(8)
     pdf.set_font("Helvetica", "I", 13)
     pdf.multi_cell(0, 8, "Boots, bling, and two-step under the mirror ball.", align="C")
@@ -237,7 +237,7 @@ def generate_party_kit_pdf() -> None:
     pdf.set_font("Helvetica", "B", 22)
     pdf.cell(0, 12, "Evening Schedule", ln=True, align="C")
     pdf.set_font("Helvetica", "", 12)
-    pdf.cell(0, 8, "Saturday, August 15, 2026", ln=True, align="C")
+    pdf.cell(0, 8, "Saturday, September 19, 2026", ln=True, align="C")
     pdf.ln(6)
     for time_label, label in [
         ("6:30 PM", "Doors open - music on"),
