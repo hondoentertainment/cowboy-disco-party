@@ -39,6 +39,7 @@
           <li><strong>When:</strong> Saturday, September 19, 2026 · 6:30 PM</li>
           <li><strong>Where:</strong> 420 NE 72nd St, Seattle — Cowboy Disco Saloon</li>
           <li><strong>Dress:</strong> Western glamour — champagne gold, white boots, rhinestones, and chrome sparkle</li>
+          <li><strong>RSVP:</strong> <a id="invite-rsvp-link" href="#" target="_blank" rel="noopener noreferrer">Partiful event page</a></li>
           <li><strong>Site:</strong> Photos, ice breakers, vote, directions, menu</li>
         </ul>
       </section>
@@ -55,6 +56,17 @@
       var message =
         config.SHARE_MESSAGE ||
         ("Cowboy Disco Party — Sep 19, 2026! Boots and bling encouraged. " + site);
+
+      var partiful = String(config.PARTIFUL_URL || "").trim();
+      var rsvpLink = document.getElementById("invite-rsvp-link");
+      if (partiful) {
+        message += " RSVP: " + partiful;
+        if (rsvpLink) {
+          rsvpLink.href = partiful;
+        }
+      } else if (rsvpLink && rsvpLink.parentElement) {
+        rsvpLink.parentElement.remove();
+      }
 
       var body = document.getElementById("invite-body");
       var status = document.getElementById("invite-status");

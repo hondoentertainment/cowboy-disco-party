@@ -217,6 +217,12 @@
       link.classList.remove("is-hidden");
     });
 
+    document.querySelectorAll("[data-partiful-nav]").forEach(function (link) {
+      link.href = partifulUrl;
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+    });
+
     const rsvpDirections = document.getElementById("rsvp-directions");
     if (rsvpDirections) {
       rsvpDirections.textContent = "Directions";
