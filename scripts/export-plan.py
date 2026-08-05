@@ -107,7 +107,7 @@ def export_committee(ws) -> list[dict]:
 def normalize_plan(plan: dict) -> dict:
     title = plan.get("title", "")
     if not title or "Eighties" in title or "Jazzercise" in title or title.endswith("TBD"):
-        plan["title"] = "Cowboy Disco Party — August 15, 2026"
+        plan["title"] = "Cowboy Disco Party — September 19, 2026"
     plan["subtitle"] = "Project plan for the 41st birthday party — Cowboy Disco theme"
     auto_complete = {
         "Pick Theme": ("Complete", "Cowboy Disco — boots, bling, fringe & sequins"),
@@ -116,7 +116,7 @@ def normalize_plan(plan: dict) -> dict:
         "Design Food Signs": ("Complete", "Saloon fuel labels in /signs.html"),
         "Print Food Signs": ("Complete", "Print pack at /print-pack.html"),
         "Design Team Game": ("Complete", "Game design finished"),
-        "Pick Date": ("Complete", "Saturday, August 15, 2026"),
+        "Pick Date": ("Complete", "Saturday, September 19, 2026"),
         "Pick Out Menu": ("Complete", "Menu PDF + drink list on site"),
         "Design Signs": ("Complete", "Entrance + Saloon signs in /signs.html"),
         "Print Signs": ("Complete", "/print-pack.html"),

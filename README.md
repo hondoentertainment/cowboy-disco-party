@@ -1,6 +1,6 @@
 # Cowboy Disco Party
 
-Event website for the **Cowboy Disco Party** — **Saturday, August 15, 2026** · **6:30 PM** · **420 NE 72nd St, Seattle, WA 98115**.
+Event website for the **Cowboy Disco Party** — **Saturday, September 19, 2026** · **6:30 PM** · **420 NE 72nd St, Seattle, WA 98115**.
 
 **Live site:** [cowboy-disco-party.vercel.app](https://cowboy-disco-party.vercel.app)
 
@@ -41,7 +41,7 @@ python scripts/pre-party-check.py
 Apply a different party date across config and HTML:
 
 ```bash
-python scripts/apply-party-date.py 2026-08-15
+python scripts/apply-party-date.py 2026-09-19
 python scripts/generate-cowboy-disco-assets.py
 python scripts/optimize-assets.py
 python scripts/generate-qr.py

@@ -39,7 +39,7 @@ FOOTER_PREMIUM = """  <footer class="site-footer site-footer--premium">
         <a href="poll.html">Next Party</a>
       </nav>
       <div class="footer-premium__credits">
-        <span>Aug 15, 2026 · Cowboy Disco Saloon</span>
+        <span>Sep 19, 2026 · Cowboy Disco Saloon</span>
         <span>© Cowboy Disco Party</span>
       </div>
     </div>

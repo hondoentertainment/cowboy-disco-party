@@ -20,7 +20,7 @@ FOOTER_NEW = """      <div class="site-footer__brand brand-lockup brand-lockup--
         <img class="brand-lockup__mark" src="/assets/brand-mark.svg" width="44" height="44" alt="">
         <span class="brand-lockup__text">
           <span class="brand-lockup__name">Cowboy Disco Party</span>
-          <span class="brand-lockup__sub">Cowboy Disco Saloon · Aug 15, 2026</span>
+          <span class="brand-lockup__sub">Cowboy Disco Saloon · Sep 19, 2026</span>
         </span>
       </div>"""
 
