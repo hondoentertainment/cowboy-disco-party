@@ -53,6 +53,21 @@
   </script>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-title" content="Cowboy Disco">
+  <script>
+    // Reveal-on-scroll only hides content when JS can bring it back. If
+    // premium.js fails to load, this timer still shows everything.
+    (function () {
+      var d = document.documentElement;
+      if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        d.classList.add("js-motion");
+        setTimeout(function () {
+          d.querySelectorAll(".reveal, .reveal-stagger").forEach(function (el) {
+            el.classList.add("is-visible");
+          });
+        }, 3000);
+      }
+    })();
+  </script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -119,6 +134,8 @@
           <img class="hero__visual-img" src="/assets/poster-hero.jpg" alt="Lighted disco mirror balls in golden salon light" width="1200" height="800" fetchpriority="high">
         </picture>
         <div class="hero__shade"></div>
+        <div class="hero__sweep"></div>
+        <div class="hero__rhinestones" data-rhinestones></div>
         <div class="hero__disco-reflections">
           <span class="disco-reflection disco-reflection--1"></span>
           <span class="disco-reflection disco-reflection--2"></span>
@@ -249,7 +266,7 @@
           <h2>Party Details</h2>
           <p>Saturday, September 19, 2026 — doors at 6:30 PM at the Cowboy Disco Saloon.</p>
         </header>
-        <div class="details-grid">
+        <div class="details-grid reveal-stagger">
           <article class="detail-card">
             <p class="detail-card__num" aria-hidden="true">01</p>
             <h3>When</h3>
@@ -355,7 +372,7 @@
           <h2 class="party-night__heading">At the Party</h2>
           <p class="party-night__lead">Browse photos, warm up with ice breakers, vote for best outfit, or open the slideshow on the TV.</p>
         </header>
-        <div class="party-night-grid">
+        <div class="party-night-grid reveal-stagger">
           <a class="party-night-card" href="gallery.html">
             <span class="party-night-card__icon" aria-hidden="true">
               <svg viewBox="0 0 24 24"><path d="M7.5 5.5 8.7 3.7a1.5 1.5 0 0 1 1.25-.7h4.1a1.5 1.5 0 0 1 1.25.7l1.2 1.8H20a1.5 1.5 0 0 1 1.5 1.5v12A1.5 1.5 0 0 1 20 20.5H4A1.5 1.5 0 0 1 2.5 19V7A1.5 1.5 0 0 1 4 5.5h3.5z"/><circle cx="12" cy="12.5" r="3.75"/></svg>
@@ -400,7 +417,7 @@
           <h2>Capture the Night</h2>
           <p>Editorial-worthy moments from wardrobe to last call — every detail designed for the dance floor.</p>
         </header>
-        <div class="moments-grid">
+        <div class="moments-grid reveal-stagger">
           <a class="moment-card" href="#dress-code">
             <picture>
               <source srcset="/assets/editorial-wardrobe.webp" type="image/webp">
@@ -525,7 +542,7 @@
             <a class="btn btn--ghost btn--compact" href="lookbook.html">Print the lookbook <span class="btn__arrow" aria-hidden="true">→</span></a>
           </p>
 
-          <div class="lookbook__grid">
+          <div class="lookbook__grid reveal-stagger">
             <article class="look-card">
               <figure class="look-card__figure">
                 <picture>
@@ -687,7 +704,7 @@
             <h3>House Cocktails</h3>
             <span class="bar-menu__rule bar-menu__rule--end" aria-hidden="true"></span>
           </header>
-          <ul class="bar-menu__list">
+          <ul class="bar-menu__list reveal-stagger">
             <li class="bar-menu__item">
               <div class="bar-menu__row">
                 <h4 class="bar-menu__name">Rusty Spur Fizz</h4>
@@ -859,7 +876,7 @@
           <h2>FAQ</h2>
           <p>Quick answers before you hit the dance floor.</p>
         </header>
-        <div class="faq-list">
+        <div class="faq-list reveal-stagger">
           <details class="faq-item">
             <summary class="faq-item__question">Where do I go?</summary>
             <div class="faq-item__answer">
