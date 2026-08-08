@@ -53,6 +53,21 @@
   </script>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-title" content="Cowboy Disco">
+  <script>
+    // Reveal-on-scroll only hides content when JS can bring it back. If
+    // premium.js fails to load, this timer still shows everything.
+    (function () {
+      var d = document.documentElement;
+      if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        d.classList.add("js-motion");
+        setTimeout(function () {
+          d.querySelectorAll(".reveal, .reveal-stagger").forEach(function (el) {
+            el.classList.add("is-visible");
+          });
+        }, 3000);
+      }
+    })();
+  </script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -91,6 +106,7 @@
               <li><a href="party-night.html">Party Night Setup</a></li>
               <li><a href="signs.html">Print Signs</a></li>
               <li><a href="#qr">QR Code</a></li>
+              <li><a href="qr-pack.html">QR Pack</a></li>
               <li><a href="#faq">FAQ</a></li>
               <li><a href="poll.html">Next Party Poll</a></li>
             </ul>
@@ -111,6 +127,14 @@
     </nav>
   </header>
 
+  <button class="ambient-toggle is-hidden" id="ambient-toggle" type="button"
+          aria-pressed="false" aria-label="Play party music" title="Play party music">
+    <span class="ambient-toggle__icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24"><path d="M4 9.5h3.2L12 5.4v13.2L7.2 14.5H4z"/><path class="ambient-toggle__wave1" d="M15.6 9.2a4 4 0 0 1 0 5.6"/><path class="ambient-toggle__wave2" d="M18.1 6.7a7.5 7.5 0 0 1 0 10.6"/><path class="ambient-toggle__slash" d="M4 20 20 4"/></svg>
+    </span>
+    <span class="ambient-toggle__label">Music</span>
+  </button>
+
   <main id="main">
     <section class="hero hero--premium" id="top">
       <div class="hero__visual" aria-hidden="true">
@@ -119,6 +143,8 @@
           <img class="hero__visual-img" src="/assets/poster-hero.jpg" alt="Lighted disco mirror balls in golden salon light" width="1200" height="800" fetchpriority="high">
         </picture>
         <div class="hero__shade"></div>
+        <div class="hero__sweep"></div>
+        <div class="hero__rhinestones" data-rhinestones></div>
         <div class="hero__disco-reflections">
           <span class="disco-reflection disco-reflection--1"></span>
           <span class="disco-reflection disco-reflection--2"></span>
@@ -173,6 +199,7 @@
             <a class="btn btn--rsvp" id="rsvp-directions" href="#location">RSVP &amp; Directions</a>
             <a class="btn btn--ghost" href="/assets/cowboy-disco-party.ics" download="cowboy-disco-party.ics">Add to Calendar</a>
             <a class="btn btn--ghost" href="#welcome">Learn More</a>
+            <button class="btn btn--ghost" type="button" data-share>Share Invite</button>
           </div>
           <div class="hero__disco-orb" aria-hidden="true">
             <img src="/assets/brand-mark.svg" width="48" height="48" alt="">
@@ -249,7 +276,7 @@
           <h2>Party Details</h2>
           <p>Saturday, September 19, 2026 — doors at 6:30 PM at the Cowboy Disco Saloon.</p>
         </header>
-        <div class="details-grid">
+        <div class="details-grid reveal-stagger">
           <article class="detail-card">
             <p class="detail-card__num" aria-hidden="true">01</p>
             <h3>When</h3>
@@ -355,7 +382,7 @@
           <h2 class="party-night__heading">At the Party</h2>
           <p class="party-night__lead">Browse photos, warm up with ice breakers, vote for best outfit, or open the slideshow on the TV.</p>
         </header>
-        <div class="party-night-grid">
+        <div class="party-night-grid reveal-stagger">
           <a class="party-night-card" href="gallery.html">
             <span class="party-night-card__icon" aria-hidden="true">
               <svg viewBox="0 0 24 24"><path d="M7.5 5.5 8.7 3.7a1.5 1.5 0 0 1 1.25-.7h4.1a1.5 1.5 0 0 1 1.25.7l1.2 1.8H20a1.5 1.5 0 0 1 1.5 1.5v12A1.5 1.5 0 0 1 20 20.5H4A1.5 1.5 0 0 1 2.5 19V7A1.5 1.5 0 0 1 4 5.5h3.5z"/><circle cx="12" cy="12.5" r="3.75"/></svg>
@@ -400,7 +427,7 @@
           <h2>Capture the Night</h2>
           <p>Editorial-worthy moments from wardrobe to last call — every detail designed for the dance floor.</p>
         </header>
-        <div class="moments-grid">
+        <div class="moments-grid reveal-stagger">
           <a class="moment-card" href="#dress-code">
             <picture>
               <source srcset="/assets/editorial-wardrobe.webp" type="image/webp">
@@ -414,7 +441,10 @@
             </div>
           </a>
           <a class="moment-card" href="#menu">
-            <img class="moment-card__img editorial-img" src="/assets/editorial-cocktails.jpg" alt="Signature cocktails in golden salon light" width="1000" height="750" loading="lazy">
+            <picture>
+              <source srcset="/assets/editorial-cocktails.webp" type="image/webp">
+              <img class="moment-card__img editorial-img" src="/assets/editorial-cocktails.jpg" alt="Signature cocktails in golden salon light" width="1000" height="750" loading="lazy">
+            </picture>
             <div class="moment-card__shade"></div>
             <div class="moment-card__content">
               <span class="moment-card__tag">Cocktails</span>
@@ -476,6 +506,7 @@
             <h2>The Dress Code</h2>
             <p>Western glamour meets Studio 54 — dress for the lights.</p>
           </header>
+          <p class="dress-motto">Dress country. Shine disco.</p>
           <p class="dress-lead">
             Think elevated western glamour — champagne gold, ivory, saddle leather, and mirror-ball chrome.
             Cowboy hats, fringe, and rhinestones are all on-theme. If it catches the light, you're dressed right.
@@ -521,7 +552,7 @@
             <a class="btn btn--ghost btn--compact" href="lookbook.html">Print the lookbook <span class="btn__arrow" aria-hidden="true">→</span></a>
           </p>
 
-          <div class="lookbook__grid">
+          <div class="lookbook__grid reveal-stagger">
             <article class="look-card">
               <figure class="look-card__figure">
                 <picture>
@@ -683,7 +714,7 @@
             <h3>House Cocktails</h3>
             <span class="bar-menu__rule bar-menu__rule--end" aria-hidden="true"></span>
           </header>
-          <ul class="bar-menu__list">
+          <ul class="bar-menu__list reveal-stagger">
             <li class="bar-menu__item">
               <div class="bar-menu__row">
                 <h4 class="bar-menu__name">Rusty Spur Fizz</h4>
@@ -746,16 +777,18 @@
           <h2>Location</h2>
           <p>Cowboy Disco Saloon · 420 NE 72nd St, Seattle</p>
         </header>
-        <div class="location-banner">
+        <figure class="location-banner poster-frame">
           <img
             class="location-banner__poster"
-            src="/assets/poster-party.png"
-            alt="Cowboy Disco Party poster — 420 NE 72nd St, Seattle"
-            width="1600"
-            height="1000"
+            src="/assets/poster-official.jpg"
+            onerror="this.onerror=null;this.src='/assets/poster-party.png';this.closest('.poster-frame').classList.add('is-fallback');"
+            alt="Cowboy Disco Party poster — Hondo Entertainment presents, dress country and shine disco"
+            width="1060"
+            height="848"
             loading="lazy"
           >
-        </div>
+          <figcaption class="poster-frame__caption">The official poster · Dress country, shine disco</figcaption>
+        </figure>
         <div class="location-grid">
           <div class="location-info">
             <h3>Getting There</h3>
@@ -809,7 +842,7 @@
                 src="/assets/sign-kyles-apartment.jpg"
                 alt="Cowboy Disco Saloon door sign"
                 width="1200"
-                height="900"
+                height="700"
                 loading="lazy"
               >
             </picture>
@@ -821,27 +854,32 @@
           <div class="qr-promo__copy">
             <h3>Scan at the Door</h3>
             <p>
-              Point your camera here for ice breakers, photo uploads, best outfit voting, and party FAQ —
-              no app download needed.
+              Point your camera at any of these — no app needed. Each one opens straight
+              into that part of the party.
             </p>
-            <ul class="qr-promo__list">
-              <li>Photo gallery &amp; ice breakers</li>
-              <li>Best outfit vote &amp; directions</li>
-              <li>Next-party poll</li>
-            </ul>
-          </div>
-          <div class="qr-promo__code">
-            <div class="qr-share__frame qr-block__frame">
-              <img
-                class="qr-block__img"
-                src="/assets/qr-code.png"
-                width="220"
-                height="220"
-                alt="QR code for the Cowboy Disco Party website"
-              >
-              <canvas class="qr-block__canvas is-hidden" data-size="220" width="220" height="220" aria-hidden="true"></canvas>
+            <div class="qr-promo__actions">
+              <button class="btn btn--primary btn--compact" type="button" data-share>Share the invite</button>
+              <a class="btn btn--ghost btn--compact" href="qr-pack.html">Print all four</a>
             </div>
             <p class="qr-block__url"></p>
+          </div>
+          <div class="qr-deck">
+            <figure class="qr-tile">
+              <img src="/assets/qr-code.png" width="640" height="640" alt="QR code for the Cowboy Disco Party site" loading="lazy">
+              <figcaption>The Party</figcaption>
+            </figure>
+            <figure class="qr-tile">
+              <img src="/assets/qr-gallery.png" width="640" height="640" alt="QR code for the photo gallery" loading="lazy">
+              <figcaption>Photo Gallery</figcaption>
+            </figure>
+            <figure class="qr-tile">
+              <img src="/assets/qr-vote.png" width="640" height="640" alt="QR code for the best outfit vote" loading="lazy">
+              <figcaption>Best Outfit Vote</figcaption>
+            </figure>
+            <figure class="qr-tile">
+              <img src="/assets/qr-icebreakers.png" width="640" height="640" alt="QR code for the ice breakers" loading="lazy">
+              <figcaption>Ice Breakers</figcaption>
+            </figure>
           </div>
         </aside>
       </div>
@@ -853,7 +891,7 @@
           <h2>FAQ</h2>
           <p>Quick answers before you hit the dance floor.</p>
         </header>
-        <div class="faq-list">
+        <div class="faq-list reveal-stagger">
           <details class="faq-item">
             <summary class="faq-item__question">Where do I go?</summary>
             <div class="faq-item__answer">
@@ -916,6 +954,7 @@
   <footer class="site-footer site-footer--premium">
     <div class="container site-footer__inner">
       <div class="footer-premium__brand">
+        <p class="footer-premium__presents">Hondo Entertainment presents</p>
         <img class="footer-premium__mark" src="/assets/brand-mark.svg" width="56" height="56" alt="">
         <span class="footer-premium__name">Cowboy Disco</span>
         <p class="footer-premium__tagline">Where Studio 54 meets the Wild West.</p>
@@ -943,6 +982,8 @@
   <script src="js/qr.js"></script>
   <script src="js/main.js"></script>
   <script src="js/premium.js"></script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <script defer src="/_vercel/speed-insights/script.js"></script>
   <script src="js/pwa.js"></script>
 </body>
 </html>

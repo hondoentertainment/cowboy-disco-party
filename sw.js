@@ -1,4 +1,4 @@
-const CACHE = "cdp-v30";
+const CACHE = "cdp-v35";
 const ASSETS = [
   "/",
   "/index.html",
@@ -60,6 +60,10 @@ const ASSETS = [
   "/js/plan-data.js",
   "/poll-results.html",
   "/qr.html",
+  "/qr-pack.html",
+  "/assets/qr-gallery.png",
+  "/assets/qr-vote.png",
+  "/assets/qr-icebreakers.png",
   "/signs.html",
   "/print-pack.html",
   "/party-kit.html",

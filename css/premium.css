@@ -6,6 +6,9 @@
   --champagne: #c7a76a;
   --champagne-light: #e0c992;
   --champagne-deep: #a88b4a;
+  /* champagne-deep fails contrast on light grounds (2.94:1) — use this
+     for any gold text sitting on ivory or white (5.4:1). */
+  --champagne-ink: #7c6534;
   --leather: #7a5a3a;
   --leather-light: #9a7350;
   --chrome: #c0c8d4;
@@ -68,7 +71,7 @@ body::after {
 
 /* Reveal animations */
 
-.reveal {
+.js-motion .reveal {
   opacity: 0;
   transform: translateY(28px);
   transition: opacity 0.9s var(--ease-out), transform 0.9s var(--ease-out);
@@ -436,8 +439,8 @@ body::after {
 }
 
 .section--ivory .btn--ghost:hover {
-  border-color: var(--champagne-deep);
-  color: var(--champagne-deep);
+  border-color: var(--champagne-ink);
+  color: var(--champagne-ink);
 }
 
 .btn--cosmic {
@@ -961,6 +964,66 @@ body::after {
   font-size: 0.68rem;
 }
 
+/* Long URLs in the generated invite text must not overflow small screens */
+#invite-body {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+/* Official poster frame */
+
+.poster-frame {
+  display: block;
+  margin: 0 0 var(--space-md);
+  border: 1px solid rgba(199, 167, 106, 0.3);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  background: var(--midnight);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+}
+
+/* Neutralise the legacy banner framing — .poster-frame supplies it now */
+.poster-frame .location-banner__poster,
+.poster-frame img {
+  width: 100%;
+  max-width: none;
+  height: auto;
+  display: block;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.poster-frame__caption {
+  padding: 0.85rem 1rem;
+  text-align: center;
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--champagne);
+  background: linear-gradient(180deg, rgba(199, 167, 106, 0.08), transparent);
+  border-top: 1px solid rgba(199, 167, 106, 0.18);
+}
+
+.dress-motto {
+  margin: 0 0 0.85rem;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(1.35rem, 2.6vw, 1.85rem);
+  line-height: 1.2;
+  color: var(--champagne-ink);
+}
+
+.footer-premium__presents {
+  margin: 0 0 0.9rem;
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: rgba(247, 243, 237, 0.45);
+}
+
 /* Lookbook — five dress-code looks */
 
 .lookbook {
@@ -1099,7 +1162,7 @@ body::after {
   font-weight: 700;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--champagne-deep);
+  color: var(--champagne-ink);
 }
 
 .look-card__list dd {
@@ -1450,7 +1513,7 @@ a:hover {
 }
 
 .section--ivory a:hover {
-  color: var(--champagne-deep);
+  color: var(--champagne-ink);
 }
 
 .section--poll-hero,
@@ -1975,5 +2038,346 @@ h3,
 
   .cosmic-intro__img {
     max-height: 420px;
+  }
+}
+
+/* ===========================================================================
+   Motion layer — hero atmosphere, richer reveals, rhinestone interactions.
+   Everything here is transform/opacity only so it stays on the compositor,
+   and all of it is switched off under prefers-reduced-motion at the end.
+   =========================================================================== */
+
+/* --- Hero: slow light sweep across the room ------------------------------ */
+
+.hero__sweep {
+  position: absolute;
+  top: -30%;
+  left: -60%;
+  width: 45%;
+  height: 160%;
+  pointer-events: none;
+  transform: rotate(14deg);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(224, 201, 146, 0.05) 35%,
+    rgba(232, 236, 242, 0.13) 50%,
+    rgba(224, 201, 146, 0.05) 65%,
+    transparent
+  );
+  filter: blur(14px);
+  animation: hero-sweep 13s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+  will-change: transform;
+}
+
+@keyframes hero-sweep {
+  0%   { transform: translateX(0) rotate(14deg); opacity: 0; }
+  12%  { opacity: 1; }
+  78%  { opacity: 1; }
+  100% { transform: translateX(370%) rotate(14deg); opacity: 0; }
+}
+
+/* --- Hero: rhinestone glints (elements generated in premium.js) ---------- */
+
+.hero__rhinestones {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.rhinestone {
+  position: absolute;
+  width: var(--r-size, 3px);
+  height: var(--r-size, 3px);
+  border-radius: 50%;
+  background: rgba(247, 243, 237, 0.95);
+  box-shadow: 0 0 var(--r-glow, 6px) rgba(224, 201, 146, 0.9);
+  opacity: 0;
+  animation: rhinestone-twinkle var(--r-dur, 5s) ease-in-out var(--r-delay, 0s) infinite;
+  will-change: opacity, transform;
+}
+
+@keyframes rhinestone-twinkle {
+  0%, 100% { opacity: 0; transform: scale(0.5); }
+  45%      { opacity: var(--r-peak, 0.85); transform: scale(1); }
+  60%      { opacity: calc(var(--r-peak, 0.85) * 0.5); transform: scale(0.85); }
+}
+
+/* --- Reveals: directional, staggered, with a touch of scale -------------- */
+
+.js-motion .reveal {
+  transform: translateY(34px) scale(0.994);
+  transition:
+    opacity 0.85s var(--ease-out) var(--reveal-delay, 0s),
+    transform 0.85s var(--ease-out) var(--reveal-delay, 0s);
+}
+
+.reveal.is-visible {
+  transform: translateY(0) scale(1);
+}
+
+/* Children rise in sequence once their section lands. */
+.js-motion .reveal-stagger > * {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+}
+
+.is-visible .reveal-stagger > *,
+.reveal-stagger.is-visible > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-stagger > *:nth-child(1) { transition-delay: 0.04s; }
+.reveal-stagger > *:nth-child(2) { transition-delay: 0.12s; }
+.reveal-stagger > *:nth-child(3) { transition-delay: 0.2s; }
+.reveal-stagger > *:nth-child(4) { transition-delay: 0.28s; }
+.reveal-stagger > *:nth-child(5) { transition-delay: 0.36s; }
+.reveal-stagger > *:nth-child(6) { transition-delay: 0.44s; }
+
+/* --- Buttons: a rhinestone glint sweeps across on hover ------------------ */
+
+.btn--rsvp,
+.btn--primary,
+.btn--ghost,
+.btn--secondary {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.btn--rsvp::after,
+.btn--primary::after,
+.btn--ghost::after,
+.btn--secondary::after {
+  content: "";
+  position: absolute;
+  top: -60%;
+  left: -80%;
+  width: 45%;
+  height: 220%;
+  z-index: -1;
+  pointer-events: none;
+  transform: rotate(18deg) translateX(0);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.34) 50%,
+    transparent
+  );
+  opacity: 0;
+  transition: transform 0.65s var(--ease-out), opacity 0.25s;
+}
+
+.btn--ghost::after,
+.btn--secondary::after {
+  background: linear-gradient(90deg, transparent, rgba(224, 201, 146, 0.28) 50%, transparent);
+}
+
+.btn--rsvp:hover::after,
+.btn--primary:hover::after,
+.btn--ghost:hover::after,
+.btn--secondary:hover::after,
+.btn--rsvp:focus-visible::after,
+.btn--primary:focus-visible::after,
+.btn--ghost:focus-visible::after,
+.btn--secondary:focus-visible::after {
+  opacity: 1;
+  transform: rotate(18deg) translateX(420%);
+}
+
+/* --- Cards: catch the light on hover ------------------------------------- */
+
+.detail-card,
+.party-night-card,
+.look-card,
+.cocktail-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.detail-card::after,
+.party-night-card::after,
+.look-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  background: linear-gradient(
+    115deg,
+    transparent 38%,
+    rgba(224, 201, 146, 0.16) 50%,
+    transparent 62%
+  );
+  transform: translateX(-60%);
+  transition: transform 0.75s var(--ease-out), opacity 0.35s;
+}
+
+.detail-card:hover::after,
+.party-night-card:hover::after,
+.look-card:hover::after {
+  opacity: 1;
+  transform: translateX(60%);
+}
+
+/* Countdown units get a faint pulse as the seconds tick. */
+.countdown__unit {
+  transition: border-color 0.4s, box-shadow 0.4s;
+}
+
+.hero--premium .countdown__unit:hover {
+  border-color: rgba(199, 167, 106, 0.55);
+  box-shadow: 0 0 22px rgba(199, 167, 106, 0.18);
+}
+
+/* --- Respect reduced motion ---------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__sweep,
+  .rhinestone {
+    display: none;
+  }
+
+  .reveal,
+  .reveal-stagger > * {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .btn--rsvp::after,
+  .btn--primary::after,
+  .btn--ghost::after,
+  .btn--secondary::after,
+  .detail-card::after,
+  .party-night-card::after,
+  .look-card::after {
+    display: none;
+  }
+}
+
+/* --- QR deck: four deep-link codes in the location section --------------- */
+
+.qr-deck {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.9rem;
+}
+
+.qr-tile {
+  margin: 0;
+  text-align: center;
+}
+
+.qr-tile img {
+  width: 100%;
+  max-width: 9.5rem;
+  height: auto;
+  display: block;
+  margin: 0 auto 0.5rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(199, 167, 106, 0.35);
+  background: var(--ivory);
+  transition: transform 0.3s var(--ease-out), box-shadow 0.3s;
+}
+
+.qr-tile:hover img {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(199, 167, 106, 0.22);
+}
+
+.qr-tile figcaption {
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--champagne);
+}
+
+.qr-promo__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin: 1rem 0 0.5rem;
+}
+
+@media (max-width: 640px) {
+  .qr-deck {
+    gap: 0.7rem;
+  }
+}
+
+/* --- Ambient audio toggle ------------------------------------------------ */
+
+.ambient-toggle {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 90;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.6rem 0.95rem;
+  font-family: var(--font-body);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--champagne);
+  background: rgba(13, 13, 13, 0.82);
+  border: 1px solid rgba(199, 167, 106, 0.35);
+  border-radius: 999px;
+  backdrop-filter: blur(12px);
+  cursor: pointer;
+  transition: border-color 0.25s, color 0.25s, box-shadow 0.25s;
+}
+
+.ambient-toggle:hover,
+.ambient-toggle:focus-visible {
+  border-color: var(--champagne);
+  color: var(--ivory);
+  box-shadow: 0 0 22px rgba(199, 167, 106, 0.25);
+}
+
+.ambient-toggle__icon svg {
+  width: 1rem;
+  height: 1rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  display: block;
+}
+
+.ambient-toggle__icon svg path:first-child {
+  fill: currentColor;
+  stroke: none;
+}
+
+/* Muted state shows the slash and hides the waves. */
+.ambient-toggle[data-playing="true"] .ambient-toggle__slash {
+  display: none;
+}
+
+.ambient-toggle[data-playing="false"] .ambient-toggle__wave1,
+.ambient-toggle[data-playing="false"] .ambient-toggle__wave2 {
+  display: none;
+}
+
+.ambient-toggle[data-playing="true"] {
+  color: var(--champagne-light);
+  border-color: rgba(199, 167, 106, 0.6);
+}
+
+@media (max-width: 640px) {
+  .ambient-toggle__label {
+    display: none;
+  }
+
+  .ambient-toggle {
+    padding: 0.7rem;
   }
 }
