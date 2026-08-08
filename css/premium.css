@@ -6,6 +6,9 @@
   --champagne: #c7a76a;
   --champagne-light: #e0c992;
   --champagne-deep: #a88b4a;
+  /* champagne-deep fails contrast on light grounds (2.94:1) — use this
+     for any gold text sitting on ivory or white (5.4:1). */
+  --champagne-ink: #7c6534;
   --leather: #7a5a3a;
   --leather-light: #9a7350;
   --chrome: #c0c8d4;
@@ -436,8 +439,8 @@ body::after {
 }
 
 .section--ivory .btn--ghost:hover {
-  border-color: var(--champagne-deep);
-  color: var(--champagne-deep);
+  border-color: var(--champagne-ink);
+  color: var(--champagne-ink);
 }
 
 .btn--cosmic {
@@ -1009,7 +1012,7 @@ body::after {
   font-style: italic;
   font-size: clamp(1.35rem, 2.6vw, 1.85rem);
   line-height: 1.2;
-  color: var(--champagne-deep);
+  color: var(--champagne-ink);
 }
 
 .footer-premium__presents {
@@ -1159,7 +1162,7 @@ body::after {
   font-weight: 700;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--champagne-deep);
+  color: var(--champagne-ink);
 }
 
 .look-card__list dd {
@@ -1510,7 +1513,7 @@ a:hover {
 }
 
 .section--ivory a:hover {
-  color: var(--champagne-deep);
+  color: var(--champagne-ink);
 }
 
 .section--poll-hero,
