@@ -98,6 +98,8 @@ npx vercel env add GALLERY_ADMIN_CODE production
 | Gallery admin | [/admin.html](https://cowboy-disco-party.vercel.app/admin.html) |
 | Poll results | [/poll-results.html](https://cowboy-disco-party.vercel.app/poll-results.html) |
 | Print QR sign | [/qr.html](https://cowboy-disco-party.vercel.app/qr.html) |
+| QR pack (4 deep links) | [/qr-pack.html](https://cowboy-disco-party.vercel.app/qr-pack.html) |
+| Print lookbook | [/lookbook.html](https://cowboy-disco-party.vercel.app/lookbook.html) |
 | Print number tags | [/numbers.html](https://cowboy-disco-party.vercel.app/numbers.html) |
 | Photo slideshow (TV) | [/slideshow.html](https://cowboy-disco-party.vercel.app/slideshow.html) |
 | Ice breakers | [/ice-breaker.html](https://cowboy-disco-party.vercel.app/ice-breaker.html) |
@@ -145,6 +147,9 @@ Run `python scripts/pre-party-check.py` for an automated smoke test plus this li
 - Guest invite text: `js/config.js` → `SHARE_MESSAGE`
 - Partiful RSVP: `js/config.js` → `PARTIFUL_URL` — set the Partiful event URL to reveal "RSVP on Partiful" buttons sitewide (hidden while empty)
 - Party playlist: `js/config.js` → `SPOTIFY_PLAYLIST_URL` — set to reveal the "Hear the Party Playlist" button in the schedule section
+- Ambient music: `js/config.js` → `AMBIENT_AUDIO_URL` — point at an audio file to reveal the sound toggle (never autoplays; the guest's choice is remembered)
+- QR codes: `python scripts/generate-qr.py` regenerates all four branded codes (site, gallery, vote, ice breakers) from `SITE_URL`
+- Analytics: enable **Analytics** and **Speed Insights** in the Vercel dashboard — the script tags are already on the guest pages and stay inert until you switch them on
 - Webfonts are self-hosted in `assets/fonts/` — refresh with `python scripts/fetch-fonts.py`
 
 When the date is set:

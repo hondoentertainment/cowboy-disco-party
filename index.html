@@ -106,6 +106,7 @@
               <li><a href="party-night.html">Party Night Setup</a></li>
               <li><a href="signs.html">Print Signs</a></li>
               <li><a href="#qr">QR Code</a></li>
+              <li><a href="qr-pack.html">QR Pack</a></li>
               <li><a href="#faq">FAQ</a></li>
               <li><a href="poll.html">Next Party Poll</a></li>
             </ul>
@@ -125,6 +126,14 @@
       </ul>
     </nav>
   </header>
+
+  <button class="ambient-toggle is-hidden" id="ambient-toggle" type="button"
+          aria-pressed="false" aria-label="Play party music" title="Play party music">
+    <span class="ambient-toggle__icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24"><path d="M4 9.5h3.2L12 5.4v13.2L7.2 14.5H4z"/><path class="ambient-toggle__wave1" d="M15.6 9.2a4 4 0 0 1 0 5.6"/><path class="ambient-toggle__wave2" d="M18.1 6.7a7.5 7.5 0 0 1 0 10.6"/><path class="ambient-toggle__slash" d="M4 20 20 4"/></svg>
+    </span>
+    <span class="ambient-toggle__label">Music</span>
+  </button>
 
   <main id="main">
     <section class="hero hero--premium" id="top">
@@ -190,6 +199,7 @@
             <a class="btn btn--rsvp" id="rsvp-directions" href="#location">RSVP &amp; Directions</a>
             <a class="btn btn--ghost" href="/assets/cowboy-disco-party.ics" download="cowboy-disco-party.ics">Add to Calendar</a>
             <a class="btn btn--ghost" href="#welcome">Learn More</a>
+            <button class="btn btn--ghost" type="button" data-share>Share Invite</button>
           </div>
           <div class="hero__disco-orb" aria-hidden="true">
             <img src="/assets/brand-mark.svg" width="48" height="48" alt="">
@@ -844,27 +854,32 @@
           <div class="qr-promo__copy">
             <h3>Scan at the Door</h3>
             <p>
-              Point your camera here for ice breakers, photo uploads, best outfit voting, and party FAQ —
-              no app download needed.
+              Point your camera at any of these — no app needed. Each one opens straight
+              into that part of the party.
             </p>
-            <ul class="qr-promo__list">
-              <li>Photo gallery &amp; ice breakers</li>
-              <li>Best outfit vote &amp; directions</li>
-              <li>Next-party poll</li>
-            </ul>
-          </div>
-          <div class="qr-promo__code">
-            <div class="qr-share__frame qr-block__frame">
-              <img
-                class="qr-block__img"
-                src="/assets/qr-code.png"
-                width="220"
-                height="220"
-                alt="QR code for the Cowboy Disco Party website"
-              >
-              <canvas class="qr-block__canvas is-hidden" data-size="220" width="220" height="220" aria-hidden="true"></canvas>
+            <div class="qr-promo__actions">
+              <button class="btn btn--primary btn--compact" type="button" data-share>Share the invite</button>
+              <a class="btn btn--ghost btn--compact" href="qr-pack.html">Print all four</a>
             </div>
             <p class="qr-block__url"></p>
+          </div>
+          <div class="qr-deck">
+            <figure class="qr-tile">
+              <img src="/assets/qr-code.png" width="640" height="640" alt="QR code for the Cowboy Disco Party site" loading="lazy">
+              <figcaption>The Party</figcaption>
+            </figure>
+            <figure class="qr-tile">
+              <img src="/assets/qr-gallery.png" width="640" height="640" alt="QR code for the photo gallery" loading="lazy">
+              <figcaption>Photo Gallery</figcaption>
+            </figure>
+            <figure class="qr-tile">
+              <img src="/assets/qr-vote.png" width="640" height="640" alt="QR code for the best outfit vote" loading="lazy">
+              <figcaption>Best Outfit Vote</figcaption>
+            </figure>
+            <figure class="qr-tile">
+              <img src="/assets/qr-icebreakers.png" width="640" height="640" alt="QR code for the ice breakers" loading="lazy">
+              <figcaption>Ice Breakers</figcaption>
+            </figure>
           </div>
         </aside>
       </div>
@@ -967,6 +982,8 @@
   <script src="js/qr.js"></script>
   <script src="js/main.js"></script>
   <script src="js/premium.js"></script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <script defer src="/_vercel/speed-insights/script.js"></script>
   <script src="js/pwa.js"></script>
 </body>
 </html>

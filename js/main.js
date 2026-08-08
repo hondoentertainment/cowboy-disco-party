@@ -231,6 +231,114 @@
     }
   }
 
+  /* --- One-tap share ------------------------------------------------------
+     Uses the native share sheet where available (that is the "one tap" on
+     phones) and falls back to clipboard on desktop. */
+
+  var shareButtons = document.querySelectorAll("[data-share]");
+  if (shareButtons.length) {
+    var shareText = String(config.SHARE_MESSAGE || "You're invited to Cowboy Disco.");
+    var shareUrl = String(config.SITE_URL || window.location.origin);
+    var partifulShare = String(config.PARTIFUL_URL || "").trim();
+    if (partifulShare) {
+      shareText += " RSVP: " + partifulShare;
+    }
+
+    shareButtons.forEach(function (btn) {
+      var original = btn.textContent;
+      var resetTimer;
+
+      btn.addEventListener("click", function () {
+        function flash(msg) {
+          btn.textContent = msg;
+          window.clearTimeout(resetTimer);
+          resetTimer = window.setTimeout(function () {
+            btn.textContent = original;
+          }, 2200);
+        }
+
+        if (navigator.share) {
+          navigator
+            .share({ title: "Cowboy Disco Party", text: shareText, url: shareUrl })
+            .catch(function () {
+              /* user dismissed the sheet */
+            });
+          return;
+        }
+
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(shareText + " " + shareUrl).then(
+            function () {
+              flash("Invite copied");
+            },
+            function () {
+              flash("Copy failed");
+            }
+          );
+          return;
+        }
+
+        flash("Copy the link from your browser bar");
+      });
+    });
+  }
+
+  /* --- Ambient audio ------------------------------------------------------
+     Opt-in only: nothing plays until the guest asks for it, and the choice
+     persists. Hidden entirely unless AMBIENT_AUDIO_URL is configured. */
+
+  var audioUrl = String(config.AMBIENT_AUDIO_URL || "").trim();
+  var audioToggle = document.getElementById("ambient-toggle");
+  if (audioUrl && audioToggle) {
+    var STORE_KEY = "cdp-ambient";
+    var audio = new Audio(audioUrl);
+    audio.loop = true;
+    audio.preload = "none";
+    audio.volume = 0.35;
+
+    function setPlaying(on) {
+      audioToggle.setAttribute("aria-pressed", String(on));
+      audioToggle.dataset.playing = on ? "true" : "false";
+      audioToggle.setAttribute("aria-label", on ? "Mute party music" : "Play party music");
+      audioToggle.title = on ? "Mute party music" : "Play party music";
+    }
+
+    audioToggle.classList.remove("is-hidden");
+    setPlaying(false);
+
+    audioToggle.addEventListener("click", function () {
+      if (audio.paused) {
+        audio.play().then(
+          function () {
+            setPlaying(true);
+            try { localStorage.setItem(STORE_KEY, "on"); } catch (e) {}
+          },
+          function () {
+            setPlaying(false);
+          }
+        );
+      } else {
+        audio.pause();
+        setPlaying(false);
+        try { localStorage.setItem(STORE_KEY, "off"); } catch (e) {}
+      }
+    });
+
+    // Browsers block autoplay without a gesture, so a remembered "on" only
+    // resumes after the guest next interacts with the page.
+    var wanted = null;
+    try { wanted = localStorage.getItem(STORE_KEY); } catch (e) {}
+    if (wanted === "on") {
+      var resume = function () {
+        audio.play().then(function () { setPlaying(true); }, function () {});
+        document.removeEventListener("pointerdown", resume);
+        document.removeEventListener("keydown", resume);
+      };
+      document.addEventListener("pointerdown", resume, { once: true });
+      document.addEventListener("keydown", resume, { once: true });
+    }
+  }
+
   updateCountdown();
   setInterval(updateCountdown, 1000);
   applyPostPartyMode();

@@ -13,6 +13,10 @@
     // Spotify party playlist — set to the playlist URL to reveal the
     // "Hear the Party Playlist" button in the schedule section.
     SPOTIFY_PLAYLIST_URL: "",
+    // Ambient country-disco loop. Set to an audio file path (e.g.
+    // "/assets/party-loop.mp3") to reveal the sound toggle. Playback is
+    // always opt-in — it never autoplays, and the choice is remembered.
+    AMBIENT_AUDIO_URL: "",
     PARTY_DATE_TBD: false,
     PARTY_DATE: "2026-09-19T18:30:00-07:00",
     PARTY_END: "2026-09-19T22:00:00-07:00",

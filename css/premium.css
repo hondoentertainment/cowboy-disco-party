@@ -2258,3 +2258,126 @@ h3,
     display: none;
   }
 }
+
+/* --- QR deck: four deep-link codes in the location section --------------- */
+
+.qr-deck {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.9rem;
+}
+
+.qr-tile {
+  margin: 0;
+  text-align: center;
+}
+
+.qr-tile img {
+  width: 100%;
+  max-width: 9.5rem;
+  height: auto;
+  display: block;
+  margin: 0 auto 0.5rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(199, 167, 106, 0.35);
+  background: var(--ivory);
+  transition: transform 0.3s var(--ease-out), box-shadow 0.3s;
+}
+
+.qr-tile:hover img {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(199, 167, 106, 0.22);
+}
+
+.qr-tile figcaption {
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--champagne);
+}
+
+.qr-promo__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin: 1rem 0 0.5rem;
+}
+
+@media (max-width: 640px) {
+  .qr-deck {
+    gap: 0.7rem;
+  }
+}
+
+/* --- Ambient audio toggle ------------------------------------------------ */
+
+.ambient-toggle {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 90;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.6rem 0.95rem;
+  font-family: var(--font-body);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--champagne);
+  background: rgba(13, 13, 13, 0.82);
+  border: 1px solid rgba(199, 167, 106, 0.35);
+  border-radius: 999px;
+  backdrop-filter: blur(12px);
+  cursor: pointer;
+  transition: border-color 0.25s, color 0.25s, box-shadow 0.25s;
+}
+
+.ambient-toggle:hover,
+.ambient-toggle:focus-visible {
+  border-color: var(--champagne);
+  color: var(--ivory);
+  box-shadow: 0 0 22px rgba(199, 167, 106, 0.25);
+}
+
+.ambient-toggle__icon svg {
+  width: 1rem;
+  height: 1rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  display: block;
+}
+
+.ambient-toggle__icon svg path:first-child {
+  fill: currentColor;
+  stroke: none;
+}
+
+/* Muted state shows the slash and hides the waves. */
+.ambient-toggle[data-playing="true"] .ambient-toggle__slash {
+  display: none;
+}
+
+.ambient-toggle[data-playing="false"] .ambient-toggle__wave1,
+.ambient-toggle[data-playing="false"] .ambient-toggle__wave2 {
+  display: none;
+}
+
+.ambient-toggle[data-playing="true"] {
+  color: var(--champagne-light);
+  border-color: rgba(199, 167, 106, 0.6);
+}
+
+@media (max-width: 640px) {
+  .ambient-toggle__label {
+    display: none;
+  }
+
+  .ambient-toggle {
+    padding: 0.7rem;
+  }
+}

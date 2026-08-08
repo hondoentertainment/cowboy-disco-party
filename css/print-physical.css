@@ -653,3 +653,83 @@
     text-align: center;
   }
 }
+
+/* QR pack — four deep-link codes, two per page */
+
+.qr-pack {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.3in;
+  width: 8.5in;
+  margin: 0 auto 2rem;
+  padding: 0.4in;
+  box-sizing: border-box;
+}
+
+.qr-pack__card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0.28in 0.2in 0.24in;
+  background: var(--phys-cream);
+  border: 2px solid var(--phys-gold);
+  border-radius: 6px;
+  box-shadow: 0 10px 30px rgba(26, 22, 18, 0.14);
+  break-inside: avoid;
+}
+
+.qr-pack__eyebrow {
+  margin: 0;
+  font-size: 8pt;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--phys-muted);
+}
+
+.qr-pack__title {
+  margin: 0.04in 0 0.14in;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 21pt;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: var(--phys-brown);
+}
+
+.qr-pack__img {
+  width: 2.5in;
+  height: 2.5in;
+  display: block;
+}
+
+.qr-pack__note {
+  margin: 0.14in 0 0;
+  font-size: 8.5pt;
+  line-height: 1.35;
+  color: var(--phys-muted);
+}
+
+@media screen and (max-width: 860px) {
+  .qr-pack {
+    width: 100%;
+    grid-template-columns: 1fr;
+    padding: 1rem;
+  }
+
+  .qr-pack__img {
+    width: min(2.5in, 70vw);
+    height: auto;
+  }
+}
+
+@media print {
+  .qr-pack {
+    padding: 0.35in;
+    box-shadow: none;
+  }
+
+  .qr-pack__card {
+    box-shadow: none;
+  }
+}

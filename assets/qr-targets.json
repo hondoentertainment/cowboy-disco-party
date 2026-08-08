@@ -1,0 +1,26 @@
+[
+  {
+    "file": "qr-code.png",
+    "label": "The Party",
+    "url": "https://cowboy-disco-party.vercel.app/",
+    "kb": 16
+  },
+  {
+    "file": "qr-gallery.png",
+    "label": "Photo Gallery",
+    "url": "https://cowboy-disco-party.vercel.app/gallery.html",
+    "kb": 16
+  },
+  {
+    "file": "qr-vote.png",
+    "label": "Best Outfit Vote",
+    "url": "https://cowboy-disco-party.vercel.app/vote.html",
+    "kb": 16
+  },
+  {
+    "file": "qr-icebreakers.png",
+    "label": "Ice Breakers",
+    "url": "https://cowboy-disco-party.vercel.app/ice-breaker.html",
+    "kb": 16
+  }
+]
