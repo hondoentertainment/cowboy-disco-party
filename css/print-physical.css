@@ -411,3 +411,188 @@
     page: schedule-sheet;
   }
 }
+
+/* Lookbook sheet — letter size, five looks */
+
+.phys-lookbook {
+  width: 8.5in;
+  min-height: 11in;
+  margin: 0 auto 2rem;
+  padding: 0.55in 0.6in 0.5in;
+  background: var(--phys-cream);
+  box-shadow: 0 12px 40px rgba(26, 22, 18, 0.18);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+.phys-lookbook__head {
+  text-align: center;
+  padding-bottom: 0.18in;
+  border-bottom: 1.5px solid var(--phys-gold);
+}
+
+.phys-lookbook .phys-brand {
+  justify-content: center;
+  margin-bottom: 0.12in;
+}
+
+.phys-lookbook__title {
+  margin: 0 0 0.06in;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 40pt;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--phys-brown);
+}
+
+.phys-lookbook__lead {
+  max-width: 5.6in;
+  margin: 0 auto;
+  font-size: 10pt;
+  line-height: 1.45;
+  color: var(--phys-muted);
+}
+
+.phys-lookbook__grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-content: start;
+  gap: 0.3in 0.34in;
+  padding: 0.28in 0 0.18in;
+}
+
+.phys-look {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 0.16in;
+  border-bottom: 1px solid var(--phys-rule);
+}
+
+.phys-look--wide {
+  grid-column: 1 / -1;
+  border-bottom: none;
+}
+
+.phys-look__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.2in;
+}
+
+.phys-look__num {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 23pt;
+  line-height: 1;
+  color: var(--phys-gold);
+}
+
+.phys-look__swatches {
+  display: inline-flex;
+  gap: 0.05in;
+}
+
+.phys-look__swatch {
+  width: 0.13in;
+  height: 0.13in;
+  border-radius: 50%;
+  border: 0.5pt solid rgba(26, 22, 18, 0.3);
+}
+
+.phys-look__title {
+  margin: 0.02in 0 0.08in;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 16.5pt;
+  font-weight: 600;
+  line-height: 1.15;
+  color: var(--phys-ink);
+}
+
+.phys-look__line {
+  margin: 0 0 0.09in;
+  font-size: 9.4pt;
+  line-height: 1.45;
+  color: var(--phys-muted);
+}
+
+.phys-look__line:last-child {
+  margin-bottom: 0;
+}
+
+.phys-look__line span {
+  display: block;
+  font-size: 7pt;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--phys-brown);
+}
+
+.phys-lookbook__qr {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.18in;
+  padding: 0.1in 0 0.04in;
+}
+
+.phys-lookbook__qr img {
+  width: 0.72in;
+  height: 0.72in;
+  display: block;
+}
+
+.phys-lookbook__qr-copy {
+  max-width: 3.4in;
+}
+
+.phys-lookbook__qr-title {
+  margin: 0;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 12.5pt;
+  font-weight: 600;
+  color: var(--phys-brown);
+}
+
+.phys-lookbook__qr-note {
+  margin: 0.02in 0 0;
+  font-size: 8pt;
+  letter-spacing: 0.04em;
+  color: var(--phys-muted);
+}
+
+.phys-lookbook__foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.3in;
+  padding-top: 0.14in;
+  border-top: 1.5px solid var(--phys-gold);
+  font-size: 8pt;
+  letter-spacing: 0.06em;
+  color: var(--phys-muted);
+}
+
+.phys-lookbook__site {
+  font-weight: 700;
+  color: var(--phys-brown);
+}
+
+@page lookbook-sheet {
+  size: letter;
+  margin: 0;
+}
+
+@media print {
+  .phys-page--lookbook .phys-lookbook {
+    page: lookbook-sheet;
+    margin: 0;
+    box-shadow: none;
+    page-break-after: auto;
+    break-after: auto;
+  }
+}
