@@ -961,6 +961,12 @@ body::after {
   font-size: 0.68rem;
 }
 
+/* Long URLs in the generated invite text must not overflow small screens */
+#invite-body {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
 /* Official poster frame */
 
 .poster-frame {
