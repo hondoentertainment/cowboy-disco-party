@@ -19,6 +19,40 @@ MUTED = (107, 90, 72)
 RULE = (196, 168, 130)
 SITE = "cowboy-disco-party.vercel.app"
 
+# (number, name, menswear, womenswear) — mirrors the lookbook on the site
+LOOKS = [
+    (
+        "01",
+        "Midnight Rhinestone Cowboy",
+        "Black pearl-snap shirt, black bootcut jeans, silver belt buckle, black cowboy boots, rhinestone-trimmed black hat.",
+        "Black sequined mini or jumpsuit, silver fringe jacket, black cowboy boots, rhinestone hat, statement earrings.",
+    ),
+    (
+        "02",
+        "Studio 54 Goes West",
+        "Cream or white satin shirt open at the collar, brown flared trousers, gold chain, tan boots, cream cowboy hat.",
+        "Gold or champagne sequined dress, white boots, cream cowboy hat, turquoise jewelry, faux-fur or suede jacket.",
+    ),
+    (
+        "03",
+        "Electric Blue Rodeo",
+        "Electric-blue Western shirt, dark slim jeans, silver bolo tie, white or black boots, silver hatband.",
+        "Cobalt-blue fringe dress or romper, silver boots, metallic belt, white cowboy hat, crystal accessories.",
+    ),
+    (
+        "04",
+        "Denim Disco",
+        "Dark denim pearl-snap shirt, lighter bootcut jeans, metallic belt, brown boots, embroidered denim jacket.",
+        "Rhinestone denim corset or fitted top, high-waisted flares or denim skirt, silver boots, fringe jacket, statement belt.",
+    ),
+    (
+        "05",
+        "Red-Hot Honky-Tonk",
+        "Black Western shirt with red piping, black jeans, red neckerchief, pointed boots, black hat.",
+        "Red sequined or fringe dress, black boots, black cowboy hat, silver concho belt, leather jacket.",
+    ),
+]
+
 
 def load_font(size: int, bold: bool = False) -> ImageFont.FreeTypeFont | ImageFont.ImageFont:
     candidates = [
@@ -232,7 +266,32 @@ def generate_party_kit_pdf() -> None:
     pdf.set_font("Helvetica", "", 11)
     pdf.cell(0, 7, "Photos | Ice breakers | Vote | Menu", ln=True)
 
-    # Page 3 — schedule
+    # Page 3 — dress code lookbook
+    pdf.add_page()
+    pdf.set_font("Helvetica", "B", 22)
+    pdf.cell(0, 12, "Five Looks", ln=True, align="C")
+    pdf.set_font("Helvetica", "I", 11)
+    pdf.multi_cell(
+        0, 6,
+        "Western glamour meets Studio 54. Wear one head to toe, mix two, or use them as a "
+        "starting point - every piece is a suggestion, not a rule.",
+        align="C",
+    )
+    pdf.ln(4)
+    for number, name, menswear, womenswear in LOOKS:
+        pdf.set_font("Helvetica", "B", 13)
+        pdf.cell(0, 8, f"{number}. {name}", ln=True)
+        pdf.set_font("Helvetica", "B", 8)
+        pdf.cell(0, 5, "MENSWEAR", ln=True)
+        pdf.set_font("Helvetica", "", 10)
+        pdf.multi_cell(0, 5.5, menswear)
+        pdf.set_font("Helvetica", "B", 8)
+        pdf.cell(0, 5, "WOMENSWEAR", ln=True)
+        pdf.set_font("Helvetica", "", 10)
+        pdf.multi_cell(0, 5.5, womenswear)
+        pdf.ln(3)
+
+    # Page 4 — schedule
     pdf.add_page()
     pdf.set_font("Helvetica", "B", 22)
     pdf.cell(0, 12, "Evening Schedule", ln=True, align="C")
@@ -254,7 +313,7 @@ def generate_party_kit_pdf() -> None:
         pdf.set_font("Helvetica", "", 12)
         pdf.cell(0, 8, label, ln=True)
 
-    # Page 4 — host print checklist
+    # Page 5 — host print checklist
     pdf.add_page()
     pdf.set_font("Helvetica", "B", 22)
     pdf.cell(0, 12, "Party Night Print Checklist", ln=True)
@@ -268,6 +327,7 @@ def generate_party_kit_pdf() -> None:
         "Food labels on the buffet",
         "Drink menu at the bar",
         "Evening schedule card at the door",
+        "Five Looks lookbook by the door (optional)",
         "Contestant number tags 1-30",
         "Welcome poster (optional)",
     ]

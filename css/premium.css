@@ -1004,6 +1004,11 @@ body::after {
   color: var(--text-muted-dark);
 }
 
+.lookbook__actions {
+  margin: -0.75rem 0 var(--space-lg);
+  text-align: center;
+}
+
 .lookbook__grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr));
@@ -1025,6 +1030,24 @@ body::after {
   transform: translateY(-4px);
   border-color: rgba(199, 167, 106, 0.5);
   box-shadow: 0 20px 50px rgba(26, 22, 18, 0.1);
+}
+
+.look-card__figure {
+  margin: -1.6rem -1.6rem 1.1rem;
+  border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+  overflow: hidden;
+  background: var(--midnight);
+}
+
+.look-card__figure img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.5s var(--ease-out);
+}
+
+.look-card:hover .look-card__figure img {
+  transform: scale(1.03);
 }
 
 .look-card__top {
