@@ -476,6 +476,7 @@
             <h2>The Dress Code</h2>
             <p>Western glamour meets Studio 54 — dress for the lights.</p>
           </header>
+          <p class="dress-motto">Dress country. Shine disco.</p>
           <p class="dress-lead">
             Think elevated western glamour — champagne gold, ivory, saddle leather, and mirror-ball chrome.
             Cowboy hats, fringe, and rhinestones are all on-theme. If it catches the light, you're dressed right.
@@ -746,16 +747,18 @@
           <h2>Location</h2>
           <p>Cowboy Disco Saloon · 420 NE 72nd St, Seattle</p>
         </header>
-        <div class="location-banner">
+        <figure class="location-banner poster-frame">
           <img
             class="location-banner__poster"
-            src="/assets/poster-party.png"
-            alt="Cowboy Disco Party poster — 420 NE 72nd St, Seattle"
-            width="1600"
-            height="1000"
+            src="/assets/poster-official.jpg"
+            onerror="this.onerror=null;this.src='/assets/poster-party.png';this.closest('.poster-frame').classList.add('is-fallback');"
+            alt="Cowboy Disco Party poster — Hondo Entertainment presents, dress country and shine disco"
+            width="1060"
+            height="848"
             loading="lazy"
           >
-        </div>
+          <figcaption class="poster-frame__caption">The official poster · Dress country, shine disco</figcaption>
+        </figure>
         <div class="location-grid">
           <div class="location-info">
             <h3>Getting There</h3>
@@ -916,6 +919,7 @@
   <footer class="site-footer site-footer--premium">
     <div class="container site-footer__inner">
       <div class="footer-premium__brand">
+        <p class="footer-premium__presents">Hondo Entertainment presents</p>
         <img class="footer-premium__mark" src="/assets/brand-mark.svg" width="56" height="56" alt="">
         <span class="footer-premium__name">Cowboy Disco</span>
         <p class="footer-premium__tagline">Where Studio 54 meets the Wild West.</p>

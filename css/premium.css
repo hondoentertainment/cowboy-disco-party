@@ -961,6 +961,60 @@ body::after {
   font-size: 0.68rem;
 }
 
+/* Official poster frame */
+
+.poster-frame {
+  display: block;
+  margin: 0 0 var(--space-md);
+  border: 1px solid rgba(199, 167, 106, 0.3);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  background: var(--midnight);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+}
+
+/* Neutralise the legacy banner framing — .poster-frame supplies it now */
+.poster-frame .location-banner__poster,
+.poster-frame img {
+  width: 100%;
+  max-width: none;
+  height: auto;
+  display: block;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.poster-frame__caption {
+  padding: 0.85rem 1rem;
+  text-align: center;
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--champagne);
+  background: linear-gradient(180deg, rgba(199, 167, 106, 0.08), transparent);
+  border-top: 1px solid rgba(199, 167, 106, 0.18);
+}
+
+.dress-motto {
+  margin: 0 0 0.85rem;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(1.35rem, 2.6vw, 1.85rem);
+  line-height: 1.2;
+  color: var(--champagne-deep);
+}
+
+.footer-premium__presents {
+  margin: 0 0 0.9rem;
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: rgba(247, 243, 237, 0.45);
+}
+
 /* Lookbook — five dress-code looks */
 
 .lookbook {
