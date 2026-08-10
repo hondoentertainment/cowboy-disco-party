@@ -804,15 +804,18 @@
           <p>Cowboy Disco Saloon · 420 NE 72nd St, Seattle</p>
         </header>
         <figure class="location-banner poster-frame">
-          <img
-            class="location-banner__poster"
-            src="/assets/poster-official.jpg"
-            onerror="this.onerror=null;this.src='/assets/poster-party.png';this.closest('.poster-frame').classList.add('is-fallback');"
-            alt="Cowboy Disco Party poster — Hondo Entertainment presents, dress country and shine disco"
-            width="1062"
-            height="850"
-            loading="lazy"
-          >
+          <picture>
+            <source srcset="/assets/poster-official.webp" type="image/webp">
+            <img
+              class="location-banner__poster"
+              src="/assets/poster-official.jpg"
+              onerror="this.onerror=null;this.src='/assets/poster-party.png';this.closest('.poster-frame').classList.add('is-fallback');"
+              alt="Cowboy Disco Party poster — Hondo Entertainment presents, dress country and shine disco"
+              width="1402"
+              height="1122"
+              loading="lazy"
+            >
+          </picture>
           <figcaption class="poster-frame__caption">The official poster · Dress country, shine disco</figcaption>
         </figure>
         <div class="location-grid">
