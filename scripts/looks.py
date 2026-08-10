@@ -5,7 +5,7 @@ scripts/build-lookbook.py renders these into index.html and lookbook.html,
 and scripts/generate-lookbook-figures.py draws the placeholder figures, so
 the web page, the print sheet, and the artwork can never drift apart.
 
-Photo slots: assets/look-0N.jpg (900x675) plus a .webp sibling. Drop real
+Photo slots: assets/look-0N.jpg (600x900 portrait) plus a .webp sibling. Drop real
 photography at those paths and it replaces the illustrations with no code
 change.
 """

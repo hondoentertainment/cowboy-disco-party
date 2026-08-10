@@ -38,7 +38,7 @@ from PIL import Image
 ROOT = Path(__file__).resolve().parents[1]
 ASSETS = ROOT / "assets"
 
-OUT_W, OUT_H = 900, 675          # 4:3, matches the card slot
+OUT_W, OUT_H = 600, 900          # 2:3 portrait — full-figure panels
 JPEG_Q, WEBP_Q = 84, 80
 
 NAMES = [
@@ -57,7 +57,7 @@ def cover(img: Image.Image, w: int, h: int) -> Image.Image:
         img = img.crop((left, 0, left + new_w, img.height))
     else:                                           # too tall — favour the top
         new_h = int(img.width / dst_ratio)
-        top = int((img.height - new_h) * 0.28)
+        top = int((img.height - new_h) * 0.10)
         img = img.crop((0, top, img.width, top + new_h))
     return img.resize((w, h), Image.Resampling.LANCZOS)
 
