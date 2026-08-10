@@ -14,10 +14,18 @@ matching the order in scripts/looks.py:
     01 Denim Disco        02 Red-Hot Honky-Tonk   03 Outlaw Elegance
     04 Western Glam       05 Rustic Chic          06 Honky Tonk
 
+The background neon in the reference art renders as garbled lettering
+("Flave Tore... Mo") and sits against the outer left and right edges of each
+sheet, so it only ever intrudes on the first and last panel. --edge trims it
+off those outer edges before cropping; the middle panel is untouched.
+
 Options:
     --panels N      panels per sheet (default 3)
     --caption F     fraction of height that is caption band (default 0.17)
     --top F         fraction trimmed off the top (default 0.0)
+    --edge F        fraction of the SHEET width trimmed off the outer edge
+                    of the first and last panel, to drop the background
+                    neon (default 0.09)
 """
 
 from __future__ import annotations
@@ -60,6 +68,7 @@ def main() -> None:
     ap.add_argument("--panels", type=int, default=3)
     ap.add_argument("--caption", type=float, default=0.17)
     ap.add_argument("--top", type=float, default=0.0)
+    ap.add_argument("--edge", type=float, default=0.09)
     args = ap.parse_args()
 
     index = 0
@@ -76,7 +85,17 @@ def main() -> None:
             if index > len(NAMES):
                 print(f"more panels than looks — stopping at {len(NAMES)}")
                 return
-            box = (p * panel_w, top, (p + 1) * panel_w, bottom)
+            left = p * panel_w
+            right = (p + 1) * panel_w
+            # Drop the garbled background neon hugging the sheet's outer edges.
+            # Measured against sheet width, since that is where the neon sits.
+            inset = int(img.width * args.edge)
+            if p == 0:
+                left += inset
+            if p == args.panels - 1:
+                right -= inset
+
+            box = (left, top, right, bottom)
             panel = cover(img.crop(box), OUT_W, OUT_H)
 
             jpg = ASSETS / f"look-{index:02d}.jpg"
