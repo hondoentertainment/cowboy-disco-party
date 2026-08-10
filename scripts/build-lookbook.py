@@ -23,6 +23,26 @@ WEB_START = "<!-- LOOKBOOK:START -->"
 WEB_END = "<!-- LOOKBOOK:END -->"
 
 
+def figure_block(lk: dict) -> str:
+    """Photo block, emitted only when real photography exists on disk.
+
+    Without assets/look-NN.jpg the card renders as text and swatches — no
+    placeholder art. Drop the photos in and re-run this script to add them.
+    """
+    n = lk["num"]
+    if not (ROOT / "assets" / f"look-{n}.jpg").exists():
+        return ""
+    webp = ""
+    if (ROOT / "assets" / f"look-{n}.webp").exists():
+        webp = f'\n                  <source srcset="/assets/look-{n}.webp" type="image/webp">'
+    return f'''<figure class="look-card__figure">
+                <picture>{webp}
+                  <img src="/assets/look-{n}.jpg" alt="{lk['name']} — {lk['alt']}" width="900" height="675" loading="lazy" decoding="async">
+                </picture>
+              </figure>
+              '''
+
+
 def web_cards() -> str:
     out = []
     for lk in LOOKS:
@@ -32,13 +52,7 @@ def web_cards() -> str:
             for c in lk["swatches"]
         )
         out.append(f'''            <article class="look-card">
-              <figure class="look-card__figure">
-                <picture>
-                  <source srcset="/assets/look-{n}.webp" type="image/webp">
-                  <img src="/assets/look-{n}.jpg" alt="{lk['name']} — {lk['alt']}" width="900" height="675" loading="lazy" decoding="async">
-                </picture>
-              </figure>
-              <div class="look-card__top">
+              {figure_block(lk)}<div class="look-card__top">
                 <p class="look-card__num" aria-hidden="true">{n}</p>
                 <span class="look-card__swatches" aria-hidden="true">
 {swatches}
