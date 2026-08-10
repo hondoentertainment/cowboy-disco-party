@@ -37,7 +37,7 @@ def figure_block(lk: dict) -> str:
         webp = f'\n                  <source srcset="/assets/look-{n}.webp" type="image/webp">'
     return f'''<figure class="look-card__figure">
                 <picture>{webp}
-                  <img src="/assets/look-{n}.jpg" alt="{lk['name']} — {lk['alt']}" width="900" height="675" loading="lazy" decoding="async">
+                  <img src="/assets/look-{n}.jpg" alt="{lk['name']} — {lk['alt']}" width="600" height="900" loading="lazy" decoding="async">
                 </picture>
               </figure>
               '''
