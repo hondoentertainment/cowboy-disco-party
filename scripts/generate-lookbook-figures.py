@@ -260,40 +260,47 @@ def make_look(index: int, look: dict) -> None:
 
 
 LOOKS = [
-    {  # 01 Midnight Rhinestone Cowboy
-        "accent": (150, 150, 165),
-        "hat": (24, 24, 26), "top": (30, 30, 33), "bottom": (22, 22, 25),
-        "boot": (16, 16, 18), "metal": (192, 200, 212), "hair": (40, 34, 30),
-        "jacket": (48, 48, 54), "bottom_f": "dress",
-        "sparkle": (232, 236, 242), "fringe_arms": True,
-    },
-    {  # 02 Studio 54 Goes West
-        "accent": CHAMPAGNE,
-        "hat": (236, 228, 210), "top": (243, 238, 226), "bottom": (150, 112, 74),
-        "boot": (238, 232, 218), "metal": CHAMPAGNE, "hair": (58, 42, 30),
-        "jacket": (196, 162, 110), "bottom_f": "dress",
-        "sparkle": CHAMPAGNE_LIGHT, "flare": True,
-    },
-    {  # 03 Electric Blue Rodeo
-        "accent": (60, 120, 205),
-        "hat": (238, 240, 244), "top": (31, 111, 208), "bottom": (26, 38, 60),
-        "boot": (206, 212, 222), "metal": (200, 208, 220), "hair": (44, 34, 28),
-        "jacket": (11, 79, 168), "bottom_f": "dress",
-        "sparkle": (226, 236, 250), "fringe_hem": True,
-    },
-    {  # 04 Denim Disco
+    {  # 01 Denim Disco
         "accent": (110, 140, 180),
         "hat": (58, 74, 96), "top": (43, 63, 92), "bottom": (125, 156, 196),
-        "boot": (198, 206, 218), "metal": (196, 204, 216), "hair": (52, 40, 32),
+        "boot": (150, 108, 70), "metal": (196, 204, 216), "hair": (52, 40, 32),
         "jacket": (70, 96, 132), "bottom_f": "trousers",
         "sparkle": (222, 232, 244), "flare": True, "fringe_arms": True,
     },
-    {  # 05 Red-Hot Honky-Tonk
+    {  # 02 Red-Hot Honky-Tonk
         "accent": (175, 55, 60),
         "hat": (22, 22, 24), "top": (24, 24, 27), "bottom": (24, 24, 27),
         "boot": (18, 18, 20), "metal": (198, 206, 218), "hair": (38, 30, 26),
         "jacket": (179, 39, 45), "bottom_f": "dress",
         "sparkle": (240, 200, 200), "fringe_hem": True,
+    },
+    {  # 03 Outlaw Elegance
+        "accent": (120, 132, 140),
+        "hat": (26, 26, 28), "top": (49, 51, 58), "bottom": (28, 28, 31),
+        "boot": (20, 20, 22), "metal": (58, 168, 160), "hair": (44, 34, 28),
+        "jacket": (34, 34, 38), "bottom_f": "dress",
+        "sparkle": (226, 232, 240),
+    },
+    {  # 04 Western Glam
+        "accent": (150, 150, 165),
+        "hat": (232, 236, 242), "top": (26, 26, 29), "bottom": (22, 22, 25),
+        "boot": (18, 18, 20), "metal": (200, 208, 220), "hair": (40, 34, 30),
+        "jacket": (150, 158, 170), "bottom_f": "dress",
+        "sparkle": (240, 244, 250), "fringe_arms": True,
+    },
+    {  # 05 Rustic Chic
+        "accent": (199, 167, 106),
+        "hat": (240, 231, 214), "top": (243, 238, 226), "bottom": (138, 95, 56),
+        "boot": (238, 232, 218), "metal": (199, 167, 106), "hair": (58, 42, 30),
+        "jacket": (226, 210, 182), "bottom_f": "dress",
+        "sparkle": (232, 214, 168), "flare": True,
+    },
+    {  # 06 Honky Tonk
+        "accent": (52, 96, 205),
+        "hat": (236, 238, 244), "top": (26, 73, 184), "bottom": (32, 44, 68),
+        "boot": (212, 218, 228), "metal": (206, 212, 222), "hair": (46, 36, 28),
+        "jacket": (47, 111, 208), "bottom_f": "dress",
+        "sparkle": (226, 236, 250), "fringe_hem": True,
     },
 ]
 
