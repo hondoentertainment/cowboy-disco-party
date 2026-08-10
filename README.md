@@ -149,6 +149,8 @@ Run `python scripts/pre-party-check.py` for an automated smoke test plus this li
 - Party playlist: `js/config.js` → `SPOTIFY_PLAYLIST_URL` — set to reveal the "Hear the Party Playlist" button in the schedule section
 - Ambient music: `js/config.js` → `AMBIENT_AUDIO_URL` — point at an audio file to reveal the sound toggle (never autoplays; the guest's choice is remembered)
 - QR codes: `python scripts/generate-qr.py` regenerates all four branded codes (site, gallery, vote, ice breakers) from `SITE_URL`
+- Dress-code looks: edit `scripts/looks.py`, then `python scripts/build-lookbook.py` to update both the web lookbook and the print sheet
+- Look photos: `python scripts/crop-look-photos.py SHEET_A.png SHEET_B.png` slices wide 3-panel reference art into `assets/look-01..06.jpg` (+ webp). Without it, generated illustrations are used
 - Analytics: enable **Analytics** and **Speed Insights** in the Vercel dashboard — the script tags are already on the guest pages and stay inert until you switch them on
 - Webfonts are self-hosted in `assets/fonts/` — refresh with `python scripts/fetch-fonts.py`
 
