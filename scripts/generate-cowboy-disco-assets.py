@@ -169,7 +169,6 @@ def generate_drink_list() -> None:
 
     drinks = [
         ("Rusty Spur Fizz", "Bourbon, ginger beer, lime, cherry"),
-        ("Mirror Ball Mule", "Vodka, ginger beer, mint, lime"),
         ("Disco Cowboy", "Tequila, pineapple, coconut cream"),
         ("Saddle Up Spritz", "Prosecco, Aperol, orange slice"),
         ("Two-Step Tonic", "Gin, elderflower, tonic, lemon"),
