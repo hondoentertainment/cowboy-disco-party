@@ -63,11 +63,11 @@ def update_config(day: datetime) -> None:
 def replace_in_html(day: datetime) -> None:
     label = display_date(day)
     short = short_date(day)
-    hero = f"{short} · 6:30 PM"
+    hero = f"{short} · 6:00 PM"
     title = f"Cowboy Disco Party | {short}"
 
     replacements = [
-        ("Date TBD · 6:30 PM", hero),
+        ("Date TBD · 6:00 PM", hero),
         ("Date TBD", short),
         ("date TBD", short),
         ("Date TBD —", f"{short} —"),
@@ -76,7 +76,7 @@ def replace_in_html(day: datetime) -> None:
         ("Party schedule — date TBD", f"Party schedule — {short}"),
         ("<td>TBD</td>", f"<td>{short}</td>"),
         ("Date Coming Soon", "Party Countdown"),
-        ("Check back for the official party date — saddle up now.", f"See you {label} at 6:30 PM — saddle up now."),
+        ("Check back for the official party date — saddle up now.", f"See you {label} at 6:00 PM — saddle up now."),
         ("Mark your calendar and break out the boots.", f"Mark your calendar for {label} and break out the boots."),
         (f"Date TBD — here's how the night unfolds once we set it.", f"{short} — here's how the night unfolds."),
     ]

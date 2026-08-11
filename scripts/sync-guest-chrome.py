@@ -31,7 +31,7 @@ CANONICAL_FOOTER = """  <footer class="site-footer site-footer--premium">
         <a href="poll.html">Next Party</a>
       </nav>
       <div class="footer-premium__credits">
-        <span>Sep 19, 2026 · 6:30 PM · Cowboy Disco Saloon</span>
+        <span>Sep 19, 2026 · 6:00 PM · Cowboy Disco Saloon</span>
         <span>© Cowboy Disco Party</span>
         <span class="footer-premium__photo-credit">Editorial photography via <a href="https://unsplash.com" rel="noopener noreferrer">Unsplash</a></span>
       </div>
@@ -77,10 +77,10 @@ def patch_footer(html: str, page: str) -> str:
                 "      </div>",
             )
         credits = html
-        if "6:30 PM" not in credits.split("footer-premium__credits")[1].split("</div>")[0]:
+        if "6:00 PM" not in credits.split("footer-premium__credits")[1].split("</div>")[0]:
             html = html.replace(
                 "<span>Sep 19, 2026 · Cowboy Disco Saloon</span>",
-                "<span>Sep 19, 2026 · 6:30 PM · Cowboy Disco Saloon</span>",
+                "<span>Sep 19, 2026 · 6:00 PM · Cowboy Disco Saloon</span>",
             )
         return html
 

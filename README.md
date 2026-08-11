@@ -1,6 +1,6 @@
 # Cowboy Disco Party
 
-Event website for the **Cowboy Disco Party** — **Saturday, September 19, 2026** · **6:30 PM** · **420 NE 72nd St, Seattle, WA 98115**.
+Event website for the **Cowboy Disco Party** — **Saturday, September 19, 2026** · **6:00 PM** · **420 NE 72nd St, Seattle, WA 98115**.
 
 **Live site:** [cowboy-disco-party.vercel.app](https://cowboy-disco-party.vercel.app)
 
@@ -158,7 +158,7 @@ When the date is set:
 
 ```javascript
 PARTY_DATE_TBD: false,
-PARTY_DATE: "2026-XX-XXT18:30:00-07:00",
+PARTY_DATE: "2026-XX-XXT18:00:00-07:00",
 PARTY_END: "2026-XX-XXT22:00:00-07:00",
 VOTE_CLOSE_TIME: "2026-XX-XXT21:00:00-07:00",
 ```

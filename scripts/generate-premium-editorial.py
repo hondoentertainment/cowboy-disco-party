@@ -459,7 +459,7 @@ def og_card() -> None:
     draw.text((x, 448), "Where Studio 54 meets the Wild West.", font=sub, fill=(214, 206, 194))
 
     draw.line((x, 526, x + 560, 526), fill=(*CHAMPAGNE, 255), width=2)
-    draw.text((x, 546), "SAT SEP 19, 2026  ·  6:30 PM  ·  420 NE 72ND ST", font=meta, fill=CHAMPAGNE)
+    draw.text((x, 546), "SAT SEP 19, 2026  ·  6:00 PM  ·  420 NE 72ND ST", font=meta, fill=CHAMPAGNE)
 
     img = add_bokeh(img, [(0.62, 0.18, 6, 110), (0.55, 0.55, 5, 80), (0.72, 0.75, 7, 70), (0.92, 0.6, 5, 90)])
     img = add_grain_and_vignette(img, vignette=0.7)
