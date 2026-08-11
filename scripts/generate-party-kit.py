@@ -121,7 +121,7 @@ def generate_invite_card() -> None:
 
     draw.line((500, 820, w - 500, 820), fill=GOLD, width=3)
     draw.text((w // 2, 920), "Saturday, September 19, 2026", font=body, fill=INK, anchor="mm")
-    draw.text((w // 2, 990), "6:30 PM", font=body, fill=INK, anchor="mm")
+    draw.text((w // 2, 990), "6:00 PM", font=body, fill=INK, anchor="mm")
 
     tagline = "Boots, bling, and two-step under the mirror ball."
     for i, line in enumerate(wrap_text(draw, tagline, small, w - 280)):
@@ -187,7 +187,7 @@ def generate_schedule_card() -> None:
     draw.text((w // 2, 200), "Saturday, September 19, 2026", font=sub, fill=MUTED, anchor="mm")
 
     rows = [
-        ("6:30 PM", "Doors open - music on"),
+        ("6:00 PM", "Doors open - music on"),
         ("7:30 PM", "Ice breakers"),
         ("8:15 PM", "Warm-up round"),
         ("8:30 PM", "Outfit contest - number tags"),
@@ -234,7 +234,7 @@ def generate_party_kit_pdf() -> None:
     pdf.set_font("Helvetica", "B", 36)
     pdf.cell(0, 16, "Cowboy Disco Party", ln=True, align="C")
     pdf.set_font("Helvetica", "", 16)
-    pdf.cell(0, 10, "Saturday, September 19, 2026 | 6:30 PM", ln=True, align="C")
+    pdf.cell(0, 10, "Saturday, September 19, 2026 | 6:00 PM", ln=True, align="C")
     pdf.ln(8)
     pdf.set_font("Helvetica", "I", 13)
     pdf.multi_cell(0, 8, "Boots, bling, and two-step under the mirror ball.", align="C")
@@ -299,7 +299,7 @@ def generate_party_kit_pdf() -> None:
     pdf.cell(0, 8, "Saturday, September 19, 2026", ln=True, align="C")
     pdf.ln(6)
     for time_label, label in [
-        ("6:30 PM", "Doors open - music on"),
+        ("6:00 PM", "Doors open - music on"),
         ("7:30 PM", "Ice breakers"),
         ("8:15 PM", "Warm-up round"),
         ("8:30 PM", "Outfit contest - number tags"),
