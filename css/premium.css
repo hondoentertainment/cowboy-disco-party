@@ -2381,3 +2381,21 @@ h3,
     padding: 0.7rem;
   }
 }
+
+/* Host dashboard: signage preview lives here now, not on the guest page */
+
+.host-block__note {
+  margin: 0 0 1rem;
+  font-size: 0.85rem;
+  line-height: 1.55;
+  color: var(--text-muted);
+}
+
+.host-block .signage-grid {
+  margin-bottom: 1.25rem;
+}
+
+.host-block .signage-card figcaption {
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+}
