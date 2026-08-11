@@ -470,24 +470,42 @@ def og_card() -> None:
 
 
 def main() -> None:
+    """Draw only the slots that no real image has taken over.
+
+    Every slot here started as an illustration and has since been replaced by
+    photography, so this script is a fallback generator now. Each entry below
+    names the file that proves a real image owns the slot; when that file is
+    present the illustration is skipped rather than written over it.
+    """
     ASSETS.mkdir(parents=True, exist_ok=True)
-    if (ASSETS / "stock-credits.json").exists():
-        # The atmosphere/wardrobe/cocktails/dance slots are stock-photo
-        # managed (scripts/fetch-stock-editorial.py) — only regenerate the
-        # illustration-only assets so the photos are never overwritten.
-        editorial_photobooth()
-        editorial_highlights()
-        og_card()
-        print("Stock photos present — regenerated photobooth, highlights, and OG card only")
-        return
-    editorial_atmosphere()
-    editorial_wardrobe()
-    editorial_cocktails()
-    editorial_dancefloor()
-    editorial_photobooth()
-    editorial_highlights()
-    og_card()
-    print("Premium editorial assets written to assets/")
+
+    stock = ASSETS / "stock-credits.json"
+    slots = [
+        # (function, marker that a real image owns this slot)
+        (editorial_atmosphere, stock),
+        (editorial_wardrobe, stock),
+        (editorial_cocktails, stock),
+        (editorial_dancefloor, stock),
+        # scripts/crop-moment-photos.py writes a .webp beside each .jpg;
+        # the illustrations only ever wrote .jpg.
+        (editorial_photobooth, ASSETS / "editorial-photobooth.webp"),
+        (editorial_highlights, ASSETS / "editorial-highlights.webp"),
+        # scripts/build-og-card.py derives the share card from the poster.
+        (og_card, ASSETS / "poster-official.jpg"),
+    ]
+
+    drawn, skipped = [], []
+    for fn, marker in slots:
+        name = fn.__name__
+        if marker.exists():
+            skipped.append(name)
+            continue
+        fn()
+        drawn.append(name)
+
+    print(f"drew: {', '.join(drawn) or 'nothing'}")
+    if skipped:
+        print(f"skipped (real imagery in place): {', '.join(skipped)}")
 
 
 if __name__ == "__main__":
