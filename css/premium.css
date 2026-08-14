@@ -1067,11 +1067,6 @@ body::after {
   color: var(--text-muted-dark);
 }
 
-.lookbook__actions {
-  margin: -0.75rem 0 var(--space-lg);
-  text-align: center;
-}
-
 .lookbook__grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr));
