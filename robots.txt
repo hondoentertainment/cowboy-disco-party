@@ -5,6 +5,18 @@ Disallow: /host.html
 Disallow: /plan.html
 Disallow: /poll-results.html
 Disallow: /mobile-test.html
+Disallow: /invite.html
+Disallow: /invite-card.html
+Disallow: /lookbook.html
+Disallow: /numbers.html
+Disallow: /party-kit.html
+Disallow: /party-night.html
+Disallow: /print-pack.html
+Disallow: /qr.html
+Disallow: /qr-pack.html
+Disallow: /schedule-card.html
+Disallow: /signs.html
+Disallow: /slideshow.html
 Disallow: /api/
 
 Sitemap: https://cowboy-disco-party.vercel.app/sitemap.xml
