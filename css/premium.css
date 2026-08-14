@@ -189,13 +189,23 @@ body::after {
 
 .hero--premium {
   position: relative;
-  min-height: min(82svh, 760px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  min-height: 0;
+  display: block;
   padding: 0;
-  overflow: hidden;
+  overflow: visible;
   text-align: center;
+}
+
+.hero__poster-frame {
+  margin: 0 0 2rem;
+}
+
+.hero__poster-frame img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  object-position: center;
+  display: block;
 }
 
 .hero--premium::before {
