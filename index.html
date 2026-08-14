@@ -20,7 +20,7 @@
   <link rel="stylesheet" href="css/fonts.css">
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/cormorant-garamond-500.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/dm-sans-400.woff2" crossorigin>
-  <link rel="preload" as="image" href="/assets/poster.webp" type="image/webp" fetchpriority="high">
+  <link rel="preload" as="image" href="/assets/poster-official.webp" type="image/webp" fetchpriority="high">
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/premium.css">
   <link rel="icon" href="/assets/brand-mark.svg" type="image/svg+xml">
@@ -104,8 +104,6 @@
               <li><a href="print-pack.html">Print Pack</a></li>
               <li><a href="party-night.html">Party Night Setup</a></li>
               <li><a href="signs.html">Print Signs</a></li>
-              <li><a href="#qr">QR Code</a></li>
-              <li><a href="qr-pack.html">QR Pack</a></li>
               <li><a href="#faq">FAQ</a></li>
               <li><a href="poll.html">Next Party Poll</a></li>
             </ul>
@@ -137,21 +135,22 @@
 
   <main id="main">
     <section class="hero hero--premium" id="top">
-      <div class="hero__visual" aria-hidden="true">
-        <picture>
-          <source srcset="/assets/poster.webp" type="image/webp">
-          <img class="hero__visual-img" src="/assets/poster-hero.jpg" alt="Lighted disco mirror balls in golden salon light" width="1200" height="800" fetchpriority="high">
-        </picture>
-        <div class="hero__shade"></div>
-        <div class="hero__sweep"></div>
-        <div class="hero__rhinestones" data-rhinestones></div>
-        <div class="hero__disco-reflections">
-          <span class="disco-reflection disco-reflection--1"></span>
-          <span class="disco-reflection disco-reflection--2"></span>
-          <span class="disco-reflection disco-reflection--3"></span>
-        </div>
-      </div>
       <div class="hero__inner hero__inner--premium">
+        <figure class="hero__poster-frame poster-frame">
+          <picture>
+            <source srcset="/assets/poster-official.webp" type="image/webp">
+            <img
+              class="hero__poster"
+              src="/assets/poster-official.jpg"
+              onerror="this.onerror=null;this.src='/assets/poster-party.png';this.closest('.poster-frame').classList.add('is-fallback');"
+              alt="Cowboy Disco Party poster — Hondo Entertainment presents, dress country and shine disco"
+              width="1402"
+              height="1122"
+              fetchpriority="high"
+            >
+          </picture>
+          <figcaption class="poster-frame__caption">The official poster · Dress country, shine disco</figcaption>
+        </figure>
         <div class="hero__content hero__content--premium">
           <p class="hero__eyebrow-premium">Cowboy Disco Saloon · Seattle</p>
           <h1 class="hero__headline">Cowboy Disco</h1>
@@ -731,7 +730,6 @@
             <div class="menu-actions__buttons">
               <a class="btn btn--primary" href="/assets/menu.pdf" target="_blank" rel="noopener noreferrer">Open Menu PDF</a>
               <a class="btn btn--secondary" href="/assets/menu.pdf" download="cowboy-disco-party-menu.pdf">Download PDF</a>
-              <a class="btn btn--secondary" href="signs.html#food-labels">Print Food Labels</a>
             </div>
           </div>
         </div>
@@ -795,21 +793,6 @@
           <h2>Location</h2>
           <p>Cowboy Disco Saloon · 420 NE 72nd St, Seattle</p>
         </header>
-        <figure class="location-banner poster-frame">
-          <picture>
-            <source srcset="/assets/poster-official.webp" type="image/webp">
-            <img
-              class="location-banner__poster"
-              src="/assets/poster-official.jpg"
-              onerror="this.onerror=null;this.src='/assets/poster-party.png';this.closest('.poster-frame').classList.add('is-fallback');"
-              alt="Cowboy Disco Party poster — Hondo Entertainment presents, dress country and shine disco"
-              width="1402"
-              height="1122"
-              loading="lazy"
-            >
-          </picture>
-          <figcaption class="poster-frame__caption">The official poster · Dress country, shine disco</figcaption>
-        </figure>
         <div class="location-grid">
           <div class="location-info">
             <h3>Getting There</h3>

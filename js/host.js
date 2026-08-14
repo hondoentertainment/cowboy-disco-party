@@ -2,12 +2,7 @@
   "use strict";
 
   var STORAGE_KEY = "cdp-host-checklist";
-  var adminCode = sessionStorage.getItem("cdp-admin-code") || "";
 
-  var codeForm = document.getElementById("host-code-form");
-  var codeInput = document.getElementById("host-code");
-  var dashboard = document.getElementById("host-dashboard");
-  var status = document.getElementById("host-status");
   var systemStatus = document.getElementById("host-system-status");
   var voteStatus = document.getElementById("host-vote-status");
   var voteLeaderboard = document.getElementById("host-vote-leaderboard");
@@ -27,14 +22,6 @@
     "Open Ice Breakers full-screen for warm-ups",
     "Review party-night run-of-show (/party-night.html)",
   ];
-
-  function setStatus(message, type) {
-    if (!status) {
-      return;
-    }
-    status.textContent = message;
-    status.className = "form-note" + (type ? " form-note--" + type : "");
-  }
 
   function formatContestant(item) {
     if (item.number != null) {
@@ -204,46 +191,6 @@
           copyInviteBtn.textContent = "Copy invite text";
         }, 2000);
       });
-    });
-  }
-
-  if (codeForm && codeInput) {
-    if (adminCode) {
-      codeInput.value = adminCode;
-      if (dashboard) {
-        dashboard.classList.remove("is-hidden");
-      }
-    }
-
-    codeForm.addEventListener("submit", function (event) {
-      event.preventDefault();
-      adminCode = codeInput.value.trim();
-      if (!adminCode) {
-        setStatus("Enter the host admin code.", "error");
-        return;
-      }
-
-      fetch("/api/poll?admin=1&code=" + encodeURIComponent(adminCode))
-        .then(function (response) {
-          return response.json().then(function (data) {
-            if (!response.ok) {
-              throw new Error(data.error || "Invalid admin code.");
-            }
-            return data;
-          });
-        })
-        .then(function () {
-          sessionStorage.setItem("cdp-admin-code", adminCode);
-          if (dashboard) {
-            dashboard.classList.remove("is-hidden");
-          }
-          setStatus("Host dashboard unlocked.", "success");
-          loadSystemStatus();
-          loadVoteStatus();
-        })
-        .catch(function (error) {
-          setStatus(error.message, "error");
-        });
     });
   }
 
