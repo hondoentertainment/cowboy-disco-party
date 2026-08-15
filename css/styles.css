@@ -2834,7 +2834,10 @@ a:hover {
     flex-direction: column;
     align-items: stretch;
     gap: 0;
-    padding: 0.75rem 1rem 1rem;
+    max-height: calc(100dvh - var(--header-height));
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 0.75rem 1rem max(1rem, env(safe-area-inset-bottom));
     background: var(--cream);
     border-bottom: 3px solid var(--denim);
     box-shadow: 0 8px 24px var(--shadow);
@@ -2887,13 +2890,20 @@ a:hover {
 }
 
 @media (max-width: 640px) {
+  .countdown {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.4rem;
+    width: 100%;
+  }
+
   .countdown__unit {
-    min-width: 64px;
-    padding: 0.75rem 0.5rem;
+    min-width: 0;
+    padding: 0.65rem 0.25rem;
   }
 
   .countdown__value {
-    font-size: 1.75rem;
+    font-size: 1.45rem;
   }
 
   .hero {
@@ -2901,12 +2911,44 @@ a:hover {
   }
 
   .section {
-    padding: 3rem 0;
+    padding: 2.5rem 0;
   }
 
   .location-arrow {
     padding: 1rem 2.5rem 1rem 1.5rem;
     font-size: 1.1rem;
+  }
+
+  .location-info > .btn,
+  .menu-actions__buttons .btn,
+  .host-links .btn,
+  .ice-breaker-toolbar .btn,
+  .hero__actions .btn {
+    width: 100%;
+  }
+
+  .menu-actions__buttons,
+  .host-links {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .location-info > .btn + .btn,
+  .location-info .location-directions + .location-directions {
+    margin-left: 0;
+    margin-top: 0.75rem;
+  }
+
+  .host-block {
+    padding: 1.15rem 1rem;
+  }
+
+  .poll-form {
+    padding: 1.25rem 1rem;
+  }
+
+  .location-map iframe {
+    min-height: 240px;
   }
 }
 
@@ -2962,7 +3004,7 @@ a:hover {
 
 .ice-breaker-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr));
   gap: 1rem;
   margin: 0;
   padding: 0;
