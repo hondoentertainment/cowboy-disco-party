@@ -90,8 +90,7 @@ body::after {
   }
 
   .hero__visual-img,
-  .disco-reflection,
-  .hero__disco-orb {
+  .disco-reflection {
     animation: none !important;
   }
 }
@@ -375,23 +374,6 @@ body::after {
   margin-bottom: 1rem;
 }
 
-.hero__disco-orb {
-  display: flex;
-  justify-content: center;
-  margin-top: 0.5rem;
-}
-
-.hero__disco-orb img {
-  width: 3rem;
-  height: 3rem;
-  filter: drop-shadow(0 0 24px rgba(199, 167, 106, 0.5));
-  animation: orb-float 5s ease-in-out infinite;
-}
-
-@keyframes orb-float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
-}
 
 /* Buttons */
 
