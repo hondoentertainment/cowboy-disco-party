@@ -92,7 +92,7 @@
     document.body.classList.add("is-party-live");
 
     if (heroStatus) {
-      heroStatus.textContent = "Party night is live — scan the QR for photos, ice breakers, and votes.";
+      heroStatus.textContent = "Party night is live — open Gallery, Vote, or Ice Breakers from the menu.";
       heroStatus.classList.remove("is-hidden");
     }
 
@@ -222,13 +222,6 @@
       link.target = "_blank";
       link.rel = "noopener noreferrer";
     });
-
-    const rsvpDirections = document.getElementById("rsvp-directions");
-    if (rsvpDirections) {
-      rsvpDirections.textContent = "Directions";
-      rsvpDirections.classList.remove("btn--rsvp");
-      rsvpDirections.classList.add("btn--ghost");
-    }
   }
 
   /* --- One-tap share ------------------------------------------------------

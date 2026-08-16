@@ -374,6 +374,28 @@ body::after {
   margin-bottom: 1rem;
 }
 
+@media (min-width: 961px) {
+  .hero__inner--premium {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(20rem, 0.9fr);
+    gap: 2.5rem 3rem;
+    align-items: center;
+  }
+
+  .hero__poster-frame {
+    margin: 0;
+  }
+
+  .hero__content--premium {
+    text-align: left;
+  }
+
+  .hero--premium .countdown,
+  .hero--premium .hero__actions {
+    justify-content: flex-start;
+  }
+}
+
 
 /* Buttons */
 
@@ -564,6 +586,14 @@ body::after {
   color: var(--text-muted-dark);
 }
 
+.section--ivory .facts-more a {
+  color: var(--leather);
+}
+
+.section--ivory .facts-more a:hover {
+  color: var(--champagne-ink);
+}
+
 .section--ivory .section__eyebrow {
   color: var(--leather);
 }
@@ -699,10 +729,6 @@ body::after {
 }
 
 .schedule-table td:first-child {
-  display: none;
-}
-
-.schedule-table td:nth-child(2) {
   font-family: var(--font-serif);
   font-size: 1.15rem;
   color: var(--champagne);
@@ -711,7 +737,7 @@ body::after {
   border: none;
 }
 
-.schedule-table td:nth-child(3) {
+.schedule-table td:nth-child(2) {
   font-size: 1rem;
   color: var(--ivory);
   padding: 0;
@@ -719,7 +745,7 @@ body::after {
   align-self: center;
 }
 
-.schedule-table__end td:nth-child(3) {
+.schedule-table__end td:nth-child(2) {
   font-weight: 600;
   color: var(--champagne);
 }
@@ -1330,6 +1356,50 @@ body::after {
   border-color: rgba(199, 167, 106, 0.2);
 }
 
+.qr-promo > summary {
+  list-style: none;
+  cursor: pointer;
+}
+
+.qr-promo > summary::-webkit-details-marker {
+  display: none;
+}
+
+.qr-promo__summary {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.qr-promo__summary h3 {
+  margin: 0;
+}
+
+.qr-promo__summary p {
+  margin: 0;
+}
+
+.qr-promo__summary::after {
+  content: "Show door codes";
+  align-self: flex-start;
+  margin-top: 0.65rem;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--champagne);
+}
+
+.qr-promo[open] .qr-promo__summary::after {
+  content: "Hide door codes";
+}
+
+.qr-promo[open] .qr-deck,
+.qr-promo[open] .qr-promo__actions,
+.qr-promo[open] .qr-block__url {
+  margin-top: 1.25rem;
+}
+
 /* FAQ */
 
 .section--faq {
@@ -1565,8 +1635,14 @@ a:hover {
   }
 
   .hero--premium .hero__actions {
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     align-items: stretch;
+  }
+
+  .hero--premium .hero__actions .btn--rsvp,
+  .hero--premium .hero__actions [data-share] {
+    grid-column: 1 / -1;
   }
 
   .footer-premium__credits {
