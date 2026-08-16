@@ -374,6 +374,28 @@ body::after {
   margin-bottom: 1rem;
 }
 
+@media (min-width: 961px) {
+  .hero__inner--premium {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(20rem, 0.9fr);
+    gap: 2.5rem 3rem;
+    align-items: center;
+  }
+
+  .hero__poster-frame {
+    margin: 0;
+  }
+
+  .hero__content--premium {
+    text-align: left;
+  }
+
+  .hero--premium .countdown,
+  .hero--premium .hero__actions {
+    justify-content: flex-start;
+  }
+}
+
 
 /* Buttons */
 

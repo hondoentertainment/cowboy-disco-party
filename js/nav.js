@@ -78,6 +78,9 @@
     if (file === "" || file === "index.html" || file === "index") {
       return "index.html";
     }
+    if (file.indexOf(".") === -1) {
+      file += ".html";
+    }
     return file;
   }
 
@@ -108,7 +111,7 @@
       "</a>" +
       '<a class="guest-dock__item" data-dock="ice-breaker.html" href="ice-breaker.html">' +
         '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-12.4 7.55L3 20.5l1.45-5.6A8.5 8.5 0 1 1 21 11.5z"/><path d="M8.5 10.25h7M8.5 13.25h4.5"/></svg>' +
-        "<span>Ice</span>" +
+        "<span>Breakers</span>" +
       "</a>" +
       '<a class="guest-dock__item" data-dock="location" href="' + mapHref + '">' +
         '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.2 7-11.2A7 7 0 0 0 5 9.8C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.8" r="2.4"/></svg>' +

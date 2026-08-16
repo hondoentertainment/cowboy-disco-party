@@ -3340,9 +3340,14 @@ body.is-nav-open {
     color: var(--champagne, #c7a76a);
   }
 
+  .guest-dock__item[aria-current="page"] {
+    background: rgba(199, 167, 106, 0.12);
+    border-radius: 0.65rem;
+  }
+
   .has-guest-dock .back-to-top,
   .has-guest-dock .ambient-toggle {
-    bottom: calc(4.75rem + env(safe-area-inset-bottom));
+    bottom: calc(5.35rem + env(safe-area-inset-bottom));
   }
 
   .has-guest-dock .back-to-top {
