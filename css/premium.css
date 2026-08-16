@@ -1061,7 +1061,7 @@ body::after {
 
 .lookbook__grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(19rem, 100%), 1fr));
   gap: 1.25rem;
 }
 
@@ -2385,4 +2385,87 @@ h3,
 .host-block .signage-card figcaption {
   font-size: 0.68rem;
   letter-spacing: 0.14em;
+}
+
+/* —— Mobile presentation —— */
+
+@media (max-width: 640px) {
+  .hero__inner--premium {
+    width: min(100% - 1.5rem, var(--max-width));
+    padding: calc(var(--header-height) + 0.75rem) 0 1.75rem;
+  }
+
+  .hero__poster-frame {
+    max-width: 20rem;
+    margin: 0 auto 1.15rem;
+  }
+
+  .poster-frame__caption {
+    padding: 0.65rem 0.75rem;
+    font-size: 0.58rem;
+    letter-spacing: 0.14em;
+  }
+
+  .hero__headline {
+    font-size: clamp(2.35rem, 13vw, 3.25rem);
+    letter-spacing: 0.1em;
+  }
+
+  .hero__subhead {
+    font-size: 1.15rem;
+  }
+
+  .hero__meta {
+    margin-bottom: 1.1rem;
+    font-size: 0.7rem;
+  }
+
+  .hero--premium .countdown {
+    margin-bottom: 1.15rem;
+  }
+
+  .hero--premium .countdown__unit {
+    min-width: 0;
+    padding: 0.6rem 0.2rem;
+  }
+
+  .hero--premium .countdown__value {
+    font-size: 1.4rem;
+  }
+
+  .hero--premium .hero__actions {
+    gap: 0.6rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .lookbook__header,
+  .bar-menu__header {
+    gap: 0.75rem;
+  }
+
+  .lookbook__header h3,
+  .bar-menu__header h3 {
+    white-space: normal;
+    text-align: center;
+  }
+
+  .qr-tile img {
+    max-width: none;
+  }
+
+  .qr-promo {
+    padding: 1.15rem;
+  }
+
+  .footer-premium__nav {
+    gap: 0.85rem 1.25rem;
+  }
+
+  .poll-form {
+    padding: 1.25rem 1rem;
+  }
+
+  .ice-breaker-toolbar .btn {
+    width: 100%;
+  }
 }

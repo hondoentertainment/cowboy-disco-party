@@ -1,4 +1,4 @@
-const CACHE = "cdp-v52";
+const CACHE = "cdp-v53";
 const ASSETS = [
   "/",
   "/index.html",
