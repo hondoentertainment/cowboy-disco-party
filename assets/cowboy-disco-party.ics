@@ -9,8 +9,8 @@ DTSTAMP:20260607T120000Z
 DTSTART;TZID=America/Los_Angeles:20260919T180000
 DTEND;TZID=America/Los_Angeles:20260919T220000
 SUMMARY:Cowboy Disco Party
-DESCRIPTION:Where Studio 54 meets the Wild West. Doors 6:00 PM at the Cowboy Disco Saloon\, 420 NE 72nd St\, Seattle. Site: https://cowboy-disco-party.vercel.app
-LOCATION:420 NE 72nd St\, Seattle\, WA 98115
+DESCRIPTION:Where Studio 54 meets the Wild West. Doors 6:00 PM at the Cowboy Disco Saloon\, Green Lake Village East\, 427 NE 72nd St\, Seattle. Site: https://cowboy-disco-party.vercel.app
+LOCATION:Green Lake Village East\, 427 NE 72nd St\, Seattle\, WA 98115
 URL:https://cowboy-disco-party.vercel.app
 END:VEVENT
 END:VCALENDAR

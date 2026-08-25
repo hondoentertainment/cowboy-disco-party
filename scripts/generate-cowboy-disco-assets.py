@@ -111,7 +111,7 @@ def generate_poster() -> None:
     arrow_y = h - 180
     band_font = load_font(40, bold=True)
     draw.rectangle((80, arrow_y + 30, w - 80, arrow_y + 90), fill=GOLD)
-    centered_text(draw, "420 NE 72nd St · Seattle", arrow_y + 38, w, band_font, BROWN)
+    centered_text(draw, "427 NE 72nd St · Seattle", arrow_y + 38, w, band_font, BROWN)
 
     draw.rectangle((40, 40, w - 40, h - 40), outline=GOLD, width=8)
     img.save(ASSETS / "poster-party.png", optimize=True)
@@ -125,7 +125,8 @@ def generate_entrance_sign() -> None:
 
     y = 90
     y = centered_text(draw, "COWBOY DISCO PARTY", y, w, load_font(64, bold=True), BROWN) + 30
-    y = centered_text(draw, "420 NE 72nd St · Seattle", y, w, load_font(40, bold=True), GOLD) + 70
+    y = centered_text(draw, "Green Lake Village East", y, w, load_font(36, bold=True), GOLD) + 16
+    y = centered_text(draw, "427 NE 72nd St · Seattle", y, w, load_font(40, bold=True), GOLD) + 54
 
     lines = [
         "Welcome, partners — you made it.",
@@ -148,7 +149,7 @@ def generate_apartment_sign() -> None:
 
     y = 120
     y = centered_text(draw, "COWBOY DISCO SALOON", y, w, load_font(72, bold=True), GOLD) + 20
-    y = centered_text(draw, "420 NE 72nd St · Seattle", y, w, load_font(44, bold=True), LIGHT_GOLD) + 30
+    y = centered_text(draw, "427 NE 72nd St · Seattle", y, w, load_font(44, bold=True), LIGHT_GOLD) + 30
     centered_text(draw, "This way to the dance floor →", y, w, load_font(36), CREAM)
 
     for i in range(5):

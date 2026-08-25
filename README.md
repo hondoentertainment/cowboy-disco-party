@@ -1,6 +1,6 @@
 # Cowboy Disco Party
 
-Event website for the **Cowboy Disco Party** — **Saturday, September 19, 2026** · **6:00 PM** · **420 NE 72nd St, Seattle, WA 98115**.
+Event website for the **Cowboy Disco Party** — **Saturday, September 19, 2026** · **6:00 PM** · **Green Lake Village East, 427 NE 72nd St, Seattle, WA 98115**.
 
 **Live site:** [cowboy-disco-party.vercel.app](https://cowboy-disco-party.vercel.app)
 

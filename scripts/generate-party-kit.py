@@ -149,7 +149,9 @@ def generate_invite_back() -> Image.Image:
 
     draw.text((x, y), "WHERE", font=heading, fill=BROWN)
     y += 58
-    draw.text((x, y), "420 NE 72nd St", font=body, fill=INK)
+    draw.text((x, y), "Green Lake Village East", font=body, fill=INK)
+    y += 42
+    draw.text((x, y), "427 NE 72nd St", font=body, fill=INK)
     y += 42
     draw.text((x, y), "Seattle, WA 98115", font=body, fill=INK)
     y += 80
@@ -205,7 +207,7 @@ def generate_schedule_card() -> None:
 
     draw.text(
         (w // 2, h - 110),
-        "420 NE 72nd St, Seattle · Cowboy Disco Saloon",
+        "Green Lake Village East, 427 NE 72nd St, Seattle · Cowboy Disco Saloon",
         font=foot,
         fill=MUTED,
         anchor="mm",
@@ -249,7 +251,7 @@ def generate_party_kit_pdf() -> None:
     pdf.set_font("Helvetica", "B", 18)
     pdf.cell(0, 10, "Where", ln=True)
     pdf.set_font("Helvetica", "", 12)
-    pdf.multi_cell(0, 7, "420 NE 72nd St\nSeattle, WA 98115")
+    pdf.multi_cell(0, 7, "Green Lake Village East\n427 NE 72nd St\nSeattle, WA 98115")
     pdf.ln(4)
     pdf.set_font("Helvetica", "B", 18)
     pdf.cell(0, 10, "Getting In", ln=True)

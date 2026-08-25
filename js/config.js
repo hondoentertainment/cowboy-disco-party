@@ -26,7 +26,7 @@
     // The invite page appends "RSVP: <PARTIFUL_URL>" automatically when set,
     // so the Partiful link lives in exactly one place.
     SHARE_MESSAGE:
-      "You're invited to Cowboy Disco — where Studio 54 meets the Wild West. Saturday, Sep 19, 2026 at 6:00 PM · Cowboy Disco Saloon, 420 NE 72nd St, Seattle. Party details, photos & votes: https://cowboy-disco-party.vercel.app",
+      "You're invited to Cowboy Disco — where Studio 54 meets the Wild West. Saturday, Sep 19, 2026 at 6:00 PM · Cowboy Disco Saloon at Green Lake Village East, 427 NE 72nd St, Seattle. Party details, photos & votes: https://cowboy-disco-party.vercel.app",
     OG_IMAGE: "https://cowboy-disco-party.vercel.app/assets/og-card.jpg",
   };
 })(window);

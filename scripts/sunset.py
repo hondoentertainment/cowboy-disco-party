@@ -14,7 +14,7 @@ Set TZ to -7 for PDT or -8 for PST depending on the date.
 import math
 from datetime import date
 
-# Venue: 420 NE 72nd St, Seattle WA 98115 (Green Lake / Ravenna)
+# Venue: Green Lake Village East, 427 NE 72nd St, Seattle WA 98115
 LAT, LON, TZ = 47.6805, -122.3210, -7  # PDT on Sep 19
 
 def julian_day(d):
