@@ -19,44 +19,74 @@ const QUESTIONS = [
 (function () {
   "use strict";
 
+  var stage = document.getElementById("ice-breaker-stage");
   var grid = document.getElementById("ice-breaker-grid");
+  var nextBtn = document.getElementById("ice-breaker-next");
   var shuffleBtn = document.getElementById("ice-breaker-shuffle");
   var shuffleStatus = document.getElementById("ice-breaker-status");
 
-  function renderQuestions(questions) {
-    if (!grid) {
+  var deck = QUESTIONS.slice();
+  var index = 0;
+
+  function haptic() {
+    if (navigator.vibrate) {
+      navigator.vibrate(12);
+    }
+  }
+
+  function renderStage() {
+    if (!stage) {
       return;
     }
 
-    grid.innerHTML = "";
-    questions.forEach(function (question, index) {
-      var item = document.createElement("li");
-      item.className = "ice-breaker-card";
-      item.innerHTML =
-        '<span class="ice-breaker-card__number" aria-hidden="true">' +
-        (index + 1) +
-        '</span><p class="ice-breaker-card__text">' +
-        question +
-        "</p>";
-      grid.appendChild(item);
-    });
+    var question = deck[index];
+    stage.innerHTML =
+      '<article class="ice-breaker-card ice-breaker-card--solo">' +
+      '<span class="ice-breaker-card__number" aria-hidden="true">' +
+      (index + 1) +
+      " / " +
+      deck.length +
+      '</span><p class="ice-breaker-card__text">' +
+      question +
+      "</p></article>";
+  }
+
+  function setStatus(message) {
+    if (shuffleStatus) {
+      shuffleStatus.textContent = message || "";
+    }
+  }
+
+  function nextQuestion() {
+    index = (index + 1) % deck.length;
+    renderStage();
+    haptic();
+    setStatus("");
   }
 
   function shuffleQuestions() {
-    var shuffled = QUESTIONS.slice();
-    for (var i = shuffled.length - 1; i > 0; i -= 1) {
+    for (var i = deck.length - 1; i > 0; i -= 1) {
       var j = Math.floor(Math.random() * (i + 1));
-      var temp = shuffled[i];
-      shuffled[i] = shuffled[j];
-      shuffled[j] = temp;
+      var temp = deck[i];
+      deck[i] = deck[j];
+      deck[j] = temp;
     }
-    renderQuestions(shuffled);
-    if (shuffleStatus) {
-      shuffleStatus.textContent = "Deck shuffled — " + shuffled.length + " fresh prompts ready.";
-    }
+    index = 0;
+    renderStage();
+    haptic();
+    setStatus("Deck shuffled — " + deck.length + " prompts ready.");
   }
 
-  renderQuestions(QUESTIONS);
+  if (grid) {
+    grid.classList.add("is-hidden");
+    grid.setAttribute("aria-hidden", "true");
+  }
+
+  renderStage();
+
+  if (nextBtn) {
+    nextBtn.addEventListener("click", nextQuestion);
+  }
 
   if (shuffleBtn) {
     shuffleBtn.addEventListener("click", shuffleQuestions);

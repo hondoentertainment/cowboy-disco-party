@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="description" content="Cowboy Disco Party — where Studio 54 meets the Wild West. Sep 19, 2026 · Cowboy Disco Saloon, Seattle.">
   <meta name="theme-color" content="#0D0D0D">
   <meta property="og:type" content="website">
@@ -52,6 +52,7 @@
   }
   </script>
   <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="Cowboy Disco">
   <script>
     // Reveal-on-scroll only hides content when JS can bring it back. If
@@ -127,6 +128,17 @@
           <h1 class="hero__headline">Cowboy Disco</h1>
           <p class="hero__subhead">Where Studio 54 meets the Wild West.</p>
           <p class="hero__meta">Saturday, September 19, 2026 · Doors 6:00 PM</p>
+          <div class="hero-tonight" aria-label="Tonight at a glance">
+            <p class="hero-tonight__where">
+              <strong>Green Lake Village East</strong> · 427 NE 72nd St, Seattle<br>
+              Intercom <strong>340397</strong>
+            </p>
+            <ul class="hero-tonight__times">
+              <li><strong>7:15</strong> Intro &amp; ice breakers</li>
+              <li><strong>8:30</strong> Outfit contest &amp; birthdays</li>
+              <li><strong>10:00</strong> Last dance</li>
+            </ul>
+          </div>
           <p class="hero__status is-hidden" id="hero-status" aria-live="polite"></p>
           <p class="hero__tagline is-hidden" id="hero-tagline" hidden aria-hidden="true"></p>
           <p class="hero__eyebrow is-hidden" id="hero-eyebrow" hidden aria-hidden="true"></p>
@@ -219,7 +231,7 @@
         <p class="facts-more"><a href="#schedule">See the evening schedule</a></p>
       </div>
     </section>
-    <section class="cosmic-intro premium-intro reveal" id="welcome">
+    <section class="cosmic-intro premium-intro reveal section--guest-trim" id="welcome" hidden aria-hidden="true">
       <div class="cosmic-intro__layout">
         <figure class="cosmic-intro__visual editorial-frame">
           <picture>
@@ -317,6 +329,7 @@
           <p class="dress-note">When in doubt, add one more layer of sparkle.</p>
         </aside>
       </div>
+    </section>
 
     <section class="section section--schedule reveal" id="schedule">
       <div class="container">
@@ -337,11 +350,11 @@
             <tbody>
               <tr>
                 <td>6:00 PM</td>
-                <td>Doors open <span class="schedule-table__note">(country &amp; disco on the speakers)</span></td>
+                <td>Doors open<span class="schedule-table__note">Country &amp; disco on the speakers</span></td>
               </tr>
               <tr>
                 <td>All night</td>
-                <td><a href="booth.html">Photo booth</a> <span class="schedule-table__note">(snaps go to the gallery)</span></td>
+                <td><a href="booth.html">Photo booth</a><span class="schedule-table__note">Snaps go to the gallery</span></td>
               </tr>
               <tr>
                 <td>7:15 PM</td>
@@ -349,7 +362,7 @@
               </tr>
               <tr>
                 <td>8:30 PM</td>
-                <td>Outfit contest and happy birthdays <span class="schedule-table__note">(live applause)</span></td>
+                <td>Outfit contest and happy birthdays<span class="schedule-table__note">Live applause — no phone vote</span></td>
               </tr>
               <tr>
                 <td>8:35 PM</td>
@@ -517,7 +530,7 @@
         </div>
       </div>
     </section>
-    <section class="section section--moments reveal" id="moments">
+    <section class="section section--moments reveal section--guest-trim" id="moments" hidden aria-hidden="true">
       <div class="container">
         <header class="section__header">
           <p class="section__eyebrow">Social Moments</p>
@@ -635,24 +648,22 @@
           </div>
         </div>
 
-        <details class="qr-promo qr-block" id="qr" data-qr-block>
+        <p class="location-share">
+          <button class="btn btn--ghost btn--compact" type="button" data-share>Share the invite</button>
+        </p>
+        <details class="qr-promo qr-block is-hidden" id="qr" data-qr-block hidden aria-hidden="true">
           <summary class="qr-promo__copy qr-promo__summary">
             <h3>Door QR codes</h3>
-            <p>
-              Hosts can print these for the entrance. Each code opens a party page — no app needed.
-            </p>
+            <p>Host print pack — not shown to guests.</p>
           </summary>
-          <div class="qr-promo__actions">
-            <button class="btn btn--primary btn--compact" type="button" data-share>Share the invite</button>
-          </div>
           <p class="qr-block__url"></p>
           <div class="qr-deck">
             <figure class="qr-tile">
-              <img src="/assets/qr-code.png" width="640" height="640" alt="QR code for the Cowboy Disco Party site" loading="lazy">
+              <img src="/assets/qr-code.png" width="640" height="640" alt="" loading="lazy">
               <figcaption>The Party</figcaption>
             </figure>
             <figure class="qr-tile">
-              <img src="/assets/qr-gallery.png" width="640" height="640" alt="QR code for the photo gallery" loading="lazy">
+              <img src="/assets/qr-gallery.png" width="640" height="640" alt="" loading="lazy">
               <figcaption>Photo Gallery</figcaption>
             </figure>
             <figure class="qr-tile">

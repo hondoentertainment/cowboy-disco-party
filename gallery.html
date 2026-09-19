@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="description" content="Share and browse party photos from the Cowboy Disco Party — cowboy-disco flair memories.">
   <meta name="theme-color" content="#0D0D0D">
   <title>Photo Gallery | Cowboy Disco Party</title>
@@ -23,6 +23,7 @@
   <link rel="icon" href="/assets/brand-mark.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/assets/app-icon.png">
   <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="Cowboy Disco">
 </head>
 <body>
@@ -65,12 +66,27 @@
           <p class="poll-hero__lead">
             Party photos are live — upload photos or videos and browse everything everyone shared from the night.
           </p>
+          <p class="gallery-jump">
+            <a class="btn btn--secondary" href="#gallery-grid">See photos first</a>
+          </p>
         </header>
       </div>
     </section>
 
     <section class="section section--gallery reveal">
-      <div class="container">
+      <div class="container gallery-layout">
+        <div class="gallery-section" id="gallery-photos">
+          <header class="gallery-section__header">
+            <h2>Party Photos &amp; Videos</h2>
+            <p id="gallery-count">Loading gallery…</p>
+          </header>
+          <div class="gallery-grid gallery-grid--masonry" id="gallery-grid" aria-live="polite"></div>
+          <div class="gallery-empty is-hidden" id="gallery-empty">
+            <img class="gallery-empty__visual editorial-img" src="/assets/editorial-atmosphere.jpg" alt="Mirror ball reflections in a dimly lit dance hall" width="600" height="800" loading="lazy">
+            <p>No photos yet — be the first to share a dance-floor moment from the party.</p>
+          </div>
+        </div>
+
         <form class="gallery-upload poll-form" id="gallery-form" novalidate>
           <h2 class="gallery-upload__title">Submit a Photo or Video</h2>
 
@@ -111,18 +127,6 @@
           <button class="btn btn--primary btn--full" type="submit" id="gallery-submit">Add to Gallery</button>
           <p class="form-note" id="gallery-status" role="status" aria-live="polite"></p>
         </form>
-
-        <div class="gallery-section">
-          <header class="gallery-section__header">
-            <h2>Party Photos &amp; Videos</h2>
-            <p id="gallery-count">Loading gallery…</p>
-          </header>
-          <div class="gallery-grid gallery-grid--masonry" id="gallery-grid" aria-live="polite"></div>
-          <div class="gallery-empty is-hidden" id="gallery-empty">
-            <img class="gallery-empty__visual editorial-img" src="/assets/editorial-atmosphere.jpg" alt="Mirror ball reflections in a dimly lit dance hall" width="600" height="800" loading="lazy">
-            <p>No photos yet — be the first to share a dance-floor moment from the party.</p>
-          </div>
-        </div>
       </div>
     </section>
   </main>

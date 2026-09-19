@@ -174,6 +174,9 @@
       if (countEl) {
         countEl.classList.add("is-hidden");
       }
+      if (navigator.vibrate) {
+        navigator.vibrate(18);
+      }
       if (stage) {
         stage.classList.add("is-flash");
         window.setTimeout(function () {

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="description" content="Cowboy Disco Party ice breakers — fifteen conversation starters for a cowboy-disco flair night.">
   <meta name="theme-color" content="#0D0D0D">
   <title>Ice Breakers | Cowboy Disco Party</title>
@@ -20,6 +20,7 @@
   <link rel="icon" href="/assets/brand-mark.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/assets/app-icon.png">
   <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="Cowboy Disco">
 </head>
 <body>
@@ -64,9 +65,9 @@
             Fifteen conversation starters for a cowboy-disco crowd. Pick one, shuffle the deck, or go around the room.
           </p>
           <div class="ice-breaker-toolbar">
-            <button class="btn btn--primary" type="button" id="ice-breaker-shuffle">Shuffle Deck</button>
-            <a class="btn btn--secondary" href="qr-icebreakers.html">Print ice-breaker QR</a>
-            <a class="btn btn--secondary" href="index.html">Back to Party Info</a>
+            <button class="btn btn--primary" type="button" id="ice-breaker-next">Next question</button>
+            <button class="btn btn--secondary" type="button" id="ice-breaker-shuffle">Shuffle deck</button>
+            <a class="btn btn--secondary" href="index.html">Back to party</a>
           </div>
           <p class="form-note" id="ice-breaker-status" role="status" aria-live="polite"></p>
         </header>
@@ -75,8 +76,9 @@
 
     <section class="section section--embed">
       <div class="container">
-        <ol class="ice-breaker-grid" id="ice-breaker-grid" aria-label="Ice breaker questions"></ol>
-        <figure class="ice-breaker-qr">
+        <div class="ice-breaker-stage" id="ice-breaker-stage" aria-live="polite" aria-label="Current ice breaker"></div>
+        <ol class="ice-breaker-grid is-hidden" id="ice-breaker-grid" aria-hidden="true" aria-label="Ice breaker questions"></ol>
+        <figure class="ice-breaker-qr ice-breaker-qr--guest-trim">
           <img src="/assets/qr-icebreakers.png" width="640" height="640" alt="QR code that opens these ice breakers">
           <figcaption>Scan for ice breakers · cowboy-disco-party.vercel.app/ice-breaker.html</figcaption>
         </figure>
