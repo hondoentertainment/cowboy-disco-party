@@ -19,7 +19,6 @@ CHECKLIST = [
     "Post QR sign at the entrance",
     "Hang the Cowboy Disco Saloon sign on the door",
     f"Party night run-of-show: {BASE}/party-night.html",
-    f"Open TV slideshow: {BASE}/slideshow.html",
     f"Host dashboard: {BASE}/host.html",
 ]
 

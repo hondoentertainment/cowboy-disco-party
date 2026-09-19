@@ -83,12 +83,13 @@
       return;
     }
 
-    var url = getSiteUrl();
+    var path = root.getAttribute("data-qr-path") || "";
+    var url = getSiteUrl() + (path ? "/" + path.replace(/^\//, "") : "");
     var img = root.querySelector(".qr-block__img");
     var canvas = root.querySelector(".qr-block__canvas");
     var urlEl = root.querySelector(".qr-block__url");
     var copyBtn = root.querySelector(".qr-block__copy");
-    var staticSrc = "/assets/qr-code.png";
+    var staticSrc = root.getAttribute("data-qr-src") || "/assets/qr-code.png";
     var remoteSrc =
       "https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=" +
       encodeURIComponent(url);

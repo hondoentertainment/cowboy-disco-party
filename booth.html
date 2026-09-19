@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Cowboy Disco Party photo booth — snap a look and it lands in the live gallery.">
+  <meta name="theme-color" content="#0D0D0D">
+  <title>Photo Booth | Cowboy Disco Party</title>
+  <link rel="canonical" href="https://cowboy-disco-party.vercel.app/booth.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Photo Booth | Cowboy Disco Party">
+  <meta property="og:description" content="Strike a pose. The shot goes straight into the party gallery.">
+  <meta property="og:url" content="https://cowboy-disco-party.vercel.app/booth.html">
+  <meta property="og:image" content="https://cowboy-disco-party.vercel.app/assets/og-card.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="css/fonts.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/premium.css">
+  <link rel="icon" href="/assets/brand-mark.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/app-icon.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Cowboy Disco">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="brand-stripe" aria-hidden="true"></div>
+    <nav class="nav" aria-label="Main">
+      <a class="nav__brand brand-lockup" href="index.html">
+        <span class="brand-lockup__text">
+          <span class="brand-lockup__name">Cowboy Disco Party</span>
+          <span class="brand-lockup__sub">Sep 19, 2026</span>
+        </span>
+      </a>
+      <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Open menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav__menu" id="nav-menu">
+        <li><a href="index.html#when">When &amp; Where</a></li>
+        <li><a href="index.html#dress-code">Dress Code</a></li>
+        <li><a href="index.html#schedule">Schedule</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="index.html#faq">FAQ</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="section section--tab-hero">
+      <div class="container">
+        <header class="section__header">
+          <p class="tab-hero__eyebrow">
+            <span class="star" aria-hidden="true">★</span>
+            Live Booth
+            <span class="star" aria-hidden="true">★</span>
+          </p>
+          <h1 class="tab-hero__title">Photo Booth</h1>
+          <p class="tab-hero__lead">
+            Strike a pose. The shot posts straight to the party gallery — no app, no printer, no strip to lose.
+          </p>
+        </header>
+      </div>
+    </section>
+
+    <section class="section section--embed">
+      <div class="container booth">
+        <div class="booth-stage" id="booth-stage">
+          <video class="booth-video" id="booth-video" playsinline muted autoplay></video>
+          <img class="booth-shot is-hidden" id="booth-shot" alt="Your booth photo">
+          <p class="booth-count is-hidden" id="booth-count" aria-live="assertive"></p>
+          <p class="booth-empty" id="booth-empty">Allow the camera to open the booth.</p>
+        </div>
+
+        <div class="booth-form">
+          <label class="booth-name-label" for="booth-name">Your name</label>
+          <input class="booth-name" type="text" id="booth-name" name="name" autocomplete="name" placeholder="Who is in this shot?">
+        </div>
+
+        <div class="booth-actions">
+          <button class="btn btn--secondary" type="button" id="booth-flip">Flip camera</button>
+          <button class="btn btn--primary" type="button" id="booth-snap">Take photo</button>
+          <button class="btn btn--secondary is-hidden" type="button" id="booth-retake">Retake</button>
+          <button class="btn btn--primary is-hidden" type="button" id="booth-post">Post to gallery</button>
+        </div>
+
+        <p class="form-note" id="booth-status" role="status" aria-live="polite"></p>
+        <p class="booth-links">
+          <a class="btn btn--ghost" href="gallery.html">See the gallery</a>
+          <a class="btn btn--ghost" href="index.html">Back to the party</a>
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer site-footer--premium">
+    <div class="container site-footer__inner">
+      <div class="footer-premium__brand">
+        <span class="footer-premium__name">Cowboy Disco</span>
+        <p class="footer-premium__tagline">Where Studio 54 meets the Wild West.</p>
+      </div>
+      <nav class="footer-premium__nav" aria-label="Footer">
+        <a href="index.html#when">When &amp; Where</a>
+        <a href="index.html#dress-code">Dress Code</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="index.html#schedule">Schedule</a>
+        <a href="ice-breaker.html">Ice Breakers</a>
+        <a href="index.html#faq">FAQ</a>
+        <a href="poll.html">Next Party</a>
+      </nav>
+      <div class="footer-premium__credits">
+        <span>Sep 19, 2026 · 6:00 PM · Cowboy Disco Saloon</span>
+        <span>© Cowboy Disco Party</span>
+        <span class="footer-premium__photo-credit">Editorial photography via <a href="https://unsplash.com" rel="noopener noreferrer">Unsplash</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/nav.js"></script>
+  <script src="js/booth.js"></script>
+  <script src="js/premium.js"></script>
+  <script src="js/pwa.js"></script>
+  <script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>

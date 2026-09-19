@@ -40,7 +40,7 @@ SIZE = 640
 TARGETS = {
     "qr-code": ("", "The Party"),
     "qr-gallery": ("gallery.html", "Photo Gallery"),
-    "qr-vote": ("vote.html", "Best Outfit Vote"),
+    "qr-vote": ("vote.html", "Outfit Contest"),
     "qr-icebreakers": ("ice-breaker.html", "Ice Breakers"),
 }
 

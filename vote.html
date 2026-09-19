@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Vote for best outfit at the Cowboy Disco Party — best cowboy-disco look wins.">
-  <meta property="og:title" content="Best Outfit Vote | Cowboy Disco Party">
-  <meta property="og:description" content="Cast your vote by contestant number — live leaderboard until 9 PM.">
+  <meta name="description" content="The Cowboy Disco Party outfit contest is live applause at 8:30 — no phone vote.">
+  <meta property="og:title" content="Outfit Contest | Cowboy Disco Party">
+  <meta property="og:description" content="Best look wins by live applause at 8:30. No phone vote and no contestant numbers.">
   <meta name="theme-color" content="#0D0D0D">
-  <title>Best Outfit Vote | Cowboy Disco Party</title>
+  <title>Outfit Contest | Cowboy Disco Party</title>
   <link rel="canonical" href="https://cowboy-disco-party.vercel.app/vote.html">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://cowboy-disco-party.vercel.app/vote.html">
@@ -44,7 +44,6 @@
         <li><a href="index.html#dress-code">Dress Code</a></li>
         <li><a href="index.html#schedule">Schedule</a></li>
         <li><a href="gallery.html">Gallery</a></li>
-        <li><a href="vote.html" aria-current="page">Vote</a></li>
         <li><a href="index.html#faq">FAQ</a></li>
       </ul>
     </nav>
@@ -59,54 +58,16 @@
             Party Prize
             <span class="star" aria-hidden="true">★</span>
           </p>
-          <h1 class="poll-hero__title">Best Outfit Vote</h1>
+          <h1 class="poll-hero__title">Outfit Contest</h1>
           <p class="poll-hero__lead">
-            Vote for the best cowboy-disco look by contestant number — one vote per device. Prizes for
-            <strong>1st</strong>, <strong>2nd</strong>, and <strong>3rd</strong> place.
+            There is no phone vote. 8:30 PM is the outfit contest and happy birthdays —
+            live applause, no contestant numbers.
           </p>
-          <p class="vote-open-note is-hidden" id="vote-open-note"></p>
+          <div class="embed-toolbar">
+            <a class="btn btn--primary" href="index.html#schedule">See the schedule</a>
+            <a class="btn btn--secondary" href="index.html">Back to the party</a>
+          </div>
         </header>
-      </div>
-    </section>
-
-    <section class="section section--vote">
-      <div class="container">
-        <div class="vote-winner is-hidden" id="vote-winner" role="status" aria-live="polite">
-          <p class="vote-winner__eyebrow">Best Outfit Winner</p>
-          <p class="vote-winner__name" id="vote-winner-name"></p>
-          <p class="vote-winner__count" id="vote-winner-count"></p>
-        </div>
-
-        <form class="poll-form" id="vote-form" novalidate>
-          <div class="form-row">
-            <label for="vote-voter">Your name</label>
-            <input type="text" id="vote-voter" name="voter" autocomplete="name" required placeholder="Your name">
-          </div>
-          <div class="form-row">
-            <label for="vote-number">Contestant number</label>
-            <input
-              type="number"
-              id="vote-number"
-              name="number"
-              inputmode="numeric"
-              min="1"
-              max="99"
-              required
-              placeholder="e.g. 7"
-            >
-            <p class="form-hint">Enter the number on their name tag or sticker — hosts hand those out at the door.</p>
-          </div>
-          <button class="btn btn--primary btn--full" type="submit" id="vote-submit">Submit Vote</button>
-          <p class="form-note" id="vote-status" role="status" aria-live="polite"></p>
-        </form>
-
-        <div class="vote-results is-hidden" id="vote-results">
-          <header class="vote-results__header">
-            <h2>Live Results</h2>
-            <p id="vote-results-total">Loading results…</p>
-          </header>
-          <ol class="vote-results__list" id="vote-results-list"></ol>
-        </div>
       </div>
     </section>
   </main>
@@ -121,7 +82,7 @@
         <a href="index.html#when">When &amp; Where</a>
         <a href="index.html#dress-code">Dress Code</a>
         <a href="gallery.html">Gallery</a>
-        <a href="vote.html">Vote</a>
+        <a href="index.html#schedule">Schedule</a>
         <a href="ice-breaker.html">Ice Breakers</a>
         <a href="index.html#faq">FAQ</a>
         <a href="poll.html">Next Party</a>
@@ -135,8 +96,6 @@
   </footer>
 
   <script src="js/nav.js"></script>
-  <script src="js/config.js"></script>
-  <script src="js/vote.js"></script>
   <script src="js/premium.js"></script>
   <script src="js/pwa.js"></script>
   <script defer src="/_vercel/insights/script.js"></script>

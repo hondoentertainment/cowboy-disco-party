@@ -169,11 +169,9 @@ def generate_drink_list() -> None:
     y = centered_text(draw, "DRINK MENU", y, w, load_font(56, bold=True), LIGHT_GOLD) + 50
 
     drinks = [
-        ("Rusty Spur Fizz", "Bourbon, ginger beer, lime, cherry"),
-        ("Disco Cowboy", "Tequila, pineapple, coconut cream"),
-        ("Saddle Up Spritz", "Prosecco, Aperol, orange slice"),
-        ("Two-Step Tonic", "Gin, elderflower, tonic, lemon"),
-        ("Line Dance Lemonade", "Vodka, lemonade, blackberry"),
+        ("Howdy Shot", "Welcome shot"),
+        ("Giddy Up", "Signature"),
+        ("Cowboy Colada", "Signature"),
     ]
     title_font = load_font(36, bold=True)
     desc_font = load_font(28)
@@ -195,16 +193,17 @@ def generate_food_labels() -> None:
     centered_text(draw, "Print, cut, and fold for the buffet table", y, w, load_font(28), NAVY)
 
     labels = [
-        "Chuckwagon Chili",
-        "Disco Dip",
-        "Boot Scootin' Bites",
-        "Rhinestone Slaw",
-        "Gold Rush Guac",
-        "Two-Step Tacos",
-        "Mirror Ball Mac",
-        "Saddle Brownies",
-        "Line Dance Lasagna",
-        "Starlight Salad",
+        "Pulled Pork",
+        "Beef",
+        "Beans",
+        "Tortillas",
+        "Cheese",
+        "Lettuce",
+        "Salsa",
+        "Sour Cream",
+        "Guacamole",
+        "Hot Sauce",
+        "Dessert Bar",
     ]
     title_font = load_font(26, bold=True)
     x_positions = [60, 420, 780]
@@ -243,22 +242,28 @@ def generate_menu_pdf() -> None:
     pdf.ln(8)
 
     sections = {
-        "Appetizers": [
-            "Chuckwagon Chili Cups",
-            "Disco Dip & Chips",
-            "Boot Scootin' Bites",
-            "Gold Rush Guacamole",
+        "Taco Bar": [
+            "Pulled pork",
+            "Beef",
+            "Beans",
         ],
-        "Mains": [
-            "Line Dance Lasagna",
-            "Two-Step Tacos",
-            "Mirror Ball Mac & Cheese",
-            "Cowboy Disco Sliders",
+        "Toppings & Sides": [
+            "Tortillas",
+            "Cheese",
+            "Lettuce",
+            "Salsa",
+            "Sour cream",
+            "Guacamole",
+            "Lime wedges",
+            "Hot sauce",
         ],
-        "Dessert": [
-            "Saddle Brownies",
-            "Starlight Shortbread",
-            "Rhinestone Rice Crispy Bars",
+        "Dessert Bar": [
+            "Help yourself - sweets are out next to the taco bar",
+        ],
+        "House Drinks": [
+            "Howdy Shot - welcome shot",
+            "Giddy Up - signature",
+            "Cowboy Colada - signature",
         ],
     }
 

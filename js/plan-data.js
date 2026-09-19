@@ -133,7 +133,7 @@
       "task": "Pick Out Menu",
       "status": "Complete",
       "assigned": "Kyle/Jeremy/Chris",
-      "notes": "Menu PDF + drink list on site"
+      "notes": "Taco bar and dessert bar — menu PDF + drink list on site"
     },
     {
       "id": 17,
@@ -384,13 +384,8 @@
     },
     {
       "day": "Saturday",
-      "time": "8:15 AM",
-      "action": "Game"
-    },
-    {
-      "day": "Saturday",
       "time": "8:30 AM",
-      "action": "Costume Contest"
+      "action": "Outfit contest and happy birthdays"
     },
     {
       "day": "Saturday",
@@ -399,8 +394,8 @@
     },
     {
       "day": "Saturday",
-      "time": "TBD",
-      "action": "Sunset"
+      "time": "7:15 PM",
+      "action": "Formal party introduction and ice breakers"
     },
     {
       "day": "Saturday",

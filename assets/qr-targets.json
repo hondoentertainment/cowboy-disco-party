@@ -3,7 +3,7 @@
     "file": "qr-code.png",
     "label": "The Party",
     "url": "https://cowboy-disco-party.vercel.app/",
-    "kb": 16
+    "kb": 15
   },
   {
     "file": "qr-gallery.png",
@@ -13,7 +13,7 @@
   },
   {
     "file": "qr-vote.png",
-    "label": "Best Outfit Vote",
+    "label": "Outfit Contest",
     "url": "https://cowboy-disco-party.vercel.app/vote.html",
     "kb": 16
   },

@@ -24,7 +24,7 @@ This PR applies the guest-facing fixes (P0). Everything below is the remaining p
 | `ice-breaker.html` | `plan.html` | |
 | `poll.html` | `party-kit.html` + print leaves | |
 | `slideshow.html` (TV) | `invite.html` | |
-| `404.html` | `signs.html`, `qr.html`, `qr-pack.html`, `lookbook.html`, `numbers.html`, `invite-card.html`, `schedule-card.html` | |
+| `404.html` | `signs.html`, `qr.html`, `qr-pack.html`, `numbers.html`, `invite-card.html`, `schedule-card.html` | |
 
 ## Remaining recommendations
 
@@ -32,14 +32,14 @@ This PR applies the guest-facing fixes (P0). Everything below is the remaining p
 
 1. **Merge `party-night.html` into `host.html`** as a “Run of show” block. It repeats the host checklist.
 2. **Merge `print-pack.html` into `party-kit.html`.** Print pack is a thin index of the same signs, QR, labels, and numbers.
-3. **Keep print leaf pages** (`signs`, `qr`, `qr-pack`, `lookbook`, `numbers`, `invite-card`, `schedule-card`) but reach them only from `host.html` / `party-kit.html`.
+3. **Keep print leaf pages** (`signs`, `qr`, `qr-pack`, `numbers`, `invite-card`, `schedule-card`) but reach them only from `host.html` / `party-kit.html`.
 4. **Fold `mobile-test.html`** into the host checklist (or keep it, but only as a host quick link — already true).
 
 ### P2 — Homepage weight
 
 `index.html` is ~980 lines. The guest path does not need all of it.
 
-5. **Dress-code lookbook** (~450 lines) is duplicated in `lookbook.html`. Keep the six looks on the homepage; generate both from `scripts/build-lookbook.py` (already marked `LOOKBOOK:START/END`) and avoid hand-editing twice.
+5. **Dress-code lookbook** has been removed from the guest site. Keep the short dress-code copy on the homepage only.
 6. **`#moments` and `#party-night` overlap** — both send guests to gallery / vote / ice breakers / schedule. Consider dropping one card grid or making Moments photography-only.
 7. **Hero has five actions** (Partiful, Directions, Calendar, Learn More, Share). Fine for invites; drop “Learn More” if the fold still feels busy.
 8. **`#date-tbd` is leftover markup.** Date is set (`PARTY_DATE_TBD: false`). Rename or remove the block so TBD mode is not implied.
@@ -72,4 +72,4 @@ This PR applies the guest-facing fixes (P0). Everything below is the remaining p
 
 Guests see five pages plus the homepage: **party info, gallery, vote, ice breakers, poll**, and the TV slideshow. Hosts bookmark **`/host.html`**, which unlocks planning, prints, moderation, and run-of-show.
 
-That continues #14 (venue signs) and #18 (lookbook) — keep host tools, just stop advertising them on the invite site.
+That continues #14 (venue signs) — keep host tools, just stop advertising them on the invite site.

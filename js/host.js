@@ -12,14 +12,12 @@
 
   var defaultItems = [
     "Set GALLERY_ADMIN_CODE in Vercel for host tools (poll results)",
-    "Print party kit: invitations, QR, signs, labels, number tags (/party-kit.html)",
+    "Print party kit: invitations, QR, signs, labels (/party-kit.html)",
     "Post QR sign at the entrance",
     "Hang the Cowboy Disco Saloon sign on the door",
     "Copy and send guest invite text (below)",
     "Test gallery upload on phone over cellular",
-    "Test Best Outfit vote by contestant number on phone",
-    "Open photo slideshow on the TV (/slideshow.html)",
-    "Open Ice Breakers full-screen for warm-ups",
+    "Open Ice Breakers full-screen at 7:15",
     "Review party-night run-of-show (/party-night.html)",
   ];
 
@@ -109,17 +107,6 @@
       .then(function (data) {
         var parts = [];
         parts.push("Gallery uploads publish instantly.");
-        parts.push(
-          data.voteClosed
-            ? "Voting is closed."
-            : "Voting open until " +
-                new Date(data.voteCloseTime).toLocaleString("en-US", {
-                  weekday: "short",
-                  hour: "numeric",
-                  minute: "2-digit",
-                }) +
-                "."
-        );
         systemStatus.textContent = parts.join(" ");
       })
       .catch(function () {

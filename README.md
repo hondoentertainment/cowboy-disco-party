@@ -52,12 +52,12 @@ Host pages: [/invite.html](https://cowboy-disco-party.vercel.app/invite.html) (s
 ## What's included
 
 - Hero with party poster, TBD date mode, QR code, and post-party mode
-- **At the Party** hub — gallery, ice breakers, votes, and TV slideshow
+- **At the Party** hub — photo booth, gallery, and ice breakers
+- Photo booth that posts to the live gallery
 - Photo gallery with optional moderation
-- Best Outfit vote **by contestant number** (closes 9 PM party night when date is set)
-- Printable contestant number tags
+- Outfit contest by live applause at 8:30
 - Next-party poll saved to Blob
-- **Host dashboard** — checklist, system status, live vote tally, quick links
+- **Host dashboard** — checklist, system status, quick links
 - **Poll results dashboard** — date rankings and feedback
 - Inline **cowboy-disco ice breakers** with shuffle deck
 - PWA support, offline caching, and printable QR sign
@@ -99,9 +99,6 @@ npx vercel env add GALLERY_ADMIN_CODE production
 | Poll results | [/poll-results.html](https://cowboy-disco-party.vercel.app/poll-results.html) |
 | Print QR sign | [/qr.html](https://cowboy-disco-party.vercel.app/qr.html) |
 | QR pack (4 deep links) | [/qr-pack.html](https://cowboy-disco-party.vercel.app/qr-pack.html) |
-| Print lookbook | [/lookbook.html](https://cowboy-disco-party.vercel.app/lookbook.html) |
-| Print number tags | [/numbers.html](https://cowboy-disco-party.vercel.app/numbers.html) |
-| Photo slideshow (TV) | [/slideshow.html](https://cowboy-disco-party.vercel.app/slideshow.html) |
 | Ice breakers | [/ice-breaker.html](https://cowboy-disco-party.vercel.app/ice-breaker.html) |
 | Party planning (committee) | [/plan.html](https://cowboy-disco-party.vercel.app/plan.html) |
 
@@ -125,11 +122,9 @@ Run `python scripts/pre-party-check.py` for an automated smoke test plus this li
 2. Set party date in `js/config.js` when confirmed (see below) and redeploy
 3. Print QR sign from [qr.html](https://cowboy-disco-party.vercel.app/qr.html) → post at the entrance
 4. Print venue signs from [signs.html](https://cowboy-disco-party.vercel.app/signs.html)
-5. Print number tags from [numbers.html](https://cowboy-disco-party.vercel.app/numbers.html) → hand out at the door
-6. Test gallery upload + vote by number on a phone over **cellular**
-7. Open [slideshow.html](https://cowboy-disco-party.vercel.app/slideshow.html) on the TV
-8. Open [ice-breaker.html](https://cowboy-disco-party.vercel.app/ice-breaker.html) full-screen for warm-ups
-9. Use [host.html](https://cowboy-disco-party.vercel.app/host.html) during the party
+5. Test gallery upload on a phone over **cellular**
+6. Open [ice-breaker.html](https://cowboy-disco-party.vercel.app/ice-breaker.html) full-screen at 7:15
+7. Use [host.html](https://cowboy-disco-party.vercel.app/host.html) during the party
 
 ## Custom domain
 
@@ -149,8 +144,6 @@ Run `python scripts/pre-party-check.py` for an automated smoke test plus this li
 - Party playlist: `js/config.js` → `SPOTIFY_PLAYLIST_URL` — set to reveal the "Hear the Party Playlist" button in the schedule section
 - Ambient music: `js/config.js` → `AMBIENT_AUDIO_URL` — point at an audio file to reveal the sound toggle (never autoplays; the guest's choice is remembered)
 - QR codes: `python scripts/generate-qr.py` regenerates all four branded codes (site, gallery, vote, ice breakers) from `SITE_URL`
-- Dress-code looks: edit `scripts/looks.py`, then `python scripts/build-lookbook.py` to update both the web lookbook and the print sheet
-- Look photos: `python scripts/crop-look-photos.py SHEET_A.png SHEET_B.png` slices wide 3-panel reference art into `assets/look-01..06.jpg` (600×900 portrait, + webp), trimming the caption band and the garbled background neon on the outer edges (`--edge`, default 9% of sheet width). Then run `python scripts/build-lookbook.py` — cards show the photos when the files exist, and are text-and-swatch only otherwise
 - Analytics: enable **Analytics** and **Speed Insights** in the Vercel dashboard — the script tags are already on the guest pages and stay inert until you switch them on
 - Webfonts are self-hosted in `assets/fonts/` — refresh with `python scripts/fetch-fonts.py`
 

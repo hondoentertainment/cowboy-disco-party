@@ -3043,6 +3043,25 @@ a:hover {
   line-height: 1.5;
 }
 
+.ice-breaker-qr {
+  max-width: 14rem;
+  margin: 2.5rem auto 0;
+  text-align: center;
+}
+
+.ice-breaker-qr img {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: #f7f3ed;
+}
+
+.ice-breaker-qr figcaption {
+  margin-top: 0.65rem;
+  font-size: 0.85rem;
+  color: var(--muted, #b8aea0);
+}
+
 /* Party planning site */
 
 .visually-hidden {
@@ -3353,4 +3372,96 @@ body.is-nav-open {
   .has-guest-dock .back-to-top {
     display: none;
   }
+}
+
+.booth {
+  max-width: 36rem;
+}
+
+.booth-stage {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 3 / 4;
+  border: 1px solid rgba(199, 167, 106, 0.35);
+  background: #111;
+}
+
+.booth-stage.is-flash::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #fff;
+  animation: booth-flash 0.18s ease-out;
+}
+
+@keyframes booth-flash {
+  from { opacity: 0.9; }
+  to { opacity: 0; }
+}
+
+.booth-video,
+.booth-shot {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.booth-video.is-mirrored {
+  transform: scaleX(-1);
+}
+
+.booth-count,
+.booth-empty {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  margin: 0;
+  padding: 1.5rem;
+  text-align: center;
+  pointer-events: none;
+}
+
+.booth-count {
+  font-family: var(--font-serif, "Cormorant Garamond", Georgia, serif);
+  font-size: 7rem;
+  line-height: 1;
+  color: #fff;
+  text-shadow: 0 0 24px rgba(0, 0, 0, 0.55);
+}
+
+.booth-empty {
+  color: rgba(247, 243, 237, 0.78);
+  background: rgba(13, 13, 13, 0.55);
+}
+
+.booth-form {
+  margin: 1.25rem 0 0.85rem;
+}
+
+.booth-name-label {
+  display: block;
+  margin-bottom: 0.4rem;
+}
+
+.booth-name {
+  width: 100%;
+}
+
+.booth-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.booth-actions .btn {
+  flex: 1 1 9rem;
+}
+
+.booth-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
 }

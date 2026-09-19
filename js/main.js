@@ -80,7 +80,7 @@
     if (partyNightEl) {
       partyNightEl.querySelector(".party-night__heading").textContent = "Keep the Party Going";
       partyNightEl.querySelector(".party-night__lead").textContent =
-        "Upload photos, vote for best outfit, and tell us when to do it all again.";
+        "Upload photos and tell us when to do it all again.";
     }
   }
 
@@ -92,7 +92,7 @@
     document.body.classList.add("is-party-live");
 
     if (heroStatus) {
-      heroStatus.textContent = "Party night is live — open Gallery, Vote, or Ice Breakers from the menu.";
+      heroStatus.textContent = "Party night is live — open Gallery or Ice Breakers from the menu.";
       heroStatus.classList.remove("is-hidden");
     }
 
@@ -336,51 +336,4 @@
   setInterval(updateCountdown, 1000);
   applyPostPartyMode();
   applyLivePartyMode();
-
-  var lookbookGrid = document.querySelector(".lookbook__grid");
-  var lookbookStatus = document.getElementById("lookbook-status");
-  if (lookbookGrid && lookbookStatus) {
-    var lookCards = lookbookGrid.querySelectorAll(".look-card");
-
-    function updateLookbookStatus() {
-      if (!lookCards.length) {
-        return;
-      }
-
-      var nearest = 0;
-      var best = Infinity;
-      var left = lookbookGrid.scrollLeft;
-      lookCards.forEach(function (card, index) {
-        var distance = Math.abs(card.offsetLeft - left);
-        if (distance < best) {
-          best = distance;
-          nearest = index;
-        }
-      });
-
-      var n = nearest + 1;
-      lookbookStatus.textContent = "Look " + n + " of " + lookCards.length + " — swipe for more";
-    }
-
-    lookbookGrid.addEventListener("scroll", updateLookbookStatus, { passive: true });
-    lookbookGrid.addEventListener("keydown", function (event) {
-      if (event.key !== "ArrowRight" && event.key !== "ArrowLeft") {
-        return;
-      }
-
-      var card = lookCards[0];
-      if (!card) {
-        return;
-      }
-
-      var step = card.getBoundingClientRect().width + 12;
-      lookbookGrid.scrollBy({
-        left: event.key === "ArrowRight" ? step : -step,
-        behavior: "smooth",
-      });
-      event.preventDefault();
-    });
-    updateLookbookStatus();
-  }
-
 })();

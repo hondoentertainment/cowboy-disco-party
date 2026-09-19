@@ -36,7 +36,7 @@ See `README.md` for the product overview, page list, and standard commands.
 
 ### Optional Python asset toolchain
 
-- `scripts/*.py` that regenerate committed assets (poster, QR codes, signs, lookbook, planning
+- `scripts/*.py` that regenerate committed assets (poster, QR codes, signs, planning
   workbook) need `Pillow`, `qrcode`, `openpyxl`, and optionally `fpdf`. These are **not
   installed by default and are not needed to run or develop the site** — the generated assets
   are already committed under `assets/`. Install them only if you need to regenerate assets.
