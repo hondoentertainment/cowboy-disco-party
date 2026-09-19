@@ -3543,7 +3543,27 @@ body.is-nav-open {
   touch-action: manipulation;
 }
 
+.is-party-live .hero-tonight,
+.is-party-day .hero-tonight {
+  border-color: var(--champagne, #c7a76a);
+  box-shadow: 0 0 24px rgba(199, 167, 106, 0.2);
+}
+
+.is-party-live #hero-status,
+.is-party-day #hero-status {
+  color: var(--champagne, #c7a76a);
+  font-weight: 600;
+}
+
 @media (max-width: 960px) {
+  .has-guest-dock .nav__toggle {
+    display: none;
+  }
+
+  .has-guest-dock .nav__menu {
+    display: none;
+  }
+
   .guest-dock {
     grid-template-columns: repeat(6, minmax(0, 1fr));
   }

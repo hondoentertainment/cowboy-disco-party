@@ -16,7 +16,7 @@
     "Post QR sign at the entrance",
     "Hang the Cowboy Disco Saloon sign on the door",
     "Copy and send guest invite text (below)",
-    "Test gallery upload on phone over cellular",
+    "Test gallery upload and photo booth on phone over cellular",
     "Open Ice Breakers full-screen at 7:15",
     "Review party-night run-of-show (/party-night.html)",
   ];

@@ -53,6 +53,29 @@
     return now >= PARTY_DATE.getTime() && now < PARTY_END.getTime();
   }
 
+  function isPartyDay() {
+    if (dateTbd || !PARTY_DATE || isPartyLive() || isPostParty()) {
+      return false;
+    }
+    var partyDay = PARTY_DATE.toLocaleDateString("en-CA", { timeZone: "America/Los_Angeles" });
+    var today = new Date().toLocaleDateString("en-CA", { timeZone: "America/Los_Angeles" });
+    return partyDay === today;
+  }
+
+  function applyPartyDayMode() {
+    if (!isPartyDay()) {
+      return;
+    }
+
+    document.body.classList.add("is-party-day");
+
+    if (heroStatus) {
+      heroStatus.textContent =
+        "Doors at 6 PM tonight · Green Lake Village East · intercom 340397.";
+      heroStatus.classList.remove("is-hidden");
+    }
+  }
+
   function applyPostPartyMode() {
     if (!isPostParty()) {
       return;
@@ -92,7 +115,8 @@
     document.body.classList.add("is-party-live");
 
     if (heroStatus) {
-      heroStatus.textContent = "Party night is live — open Gallery or Ice Breakers from the menu.";
+      heroStatus.textContent =
+        "Party's on — use the bottom bar for Booth, Gallery, and Ice Breakers.";
       heroStatus.classList.remove("is-hidden");
     }
 
@@ -131,6 +155,8 @@
       applyLivePartyMode();
       return;
     }
+
+    applyPartyDayMode();
 
     const diff = PARTY_DATE.getTime() - Date.now();
     if (diff <= 0) {
