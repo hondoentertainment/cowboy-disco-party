@@ -158,7 +158,7 @@ def generate_schedule_card() -> None:
         ("6:00 PM", "Doors open - music on"),
         ("7:15 PM", "Formal party introduction and ice breakers"),
         ("8:30 PM", "Outfit contest and happy birthdays"),
-        ("8:35 PM", "Group photo"),
+        ("8:45 PM", "Group photo"),
         ("10:00 PM", "Party ends"),
     ]
     y = 300
@@ -242,7 +242,7 @@ def generate_party_kit_pdf() -> None:
         ("6:00 PM", "Doors open - music on"),
         ("7:15 PM", "Formal party introduction and ice breakers"),
         ("8:30 PM", "Outfit contest and happy birthdays"),
-        ("8:35 PM", "Group photo"),
+        ("8:45 PM", "Group photo"),
         ("10:00 PM", "Party ends"),
     ]:
         pdf.set_font("Helvetica", "B", 12)

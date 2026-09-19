@@ -389,7 +389,7 @@
     },
     {
       "day": "Saturday",
-      "time": "8:35 AM",
+      "time": "8:45 PM",
       "action": "Group Photo"
     },
     {
