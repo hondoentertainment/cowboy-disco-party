@@ -40,7 +40,7 @@
   var MULTIPART_BYTES = uploadConfig.MULTIPART_BYTES || 100 * 1024 * 1024;
   var COMPRESS_MAX_DIM = 2048;
   var BLOB_CLIENT_URL =
-    "https://esm.sh/@vercel/blob@0.27.3/client?target=es2020";
+    "https://esm.sh/@vercel/blob@2.8.2/client?target=es2020";
 
   var EXT_TO_TYPE = {
     jpg: "image/jpeg",
